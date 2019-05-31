@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "search-cmp": "/components/search/search",
+    "book-cmp":"/components/book/index"
+  },
+  "backgroundColor":"#f5f5f5",
+  "navigationBarTitleText":"我的资料"
+}

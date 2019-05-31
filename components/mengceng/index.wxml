@@ -1,0 +1,9 @@
+<view class='meng'>
+  <view class='mengbox'>
+    <view class='mengtitle'>{{title}}</view>
+    <view class='mengbom'>
+      <view class='cancle'>取消</view>
+      <view class='sub'>确定</view>
+    </view>
+  </view>
+</view>

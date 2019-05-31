@@ -1,0 +1,80 @@
+<view class='container'>
+  <view class='tips'>首次送养需完善您的个人信息，请如实填写。</view>
+  <view class="own-info-item">
+    <view class="info-name">
+      <text>姓名:  </text>
+    </view>
+    <view class="info-text">
+      <input name="name" class="input-text" placeholder='请填写您的真实姓名' placeholder-style='color:#8391A8;font-size:28rpx' />
+    </view>
+  </view>
+  <view class='line'></view>
+  <view class="own-info-item info-center">
+    <radio-group class="radio-group" bindchange="radioChange">
+      <label class="radio" wx:for="{{items}}">
+        <radio value="{{item.name}}" checked="{{item.checked}}" />{{item.value}}
+      </label>
+    </radio-group>
+  </view>
+  <view class='line'></view>
+  <view class="own-info-item">
+    <view class="info-name">
+      <text>微信号:  </text>
+    </view>
+    <view class="info-text">
+      <input name="name" class="input-text" placeholder='请填写您的微信号' placeholder-style='color:#8391A8;font-size:28rpx' />
+    </view>
+    <label class="radio">
+      <radio value="1" checked="" />公开
+    </label>
+  </view>
+  <view class='line'></view>
+  <view class="own-info-item">
+    <view class="info-name">
+      <text>手机号:  </text>
+    </view>
+    <view class="info-text">
+      <input name="name" class="input-text" placeholder='请填写您的手机号' placeholder-style='color:#8391A8;font-size:28rpx' />
+    </view>
+    <label class="radio">
+      <radio value="1" checked="" />公开
+    </label>
+  </view>
+  <view class='line'></view>
+  <view class="own-info-item">
+    <view class="info-name">
+      <text>年龄:  </text>
+    </view>
+    <label class="radio">
+      <radio value="1" checked="" />公开
+    </label>
+  </view>
+  <view class='line'></view>
+  <view class="own-info-item">
+    <view class="info-name">
+      <text>地区:  </text>
+    </view>
+    <view class="info-text">
+      <input name="name" class="input-text" placeholder='请选择您的所在地' placeholder-style='color:#8391A8;font-size:28rpx' />
+    </view>
+    <label class="radio">
+      <radio value="1" checked="" />公开
+    </label>
+  </view>
+  <view class='line'></view>
+  <view class="own-info-item">
+    <view class="info-name">
+      <text>职业:  </text>
+    </view>
+    <view class="info-text">
+      <input name="name" class="input-text" placeholder='请选择您的职业' placeholder-style='color:#8391A8;font-size:28rpx' />
+    </view>
+    <label class="radio">
+      <radio value="1" checked="" />公开
+    </label>
+  </view>
+  <view class='line'></view>
+</view>
+<view class='sub-btn'>
+  <view class='btns'>保存</view>
+</view>

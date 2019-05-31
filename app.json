@@ -1,0 +1,57 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/mysong/mysong",
+    "pages/infor/infor",
+    "pages/searchpet/searchpet",
+    "pages/searchcity/searchcity",
+    "pages/detail/detail",
+    "pages/my/my"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "爪盟星",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "default"
+  },
+  "tabBar": {
+    "borderStyle": "black",
+    "selectedColor": "#000000",
+    "backgroundColor": "#ffffff",
+    "color": "#c7c7c7",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "selectedIconPath": "/img/ling/Group 15.png",
+        "iconPath": "/img/ling/Combined Shape.png",
+        "text": "领养"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "selectedIconPath": "/img/ling/Disc - simple-line-icons.png",
+        "iconPath": "/img/ling/Disc - simple-line-icons.png",
+        "text": "资讯"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "selectedIconPath": "/img/ling/Group 13.png",
+        "iconPath": "/img/ling/Group 13.png",
+        "text": "发布"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "selectedIconPath": "/img/ling/message - anticon.png",
+        "iconPath": "/img/ling/message - anticon.png",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "selectedIconPath": "/img/ling/Group.png",
+        "iconPath": "/img/ling/user - anticon.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

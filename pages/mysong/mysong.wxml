@@ -1,0 +1,15 @@
+<view class="container">
+  <view class='title'>
+    <view class='tab active'>待送养</view>
+    <view class='tab tab-center'>已送养</view>
+    <view class='tab'>已下架</view>
+  </view>
+  <view class="sub-container">
+    <view class="animal-container">
+      <block wx:for="{{pets}}">
+        <petb-cmp pet="{{item}}" class="pets" />
+      </block>
+    </view>
+  </view>
+</view>
+<meng-cmp title="{{tihsi}}" wx:if='showif' />

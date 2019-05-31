@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "choise-cmp": "/components/choise/choise",
+    "pet-cmp": "/components/pets/index",
+    "petl-cmp": "/components/petlist/index"
+  },
+  "navigationBarTitleText": "待领养"
+}

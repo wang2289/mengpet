@@ -1,0 +1,12 @@
+<view bind:tap="onTap" class="container">
+  <image class='petimg' src="{{pet.image||pet.img}}"></image>
+  <view class="description">
+    <view class='name'><view class='nametitle'>{{pet.name}}</view><image src="/img/ling/man - anticon.png" /></view>
+    <view class='moretip'>
+      <view class='age'>{{pet.age}} | {{pet.newname}}</view>
+    </view>
+    <view class='tips'>{{pet.tips}}</view>
+    <view class='area'>{{pet.city}}   {{pet.area}}</view>
+      <view class='view'> <image src="/img/ling/Eye - simple-line-icons.png" />{{pet.view}}</view>
+  </view>
+</view>

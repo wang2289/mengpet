@@ -1,0 +1,69 @@
+<!--pages/detail/detail.wxml-->
+<view class="container">
+  <view class="head">
+    <image src="{{pet.image}}"></image>
+    <view class='head-info'>
+      <view>
+        <text class='newname'>{{pet.newname}}</text>
+        <text class='age'>{{pet.age}}</text>
+      </view>
+      <view>
+        <text class='area'>{{pet.city}} {{pet.area}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="sub-container">
+    <text class="headline">身体状况</text>
+    <view class='heath-tip'>
+      <view class='heath-onetip'>已驱虫</view>
+      <view class='heath-onetip'>已驱虫</view>
+      <view class='heath-onetip'>已驱虫</view>
+    </view>
+    <text class="headline">我的特点</text>
+    <view class='heath-tip'>
+      <view class='heath-twotip'>已驱虫</view>
+      <view class='heath-twotip'>已驱虫</view>
+      <view class='heath-twotip'>已驱虫</view>
+    </view>
+    <text class="headline">我的故事</text>
+    <view class='gushi'>
+      栗子是在大雨中的路边发现的，活泼能吃，身体健康，性格好，十分亲人，在等待一个温暖的家。栗子是在大雨中的路边发现的，活泼能吃，身体健康，性格好，十分亲人，在等待一个温暖的家。栗子是在大雨中的路边发现的，活泼能吃，身体健康，在等待一个温暖的家。
+    </view>
+    <text class="headline">送养人信息</text>
+    <view class='songyang'>
+      <view class='people'>
+        <image class='peopleimage' src="{{pet.image}}"></image>
+        <view class='peopleinfo'>
+          <view class='peoplename'>白熊
+            <image class='peo-icon' src="/img/ling/woman - anticon.png"></image>
+          </view>
+          <text class='peopleadress'>上海90后 30分钟前来过</text>
+        </view>
+      </view>
+      <view class='peoplesoon'>
+        <view>
+          <image class='peo-icon' src="/img/detail/smartphone - material.png"></image>17628392716</view>
+        <view>
+          <image class='peo-icon' src="/img/detail/weixin.png"></image>sjudhw</view>
+        <view>TA的更多送养
+          <image class='peo-icon' src="/img/detail/right - anticon.png"></image>
+        </view>
+      </view>
+      <view class='jubao'>
+        <image class='peo-icon' src="/img/detail/exclamation-circle-o - anticon.png"></image>举报</view>
+    </view>
+    <text class="headline">猜你喜欢</text>
+    <view class="animal-container">
+      <block wx:for="{{pets}}">
+        <petlist-cmp pet="{{item}}" class="petlist" />
+      </block>
+    </view>
+  </view>
+</view>
+<view class='sub-btns'>
+  <view class='btn-s'><image class='btn-icon' src="/img/detail/star-o - anticon.png"></image></view>
+  <view class='btn-z'> <image class='btn-icon2' src="/img/detail/export - anticon.png"></image></view>
+</view>
+<view class='sub-btn'>
+  <view class='btns'>申请收养</view>
+</view>

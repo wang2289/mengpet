@@ -1,0 +1,65 @@
+/* pages/searchpet/searchpet.wxss */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.header {
+  position: fixed;
+  background-color: #fff;
+  height: 100rpx;
+  width: 100%;
+  border-top: 1px solid #f5f5f5;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  z-index: 99;
+}
+
+.box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8rpx;
+  background-color: #f5f5f5;
+  height: 60rpx;
+  width: 690rpx;
+  color: #999;
+}
+
+.box text {
+  font-size: 26rpx;
+}
+
+.box image {
+  margin-right: 10rpx;
+  width: 30rpx;
+  height: 30rpx;
+  margin-bottom: -2rpx;
+}
+
+.choise {
+  top: 90rpx;
+  position: fixed;
+  background: #fff;
+  z-index: 99;
+}
+
+.animal-container2 {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 130rpx;
+}
+
+pet-cmp {
+  margin: 0 10rpx 0rpx 10rpx;
+}
+
+.choise-cmp {
+  width: 100%;
+}

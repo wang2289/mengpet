@@ -1,0 +1,38 @@
+<view>
+<view wx:if="{{!searchPanel}}" class="container">
+   <view class="header">
+    <view class='city'>上海 <image src="/img/ling/right - anticon.png" /></view>
+    <view class='box' bind:tap="onActivateSearch">
+      <image src="/img/ling/serch.png" />
+      <text>搜索</text>
+    </view> 
+  </view> 
+  <view class='sw-con'>
+   <swiper
+  indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}"
+  interval="{{interval}}"
+  duration="{{duration}}"
+  circular="true"
+  next-margin="60rpx"
+>
+  <block wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" width="660" height="330" />
+    </swiper-item>
+  </block>
+</swiper>
+</view>
+
+<view class='sub-title'>带我回家</view>
+<choise-cmp  class='choise' />
+<view class="sub-container">
+    <view class="animal-container">
+      <block wx:for="{{pets}}">
+        <pet-cmp pet="{{item}}" class="pets" />
+      </block>
+    </view>
+  </view> 
+</view>
+<search-cmp more="{{more}}" wx:if="{{searchPanel}}" bind:cancel="onCancel" />  
+</view>

@@ -1,0 +1,131 @@
+/* pages/searchpet/searchpet.wxss */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.header {
+  position: fixed;
+  background-color: #fff;
+  height: 100rpx;
+  width: 100%;
+  border-top: 1px solid #f5f5f5;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  z-index: 99;
+}
+
+.box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8rpx;
+  background-color: #f5f5f5;
+  height: 60rpx;
+  width: 690rpx;
+  color: #999;
+}
+
+.box text {
+  font-size: 26rpx;
+}
+
+.box image {
+  margin-right: 10rpx;
+  width: 30rpx;
+  height: 30rpx;
+  margin-bottom: -2rpx;
+}
+
+.choise {
+  top: 90rpx;
+  position: fixed;
+  background: #fff;
+  z-index: 99;
+}
+
+.animal-container2 {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 130rpx;
+}
+
+pet-cmp {
+  margin: 0 10rpx 0rpx 10rpx;
+}
+
+.choise-cmp {
+  width: 100%;
+}
+
+.sub-container {
+  margin-top: 100rpx;
+}
+
+.now {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(51, 62, 82, 1);
+  line-height: 40rpx;
+  padding-left: 30rpx;
+}
+
+.title {
+  font-size: 34rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(51, 62, 82, 1);
+  line-height: 48rpx;
+  padding-left: 30rpx;
+  margin-top: 60rpx;
+  margin-bottom: 30rpx;
+}
+
+.tit {
+  height: 56rpx;
+  line-height: 56rpx;
+  padding-left: 30rpx;
+  background: rgba(242, 245, 250, 1);
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(131, 145, 168, 1);
+}
+
+.tit-con {
+  height: 88rpx;
+  line-height: 88rpx;
+  background: rgba(255, 255, 255, 1);
+  margin-left: 30rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(51, 62, 82, 1);
+  border-bottom: 1px solid #e6eaef;
+  margin-right: 30rpx;
+}
+.nav{
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  z-index: 99;
+  right: 27rpx;
+  bottom: 60rpx;
+}
+.nav view{
+  font-size: 24rpx;
+  color: #8391A8;
+  line-height:36rpx;
+}
+.nav image{
+  width: 20rpx;
+  height: 20rpx;
+  margin-bottom: 2rpx;
+  margin-right: 5rpx;
+}

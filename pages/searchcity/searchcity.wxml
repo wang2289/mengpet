@@ -1,0 +1,45 @@
+<view class="container">
+  <view class="header">
+    <view class='box'>
+      <image src="/img/ling/serch.png" />
+      <text>搜索</text>
+    </view>
+  </view>
+  <view class="sub-container">
+    <view class='now'>当前：上海</view>
+    <view class='title'>所有城市</view>
+    <view class='tit'>A</view>
+    <view class='tit-con'>阿拉善盟</view>
+    <view class='tit-con'>阿拉善盟</view>
+    <view class='tit-con'>阿拉善盟</view>
+    <view class='tit-con'>阿拉善盟</view>
+  </view>
+</view>
+<view class='nav'>
+ <image src="/images/icon/search.png" />
+  <view>A</view>
+  <view>B</view>
+  <view>C</view>
+  <view>D</view>
+  <view>E</view>
+  <view>F</view>
+  <view>G</view>
+  <view>H</view>
+  <view>I</view>
+  <view>J</view>
+  <view>K</view>
+  <view>L</view>
+  <view>M</view>
+  <view>N</view>
+  <view>O</view>
+  <view>P</view>
+  <view>Q</view>
+  <view>R</view>
+  <view>S</view>
+  <view>U</view>
+  <view>V</view>
+  <view>W</view>
+  <view>X</view>
+  <view>Y</view>
+  <view>Z</view>
+</view>

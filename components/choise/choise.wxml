@@ -1,0 +1,36 @@
+<view class='container'>
+  <view class='choise-left'>
+    <view class='choise-btn active'>综合排序
+      <image src='/img/ling/right - anticon(2).png'></image>
+    </view>
+    <view class='choise-btn choise-btn2'>类别
+      <image src='/img/ling/right - anticon(2).png'></image>
+    </view>
+  </view>
+  <view class='choise-right'>
+    <image bind:tap="onTap" src="{{list? nlistUrl:listUrl}}"></image>
+    <view class='shu'></view>
+    <view class='choise-btn choise-btn3'>筛选
+      <image src='/img/ling/filter - anticon.png'></image>
+    </view>
+  </view>
+</view>
+<view class='choise-container'>
+  <view class='choise-list active'>综合排序</view>
+  <view class='choise-list'>最新发布</view>
+  <view class='choise-list'>最多浏览</view>
+  <view class='choise-list'>离我最近</view>
+</view>
+<view class='choise-container'>
+  <view class='choise-tab'>
+    <view class='choise-title'>年龄</view>
+    <view class='choise-box'>
+      <view class='choise-btnner active'>全部</view>
+      <view class='choise-btnner'>幼年</view>
+    </view>
+    <view class='choise-btns'>
+      <view class='choise-sub'>确定</view>
+      <view class='choise-res'>重置</view>
+    </view>
+  </view>
+</view>

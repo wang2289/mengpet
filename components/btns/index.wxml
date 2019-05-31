@@ -1,0 +1,3 @@
+<view class='container btn-class'>
+  <text>{{text}}</text>
+</view>
