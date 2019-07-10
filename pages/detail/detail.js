@@ -142,6 +142,12 @@ Page({
     likeModel.like(like_or_cancel, this.data.book.id, 400)
   },
 
+  onTap: function (event) {
+    wx.navigateTo({
+      url: '../../pages/infor/infor' ,
+    })
+  },
+  
   onShareAppMessage() {
 
   }

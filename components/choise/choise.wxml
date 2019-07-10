@@ -1,27 +1,27 @@
 <view class='container'>
   <view class='choise-left'>
-    <view class='choise-btn active'>综合排序
+    <view class='choise-btn {{onActive ? "active":"" }}'  bind:tap="onChange">{{textActive}}
       <image src='/img/ling/right - anticon(2).png'></image>
     </view>
-    <view class='choise-btn choise-btn2'>类别
+    <view class='choise-btn choise-btn2 {{onActive ? "active":"" }}'>类别
       <image src='/img/ling/right - anticon(2).png'></image>
     </view>
   </view>
   <view class='choise-right'>
     <image bind:tap="onTap" src="{{list? nlistUrl:listUrl}}"></image>
     <view class='shu'></view>
-    <view class='choise-btn choise-btn3'>筛选
+    <view class='choise-btn choise-btn3 {{onActive3 ? "active":"" }}' bind:tap="onChoise">筛选
       <image src='/img/ling/filter - anticon.png'></image>
     </view>
   </view>
 </view>
-<view class='choise-container'>
-  <view class='choise-list active'>综合排序</view>
-  <view class='choise-list'>最新发布</view>
-  <view class='choise-list'>最多浏览</view>
-  <view class='choise-list'>离我最近</view>
+<view class='choise-container' hidden='{{isshowpet}}'>
+  <view class='choise-list  {{isActive == 0 ? "active":"" }}' data-tab="0" data-text="综合排序"  bind:tap="onActive" >综合排序</view>
+  <view class='choise-list  {{isActive == 1 ? "active":"" }}' data-tab="1"data-text="最新发布"  bind:tap="onActive">最新发布</view>
+  <view class='choise-list  {{isActive == 2 ? "active":"" }}' data-tab="2" data-text="最多浏览" bind:tap="onActive">最多浏览</view>
+  <view class='choise-list  {{isActive == 3 ? "active":"" }}' data-tab="3" data-text="离我最近" bind:tap="onActive">离我最近</view>
 </view>
-<view class='choise-container'>
+<view class='choise-container' hidden='{{isshowchoise}}'>
   <view class='choise-tab'>
     <view class='choise-title'>年龄</view>
     <view class='choise-box'>

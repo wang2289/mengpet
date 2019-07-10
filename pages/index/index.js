@@ -66,7 +66,16 @@ Page({
       searchPanel: true
     })
   },
-
+  onCitySearch:function(){
+    wx.navigateTo({
+      url: '/pages/searchcity/searchcity'
+    })
+  },
+  onPetSearch:function(){
+    wx.navigateTo({
+      url: '/pages/searchpet/searchpet'
+    })
+  },
   onCancel: function (event) {
     this.setData({
       searchPanel: false

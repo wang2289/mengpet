@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "btns-cmp": "/components/btns/index",
+    "like-cmp": "/components/like/index"
+  }
+}

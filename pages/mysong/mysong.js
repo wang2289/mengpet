@@ -7,7 +7,8 @@ Page({
   data: {
     pets: Object,
     tihsi:Object,
-    showif:false
+    showif:false,
+    isActive:0,
   },
 
   /**
@@ -45,7 +46,18 @@ Page({
       tihsi: '是否确定重新上架该宠物是否确定重'
     })
   },
-
+  onActive: function (e) {
+    var index = e.currentTarget.dataset.tab;//获取当前点击的元素下标
+    this.setData({
+      isActive: index,
+    })
+  },
+  onCancle: function (e) {
+    console.log(e.detail.isshow)// 自定义组件触发事件时提供的detail对象
+  },
+  onSubmit: function (e) {
+    console.log(e.detail.isshow)// 自定义组件触发事件时提供的detail对象
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

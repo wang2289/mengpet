@@ -1,4 +1,4 @@
-<view bind:tap="onTap" class="container">
+<view  class="container">
   <image class='petimg' src="{{pet.image||pet.img}}"></image>
   <view class="description">
     <view class='name'><view class='nametitle'>{{pet.name}}</view><image src="/img/ling/man - anticon.png" /></view>

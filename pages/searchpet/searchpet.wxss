@@ -55,7 +55,9 @@
   flex-wrap: wrap;
   margin-top: 130rpx;
 }
-
+.animal-container{
+  margin-top: 150rpx;
+}
 pet-cmp {
   margin: 0 10rpx 0rpx 10rpx;
 }

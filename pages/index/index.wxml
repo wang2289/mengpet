@@ -1,7 +1,7 @@
-<view>
+<view class='container'>
 <view wx:if="{{!searchPanel}}" class="container">
    <view class="header">
-    <view class='city'>上海 <image src="/img/ling/right - anticon.png" /></view>
+    <view class='city' bind:tap="onCitySearch">上海 <image src="/img/ling/right - anticon.png" /></view>
     <view class='box' bind:tap="onActivateSearch">
       <image src="/img/ling/serch.png" />
       <text>搜索</text>
@@ -25,7 +25,10 @@
 </view>
 
 <view class='sub-title'>带我回家</view>
-<choise-cmp  class='choise' />
+<view class=''  bind:tap="onPetSearch">
+  <choise-cmp  class='choise' />
+</view>
+
 <view class="sub-container">
     <view class="animal-container">
       <block wx:for="{{pets}}">

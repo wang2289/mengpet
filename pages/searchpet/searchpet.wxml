@@ -5,19 +5,14 @@
       <text>搜索</text>
     </view> 
   </view> 
-  <choise-cmp    class='choise' />
+  <choise-cmp  bind:tap="onTap"  class='choise' />
   <view class="sub-container">
-    <view class="animal-container2">
+    <view class="animal-container2" hidden='{{isshow}}'>
       <block wx:for="{{pets}}">
         <pet-cmp pet="{{item}}" class="pets" />
       </block>
     </view>
-     <view class="animal-container">
-      <block wx:for="{{pets}}">
-        <petl-cmp pet="{{item}}" class="pets" />
-      </block>
-    </view>
-    <view class="animal-container">
+    <view class="animal-container" hidden='{{isshow2}}'>
       <block wx:for="{{pets}}">
         <petl-cmp pet="{{item}}" class="pets" />
       </block>

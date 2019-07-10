@@ -14,6 +14,13 @@ Page({
       { name: '0', value: '先生' },
       { name: '1', value: '女士', checked: 'true' },
     ],
+    items2: [
+      { name: '0', value: '60后', checked: 'true' },
+      { name: '1', value: '70后' },
+      { name: '2', value: '80后' },
+      { name: '3', value: '90后' },
+      { name: '4', value: '00后' },
+    ],
     more:false
   },
 

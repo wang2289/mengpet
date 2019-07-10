@@ -65,5 +65,5 @@
   <view class='btn-z'> <image class='btn-icon2' src="/img/detail/export - anticon.png"></image></view>
 </view>
 <view class='sub-btn'>
-  <view class='btns'>申请收养</view>
+  <view class='btns'bind:tap="onTap" >申请收养</view>
 </view>

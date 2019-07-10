@@ -68,3 +68,6 @@ line-height:48px;
 background:rgba(90,175,224,1);
 border-radius:16rpx;
 }
+.age{
+  margin-left: 45rpx;
+}

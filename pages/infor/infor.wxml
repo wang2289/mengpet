@@ -46,8 +46,15 @@
       <text>年龄:  </text>
     </view>
     <label class="radio">
-      <radio value="1" checked="" />公开
+      <radio value="1" class='age'  />60后
+      <radio value="1"  class='age' />70后
+      <radio value="1"  class='age' />80后
+      <radio value="1" class='age' />90后
+      <radio value="1"  class='age' />00后
     </label>
+     <!-- <label class="radio" >
+        <radio wx:for="{{items2}}" value="{{items2.name}}" checked="{{items2.checked}}" />{{items2.value}}
+      </label> -->
   </view>
   <view class='line'></view>
   <view class="own-info-item">
