@@ -7,6 +7,9 @@
   <view class="sub-container">
     <view class="animal-container">
      <block wx:for="{{pets}}">
+        <pet-cmp pet="{{item}}" class="pets" />
+      </block>
+     <block wx:for="{{pets}}">
         <pets-cmp pet="{{item}}" class="pets" />
       </block>
       <block wx:for="{{pets}}">

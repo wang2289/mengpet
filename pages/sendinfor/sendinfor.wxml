@@ -1,0 +1,107 @@
+<view class='container'>
+  <view class='pic'>
+    <view class='pic-box'>
+      <image class='pic-img' src="/img/detail/add_a_photo - material.png"></image>
+    </view>
+    <view class='add'>添加图片
+      <text>（最多3张）</text>
+    </view>
+  </view>
+  <view class='titles'>宠物信息</view>
+  <view class="own-info-item">
+    <view class="info-name">
+      <text>昵称  </text>
+    </view>
+    <view class="info-text">
+      <input name="name" class="input-text" placeholder='请填写宠物昵称' placeholder-style='color:#8391A8;font-size:28rpx' />
+    </view>
+  </view>
+  <view class='line'></view>
+  <view class="own-info-item info-center">
+    <radio-group class="radio-group" bindchange="radioChange">
+      <label class="radio" wx:for="{{items}}">
+        <radio value="{{item.name}}" checked="{{item.checked}}" />{{item.value}}
+      </label>
+    </radio-group>
+  </view>
+  <view class='line'></view>
+  <view class="own-info-item">
+    <view class="info-name">
+      <text>年龄  </text>
+    </view>
+    <view class="info-text">
+      <input name="name" class="input-text" placeholder='请选择宠物年龄' placeholder-style='color:#8391A8;font-size:28rpx' />
+    </view>
+    <image class='pic-icon' src="/img/detail/right - anticon.png"></image>
+  </view>
+  <view class='line'></view>
+  <view class="own-info-item">
+    <view class="info-name">
+      <text>地区  </text>
+    </view>
+    <view class="info-text">
+      <input name="name" class="input-text" placeholder='请选择宠物的所在地' placeholder-style='color:#8391A8;font-size:28rpx' />
+    </view>
+    <image class='pic-icon' src="/img/detail/right - anticon.png"></image>
+  </view>
+  <view class='line'></view>
+  <view class="own-info-item">
+    <view class="section">
+      <text>宠物故事  </text>
+       <view class="">
+      <textarea placeholder="请简单描述TA的来源、特点、和特殊的领养要求" placeholder-style="color:#8391A8;" />
+    </view>
+    </view>
+  </view>
+  <view class='line'></view>
+  <view class='titles  topmin'>身体情况</view>
+  <view class="own-info-item">
+    <view class="info-name">
+      <text>驱虫  </text>
+    </view>
+    <label class="radio">
+      <radio value="1" class='age' />未驱虫
+      <radio value="1" class='age' />已驱虫
+    </label>
+  </view>
+  <view class='line'></view>
+  <view class="own-info-item">
+    <view class="info-name">
+      <text>疫苗  </text>
+    </view>
+    <label class="radio">
+      <radio value="1" class='age' />未疫苗
+      <radio value="1" class='age' />疫苗中
+      <radio value="1" class='age' />已疫苗
+    </label>
+  </view>
+  <view class='line'></view>
+  <view class="own-info-item">
+    <view class="info-name">
+      <text>绝育  </text>
+    </view>
+    <label class="radio">
+      <radio value="1" class='age' />未绝育
+      <radio value="1" class='age' />已绝育
+    </label>
+  </view>
+  <view class='line'></view>
+  <view class='titles topmin'>宠物花色</view>
+  <view class='con-box'>
+    <view class='btns2'>警长</view>
+    <view class='btns2'>警长</view>
+    <view class='btns2'>警长</view>
+    <view class='btns2'>警长</view>
+  </view>
+  
+  <view class='titles topmin'>宠物特点</view>
+  <view class='con-box'>
+  <view class='btns2'>警长</view>
+    <view class='btns2'>警长</view>
+    <view class='btns2'>警长</view>
+    <view class='btns2'>警长</view>
+  </view>
+</view>
+<view class='sub-btn'>
+  <view class='btns'>发布</view>
+</view>

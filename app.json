@@ -1,12 +1,15 @@
 {
   "pages": [
-    "pages/mysong/mysong",
     "pages/index/index",
+    "pages/sendinfor/sendinfor",
+    "pages/mysong/mysong",
     "pages/infor/infor",
     "pages/searchpet/searchpet",
     "pages/searchcity/searchcity",
     "pages/detail/detail",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/getapply/getapply"
+
   ],
   "window": {
     "backgroundTextStyle": "light",

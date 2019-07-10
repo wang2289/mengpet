@@ -58,7 +58,7 @@
   font-family: PingFangSC-Regular;
   font-weight: 400;
   color: rgba(51, 62, 82, 1);
-  max-width: 203rpx;
+  max-width: 408rpx;
 }
 
 .name image {
@@ -124,47 +124,30 @@
   vertical-align: -3rpx;
 }
 
-.phone  image {
-  width: 20rpx;
-  height: 21rpx;
-  margin-right: 8rpx;
-}
-
 .btn-class {
   position: absolute;
   right: 0rpx;
   bottom: 0rpx;
 }
 
-.phone {
-  font-size: 26rpx;
-  font-family: PingFangSC-Regular;
-  font-weight: 400;
-  color: rgba(131, 145, 168, 1);
-}
-
-.peopledetail {
-  display: flex;
-  flex-direction: column;
-  margin-right: 60rpx;
-}
-
-.weixing image {
-  width: 24rpx;
-  height: 24rpx;
-  margin-right: 8rpx;
-}
-
-.pname {
+.age text.age-tit {
   font-size: 24rpx;
   font-family: PingFangSC-Regular;
   font-weight: 400;
-  color: #333e52;
+  color: rgba(51, 62, 82, 1);
 }
 
-.weixing {
-  font-size: 26rpx;
+.age text.age-sub {
+  font-size: 24rpx;
   font-family: PingFangSC-Regular;
   font-weight: 400;
   color: rgba(131, 145, 168, 1);
+  padding-left: 45rpx;
+}
+
+.cancle {
+  font-size: 22rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(186, 196, 209, 1);
 }

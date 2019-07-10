@@ -1,0 +1,20 @@
+<view class="container">
+  <image class='petimg' src="{{pet.image||pet.img}}"></image>
+  <view class="description">
+    <view class='name'>
+      <view class='nametitle'>{{pet.name}}</view>
+      <image src="/img/ling/man - anticon.png" />
+    </view>
+    <view class='moretip'>
+      <view class='age'>
+        <text class='age-tit'>申请人：小娃</text>
+        <text class='age-sub'>上海90后男生</text>
+      </view>
+    </view>
+    <view class='area'>2019.03.02</view>
+    <view class='btn-class'>
+      <btns-cmp wx:for="{{hotKeys}}" text="{{item}}" />
+      <!-- <text class='cancle'>取消原因：该宠物已确认送养</text> -->
+    </view>
+  </view>
+</view>
