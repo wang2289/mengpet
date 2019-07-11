@@ -37,7 +37,7 @@
         "text": "资讯"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/sendinfor/sendinfor",
         "selectedIconPath": "/img/ling/Group 13.png",
         "iconPath": "/img/ling/Group 13.png",
         "text": "发布"
