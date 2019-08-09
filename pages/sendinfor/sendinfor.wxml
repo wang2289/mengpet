@@ -59,31 +59,33 @@
     <view class="info-name">
       <text>驱虫  </text>
     </view>
-    <label class="radio">
-      <radio value="1" class='age' />未驱虫
-      <radio value="1" class='age' />已驱虫
-    </label>
+    <radio-group class="radio-group" bindchange="radioChange">
+      <label class='radio' wx:for="{{quchong}}">
+        <radio value="{{item.name}}" class='age' checked="{{item.checked}}" />{{item.value}}
+      </label>
+    </radio-group>
   </view>
   <view class='line'></view>
   <view class="own-info-item">
     <view class="info-name">
       <text>疫苗  </text>
     </view>
-    <label class="radio">
-      <radio value="1" class='age' />未疫苗
-      <radio value="1" class='age' />疫苗中
-      <radio value="1" class='age' />已疫苗
-    </label>
+    <radio-group class="radio-group" bindchange="radioChange">
+      <label class='radio' wx:for="{{yimiao}}">
+        <radio value="{{item.name}}" class='age' checked="{{item.checked}}" />{{item.value}}
+      </label>
+    </radio-group>
   </view>
   <view class='line'></view>
   <view class="own-info-item">
     <view class="info-name">
       <text>绝育  </text>
     </view>
-    <label class="radio">
-      <radio value="1" class='age' />未绝育
-      <radio value="1" class='age' />已绝育
-    </label>
+    <radio-group class="radio-group" bindchange="radioChange">
+    <label class='radio' wx:for="{{jueyu}}">
+        <radio value="{{item.name}}" class='age' checked="{{item.checked}}" />{{item.value}}
+      </label>
+    </radio-group>
   </view>
   <view class='line'></view>
   <view class='titles topmin'>宠物花色</view>
@@ -94,12 +96,20 @@
     <view class='btns2'>警长</view>
   </view>
   
+  <view class='con-box'>
+    <view class='btns2' wx:for='{{catColor}}'>{{item.value}}</view>
+  </view>
+  
   <view class='titles topmin'>宠物特点</view>
   <view class='con-box'>
   <view class='btns2'>警长</view>
     <view class='btns2'>警长</view>
     <view class='btns2'>警长</view>
     <view class='btns2'>警长</view>
+  </view>
+
+  <view class='con-box'>
+    <view class='btns2' wx:for='{{catFeature}}'>{{item.value}}</view>
   </view>
 </view>
 <view class='sub-btn'>
