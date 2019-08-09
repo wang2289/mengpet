@@ -12,9 +12,18 @@ Page({
     pets: Object,
     more: false,
     imgUrls: [
-      '/img/ling/Group 20.png',
-      'https://images.unsplash.com/photo-1551214012-84f95e060dee?w=640',
-      'https://images.unsplash.com/photo-1551446591-142875a901a1?w=640'
+      {
+        id: 0,
+        url: '/img/ling/Group 20.png'
+      },
+      {
+        id: 1,
+        url: 'https://images.unsplash.com/photo-1551214012-84f95e060dee?w=640',
+      },
+      {
+        id: 2,
+        url: 'https://images.unsplash.com/photo-1551446591-142875a901a1?w=640'
+      }
     ],
     indicatorDots: false,
     autoplay:true,
@@ -31,12 +40,13 @@ Page({
    */
   onLoad: function (options) {
     // petsModel.getHotList((data) => {
+      
       var data =[
         {
           id:'0',
           image:'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
           name:'毛球球球球球球球球…',
-          age:'1岁1个月',
+          age:'2岁1个月',
           newname:'狸花',
           tips:'亲人',
           city:'上海',
@@ -45,7 +55,7 @@ Page({
         },
         {
           id: '1',
-          image: '/images/icon/search.png',
+          image: 'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
           name: '毛球球球球球球球球球球球wwwwww球球…',
           age: '1岁1个月',
           newname: '狸花',
@@ -58,7 +68,7 @@ Page({
       this.setData({
         pets: data
       })
-    // })
+      // })
   },
 
   onActivateSearch: function (event) {
@@ -84,5 +94,27 @@ Page({
 
   onShareAppMessage() {
 
+  },
+
+  upload: function() {
+    wx.request({
+      url: 'localhost://',//上线的话必须是https，没有appId的本地请求貌似不受影响
+      data: {},
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      // header: {}, // 设置请求的 header
+      success: function (res) {
+        console.log(res.data.result)
+        that.setData({
+          Industry: res.data.result
+        })
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
+      }
+    })
   }
+
 })

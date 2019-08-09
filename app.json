@@ -8,7 +8,8 @@
     "pages/searchcity/searchcity",
     "pages/detail/detail",
     "pages/my/my",
-    "pages/getapply/getapply"
+    "pages/getapply/getapply",
+    "pages/logs/logs"
 
   ],
   "window": {

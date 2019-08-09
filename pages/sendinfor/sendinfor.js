@@ -2,6 +2,7 @@
 import { BookModel } from '../../models/book.js'
 import { random } from '../../utils/util.js'
 let bookModel = new BookModel()
+let app = getApp();
 Page({
 
   /**
@@ -58,13 +59,12 @@ Page({
         books: data
       })
     }),
-
+    console.log(app);
     wx.request({
-      url: 'http://localhost:8091/zmengstarwx/util/getPickerPetUpload',
+      url: app.globalData.remoteUrl + '/util/getPickerPetUpload',
       data: {},
       method: "GET",
       success: function(res) {
-        console.log(res);
         that.setData({
           catColor: res.data.catColor,
           dogColor: res.data.dogColor,

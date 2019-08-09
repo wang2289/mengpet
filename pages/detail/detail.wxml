@@ -54,7 +54,7 @@
     </view>
     <text class="headline">猜你喜欢</text>
     <view class="animal-container">
-      <block wx:for="{{pets}}">
+      <block wx:for="{{pets}}" wx:key="{{id}}">
         <petlist-cmp pet="{{item}}" class="petlist" />
       </block>
     </view>

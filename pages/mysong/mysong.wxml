@@ -6,13 +6,13 @@
   </view>
   <view class="sub-container">
     <view class="animal-container">
-     <block wx:for="{{pets}}">
+     <block wx:for="{{pets}}" wx:key="{{id}}">
         <pet-cmp pet="{{item}}" class="pets" />
       </block>
-     <block wx:for="{{pets}}">
+     <block wx:for="{{pets}}" wx:key="{{id}}">
         <pets-cmp pet="{{item}}" class="pets" />
       </block>
-      <block wx:for="{{pets}}">
+      <block wx:for="{{pets}}" wx:key="{{id}}">
         <petb-cmp pet="{{item}}" class="pets" />
       </block>
     </view>

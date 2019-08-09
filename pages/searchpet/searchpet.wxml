@@ -8,12 +8,12 @@
   <choise-cmp  bind:tap="onTap"  class='choise' />
   <view class="sub-container">
     <view class="animal-container2" hidden='{{isshow}}'>
-      <block wx:for="{{pets}}">
+      <block wx:for="{{pets}}" wx:key="{{id}}">
         <pet-cmp pet="{{item}}" class="pets" />
       </block>
     </view>
     <view class="animal-container" hidden='{{isshow2}}'>
-      <block wx:for="{{pets}}">
+      <block wx:for="{{pets}}" wx:key="{{id}}">
         <petl-cmp pet="{{item}}" class="pets" />
       </block>
     </view>
