@@ -64,7 +64,8 @@
   margin-left: 60rpx;
 }
 
-radio {
+.radio {
+  font-size: 28rpx;
 }
 
 .sub-btn {
@@ -139,6 +140,7 @@ textarea{
 }
 .con-box{
   text-align: left;
+  padding: 0 30rpx;
 }
 .btns2{
   text-align: center;
