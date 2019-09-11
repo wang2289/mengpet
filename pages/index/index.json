@@ -2,6 +2,7 @@
   "usingComponents": {
     "choise-cmp": "/components/choise/choise",
     "search-cmp": "/components/search/search",
+    "aut-btn-cmp": "/components/authorize-button/index",
     "pet-cmp": "/components/pets/index"
   },
   "backgroundColor": "#f5f5f5"

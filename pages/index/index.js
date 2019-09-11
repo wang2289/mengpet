@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isshow: false,
     searchPanel: false,
     pets: Object,
     more: false,
@@ -28,6 +29,7 @@ Page({
     indicatorDots: false,
     autoplay:true,
     interval: 5000,
+    hasUserInfo: true,
     duration: 1000
   },
   onReachBottom: function (event) {
@@ -70,7 +72,19 @@ Page({
       })
       // })
   },
-
+  onShow: function (options) {
+    this.hasGottenUserInfo()
+  },
+  onGetUserInfo: function (event) {
+    debugger
+    let userInfo = event.detail.userInfo
+    if (userInfo) {
+      this.setData({
+        isshow: true
+      })
+    }
+    this.hasGottenUserInfo()
+  },
   onActivateSearch: function (event) {
     this.setData({
       searchPanel: true
@@ -80,6 +94,33 @@ Page({
     wx.navigateTo({
       url: '/pages/searchcity/searchcity'
     })
+  },
+  hasGottenUserInfo: function () {
+    wx.getSetting({
+      success: (data) => {
+        if (data.authSetting['scope.userInfo']) {
+          wx.getUserInfo({
+            success: (data) => {
+              this.setData({
+                isshow: true
+              })
+            }
+          })
+        } else {
+          this.setData({
+            isshow: false
+          })
+        }
+      }
+    })
+  },
+  onGetUserInfo: function (event) {
+    let userInfo = event.detail.userInfo
+    if (userInfo) {
+      this.setData({
+        isshow: true
+      })
+    }
   },
   onPetSearch:function(){
     wx.navigateTo({

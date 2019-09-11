@@ -39,4 +39,14 @@
 </view>
 <search-cmp more="{{more}}" wx:if="{{searchPanel}}" bind:cancel="onCancel" />  
 </view>
-<button  open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权</button>
+
+<view class='meng'  hidden='{{isshow}}'>
+  <view class='mengbox'>
+    <view class='mengtitle'>请点击授权</view>
+    <view class='mengbom'>
+     <aut-btn-cmp  open-type="getUserInfo" class="avatar-position" bind:getuserinfo="onGetUserInfo">
+    <view slot="img" class='sub'>确定</view>
+  </aut-btn-cmp>
+    </view>
+  </view>
+</view>
