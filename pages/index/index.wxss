@@ -150,6 +150,10 @@ margin: 0 8rpx 0rpx 8rpx;
   font-weight: 400;
   color: rgba(51, 62, 82, 1);
   margin-bottom: 89rpx;
+  text-align: center;
+}
+.mengbom{
+ 
 }
 
 .mengbom {

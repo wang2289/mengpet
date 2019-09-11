@@ -42,10 +42,10 @@
 
 <view class='meng'  hidden='{{isshow}}'>
   <view class='mengbox'>
-    <view class='mengtitle'>请点击授权</view>
+    <view class='mengtitle'>温馨提示：为更好地为您提供服务，请点击授权！</view>
     <view class='mengbom'>
      <aut-btn-cmp  open-type="getUserInfo" class="avatar-position" bind:getuserinfo="onGetUserInfo">
-    <view slot="img" class='sub'>确定</view>
+    <view slot="img" class='sub'> 授权 </view>
   </aut-btn-cmp>
     </view>
   </view>
