@@ -1,8 +1,10 @@
 //app.js
 App({
   globalData: {
-    remoteUrl: "http://47.94.161.221:8092/zmengstar_miniprogram/",
-    userInfo: null
+    // remoteUrl: "http://47.94.161.221:8092/zmengstar_miniprogram/",
+    remoteUrl: "http://localhost:8091/zmengstarwx",
+    userInfo: null,
+    token:null
   },
   onLaunch: function () {
     var that = this;

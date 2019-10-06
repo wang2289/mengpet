@@ -2,13 +2,14 @@
 // import { PetsModel } from '../../models/pets.js'
 import { random } from '../../utils/util.js'
 // let petsModel = new PetsModel()
+let app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    isshow: false,
+    isshow: true,
     searchPanel: false,
     pets: Object,
     more: false,
@@ -75,16 +76,16 @@ Page({
   onShow: function (options) {
     this.hasGottenUserInfo()
   },
-  onGetUserInfo: function (event) {
-    debugger
-    let userInfo = event.detail.userInfo
-    if (userInfo) {
-      this.setData({
-        isshow: true
-      })
-    }
-    this.hasGottenUserInfo()
-  },
+  // onGetUserInfo: function (event) {
+  //   debugger
+  //   let userInfo = event.detail.userInfo
+  //   if (userInfo) {
+  //     this.setData({
+  //       isshow: true
+  //     })
+  //   }
+  //   this.hasGottenUserInfo()
+  // },
   onActivateSearch: function (event) {
     this.setData({
       searchPanel: true
@@ -96,6 +97,7 @@ Page({
     })
   },
   hasGottenUserInfo: function () {
+    var that = this;
     wx.getSetting({
       success: (data) => {
         if (data.authSetting['scope.userInfo']) {
@@ -104,12 +106,26 @@ Page({
               this.setData({
                 isshow: true
               })
+              
+              var userInfo = data.userInfo;
+              wx.login({
+                success(res) {
+                  if (res.code) {
+                    userInfo.code = res.code
+                    console.log(userInfo);
+
+                    that.userLogin(data.userInfo);
+                  }
+                }
+              })
+              
             }
           })
         } else {
           this.setData({
             isshow: false
           })
+          // console.log("getUserInfo false")
         }
       }
     })
@@ -135,6 +151,26 @@ Page({
 
   onShareAppMessage() {
 
+  },
+
+  userLogin: function(userInfo) {
+    wx.request({
+      url: app.globalData.remoteUrl + '/wechat/login',
+      data: userInfo,
+      method: "GET",
+      success: function (res) {
+        if (res.data.success) {
+          app.globalData.token = res.data;
+        }
+        // console.log(app.globalData.token);
+      },
+      fail: function () {
+        
+      },
+      complete: function () {
+        
+      }
+    })
   },
 
   upload: function() {
