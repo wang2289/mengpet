@@ -42,50 +42,73 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // petsModel.getHotList((data) => {
-      
-      var data =[
-        {
-          id:'0',
-          image:'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
-          name:'毛球球球球球球球球…',
-          age:'2岁1个月',
-          newname:'狸花',
-          tips:'亲人',
-          city:'上海',
-          area:'普陀',
-          view:'20'
-        },
-        {
-          id: '1',
-          image: 'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
-          name: '毛球球球球球球球球球球球wwwwww球球…',
-          age: '1岁1个月',
-          newname: '狸花',
-          tips: '亲人',
-          city: '上海',
-          area: '普陀',
-          view: '20'
+    var that = this;
+    wx.request({
+      url: app.globalData.remoteUrl + '/user/getPetsInfosFilter',
+      data: { "page": 1, "size": 4},
+      method: "GET",
+      success: function (res) {
+        if (res.data.success) {
+          var pets = res.data.data.list;
+          var petData = {};
+          console.log(pets);
+          for (var i = 0; i < pets.length; i++) {
+            var temp = {};
+            temp.id = pets[i].id;
+            temp.image = pets[i].photosId;
+            temp.name = pets[i].nameCn;
+            temp.age = pets[i].age;
+            temp.newname = pets[i].color;
+            temp.tips = pets[i].feature;
+            temp.city = 'city';
+            temp.area = pets[i].area;
+            temp.view = pets[i].view;
+            petData[i] = temp;
+          }
+          that.setData({
+            pets: petData
+          })
+
         }
-      ]
-      this.setData({
-        pets: data
-      })
+      },
+      fail: function () {
+
+      },
+      complete: function () {
+
+      }
+    })
+      // var data =[
+      //   {
+      //     id:'0',
+      //     image:'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
+      //     name:'毛球球球球球球球球…',
+      //     age:'2岁1个月',
+      //     newname:'狸花',
+      //     tips:'亲人',
+      //     city:'上海',
+      //     area:'普陀',
+      //     view:'20'
+      //   },
+      //   {
+      //     id: '1',
+      //     image: 'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
+      //     name: '毛球球球球球球球球球球球wwwwww球球…',
+      //     age: '1岁1个月',
+      //     newname: '狸花',
+      //     tips: '亲人',
+      //     city: '上海',
+      //     area: '普陀',
+      //     view: '20'
+      //   }
+      // ]
+      // this.setData({
+      //   pets: data
       // })
   },
   onShow: function (options) {
     this.hasGottenUserInfo()
   },
-  // onGetUserInfo: function (event) {
-  //   debugger
-  //   let userInfo = event.detail.userInfo
-  //   if (userInfo) {
-  //     this.setData({
-  //       isshow: true
-  //     })
-  //   }
-  //   this.hasGottenUserInfo()
-  // },
   onActivateSearch: function (event) {
     this.setData({
       searchPanel: true

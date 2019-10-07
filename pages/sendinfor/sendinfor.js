@@ -66,10 +66,10 @@ Page({
       method: "GET",
       success: function(res) {
         that.setData({
-          catColor: res.data.catColor,
-          dogColor: res.data.dogColor,
-          catFeature: res.data.catFeature,
-          dogFeature: res.data.dogFeature
+          catColor: res.data.data.catColor,
+          dogColor: res.data.data.dogColor,
+          catFeature: res.data.data.catFeature,
+          dogFeature: res.data.data.dogFeature
         })
       },
       fail: function() {
