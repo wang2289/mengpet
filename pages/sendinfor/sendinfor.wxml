@@ -90,12 +90,12 @@
   <view class='line'></view>
   <view class='titles topmin'>宠物花色</view>
   <view class='con-box'>
-    <view class='btns2' wx:for='{{catColor}}'>{{item.value}}</view>
+    <view class='btns2' wx:for='{{color}}'>{{item.value}}</view>
   </view>
   
   <view class='titles topmin'>宠物特点</view>
   <view class='con-box'>
-    <view class='btns2' wx:for='{{catFeature}}'>{{item.value}}</view>
+    <view class='btns2' wx:for='{{feature}}'>{{item.value}}</view>
   </view>
 </view>
 <view class='sub-btn'>

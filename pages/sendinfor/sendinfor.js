@@ -35,10 +35,8 @@ Page({
       { name: '3', value: '90后' },
       { name: '4', value: '00后' },
     ],
-    catColor: [],
-    dogColor: [],
-    catFeature: [],
-    dogFeature: [],
+    color: [],
+    feature: [],
 
     more: false
   },
@@ -59,23 +57,36 @@ Page({
         books: data
       })
     }),
-    console.log(app);
+    // console.log(app);
     wx.request({
       url: app.globalData.remoteUrl + '/util/getPickerPetUpload',
-      data: {},
+      data: { "type": 0, "key": 0 },
       method: "GET",
       success: function(res) {
         that.setData({
-          catColor: res.data.data.catColor,
-          dogColor: res.data.data.dogColor,
-          catFeature: res.data.data.catFeature,
-          dogFeature: res.data.data.dogFeature
+          color: res.data.data.pickerList,
         })
       },
       fail: function() {
 
       },
       complete: function() {
+
+      }
+    }),
+    wx.request({
+      url: app.globalData.remoteUrl + '/util/getPickerPetUpload',
+      data: { "type": 0, "key": 1 },
+      method: "GET",
+      success: function (res) {
+        that.setData({
+          feature: res.data.data.pickerList,
+        })
+      },
+      fail: function () {
+
+      },
+      complete: function () {
 
       }
     })
