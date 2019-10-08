@@ -44,7 +44,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     wx.request({
-      url: app.globalData.remoteUrl + '/user/getPetsInfosFilter',
+      url: app.globalData.remoteUrl + '/pets/getPetsInfosFilter',
       data: { "page": 1, "size": 4},
       method: "GET",
       success: function (res) {
