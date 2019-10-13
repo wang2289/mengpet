@@ -18,8 +18,8 @@ Component({
     onActive:false,
     onActive3: false,
     textActive:'综合排序',
-    nlistUrl: '/img/ling/appstore-o - anticon2.png',
-    listUrl: '/img/ling/appstore-o - anticon.png'
+    nlistUrl: '/image/appstore-o - anticon2.png',
+    listUrl: '/image/appstore-o - anticon.png'
   },
 
   /**

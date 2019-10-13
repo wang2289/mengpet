@@ -1,5 +1,5 @@
 <view class="container">
-  <image class='apply' src="/img/detail/Group 2.png"></image>
+  <image class='apply' src="/image/Group 2.png"></image>
   <view class='confirm'>确认送养</view>
   <view class='subtitle'>请尽快联系领养人进行送养，建议与领养人签订《宠物领养协议》以保障双方的权益。</view>
   <view>
