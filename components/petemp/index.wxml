@@ -3,7 +3,7 @@
   <view class="description">
     <view class='name'>
       <view class='nametitle'>{{pet.name}}</view>
-      <image src="/img/ling/man - anticon.png" />
+      <image src="/images/man-anticon.png" />
     </view>
     <view class='moretip'>
       <view class='age'>

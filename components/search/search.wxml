@@ -20,7 +20,7 @@
     <view class="history hot-search">
       <view class="title">
         <text>历史搜索</text>
-        <image src='/img/ling/delete - anticon.png'></image>
+        <image src='/images/delete-anticon.png'></image>
       </view>
       <view class="tags">
         <tag-cmp bind:tapping="onConfirm" wx:for="{{historyKeys}}" text="{{item}}" />

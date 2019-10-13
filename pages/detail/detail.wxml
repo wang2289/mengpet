@@ -35,22 +35,22 @@
         <image class='peopleimage' src="{{pet.image}}"></image>
         <view class='peopleinfo'>
           <view class='peoplename'>白熊
-            <image class='peo-icon' src="/img/ling/woman - anticon.png"></image>
+            <image class='peo-icon' src="/images/woman-anticon.png"></image>
           </view>
           <text class='peopleadress'>上海90后 30分钟前来过</text>
         </view>
       </view>
       <view class='peoplesoon'>
         <view>
-          <image class='peo-icon' src="/img/detail/smartphone - material.png"></image>17628392716</view>
+          <image class='peo-icon' src="/images/smartphone-material.png"></image>17628392716</view>
         <view>
-          <image class='peo-icon' src="/img/detail/weixin.png"></image>sjudhw</view>
+          <image class='peo-icon' src="/images/weixin.png"></image>sjudhw</view>
         <view>TA的更多送养
-          <image class='peo-icon' src="/img/detail/right - anticon.png"></image>
+          <image class='peo-icon' src="/images/right-anticon.png"></image>
         </view>
       </view>
       <view class='jubao'>
-        <image class='peo-icon' src="/img/detail/exclamation-circle-o - anticon.png"></image>举报</view>
+        <image class='peo-icon' src="/images/exclamation-circle-o-anticon.png"></image>举报</view>
     </view>
     <text class="headline">猜你喜欢</text>
     <view class="animal-container">
@@ -61,8 +61,8 @@
   </view>
 </view>
 <view class='sub-btns'>
-  <view class='btn-s'><image class='btn-icon' src="/img/detail/star-o - anticon.png"></image></view>
-  <view class='btn-z'> <image class='btn-icon2' src="/img/detail/export - anticon.png"></image></view>
+  <view class='btn-s'><image class='btn-icon' src="/images/star-o-anticon.png"></image></view>
+  <view class='btn-z'> <image class='btn-icon2' src="/images/export-anticon.png"></image></view>
 </view>
 <view class='sub-btn'>
   <view class='btns'bind:tap="onTap" >申请收养</view>

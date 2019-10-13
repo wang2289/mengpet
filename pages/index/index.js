@@ -16,7 +16,7 @@ Page({
     imgUrls: [
       {
         id: 0,
-        url: '/img/ling/Group 20.png'
+        url: '/images/Group 20.png'
       },
       {
         id: 1,

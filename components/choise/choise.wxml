@@ -1,17 +1,17 @@
 <view class='container'>
   <view class='choise-left'>
     <view class='choise-btn {{onActive ? "active":"" }}'  bind:tap="onChange">{{textActive}}
-      <image src='/img/ling/right - anticon(2).png'></image>
+      <image src='/images/right-anticon(2).png'></image>
     </view>
     <view class='choise-btn choise-btn2 {{onActive ? "active":"" }}'>类别
-      <image src='/img/ling/right - anticon(2).png'></image>
+      <image src='/images/right-anticon(2).png'></image>
     </view>
   </view>
   <view class='choise-right'>
     <image bind:tap="onTap" src="{{list? nlistUrl:listUrl}}"></image>
     <view class='shu'></view>
     <view class='choise-btn choise-btn3 {{onActive3 ? "active":"" }}' bind:tap="onChoise">筛选
-      <image src='/img/ling/filter - anticon.png'></image>
+      <image src='/images/filter-anticon.png'></image>
     </view>
   </view>
 </view>

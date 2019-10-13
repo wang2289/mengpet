@@ -1,0 +1,26 @@
+<!-- <import src="/components/catListShow.vue.wxml" /> -->
+
+  <view class="_div data-v-0a3e4d4f container">
+    <view class="_div data-v-0a3e4d4f personalPage">
+      <view class="_div data-v-0a3e4d4f personalInfo">
+        <image class="_img data-v-0a3e4d4f peopleimage" src="{{user.userPhoto}}"></image>
+        <view class="_div data-v-0a3e4d4f peopleinfo"><label class="_span data-v-0a3e4d4f peoplename">{{user.userName}}
+            <image class="_img data-v-0a3e4d4f peo-icon" src="/static/images/woman - anticon.png"></image>
+          </label> <label class="_span data-v-0a3e4d4f peopleid">ID: {{user.userId}}</label></view> <label class="_span data-v-0a3e4d4f peoplePage" bindtap="handleProxy">
+          <van-tag wx:if="{{user.isActive}}" size="large" class="_van-tag data-v-0a3e4d4f">已关注</van-tag>
+          <van-tag wx:else type="primary" size="large" class="_van-tag data-v-0a3e4d4f">关注</van-tag>
+        </label>
+      </view>
+      <view class="_div data-v-0a3e4d4f headline">TA的送养</view>
+      <view class="_div data-v-0a3e4d4f animal-container">
+        <view wx:key="index" key="{{index}}" wx:for="{{catsList}}" wx:for-index="index" wx:for-item="pet" class="_div data-v-0a3e4d4f">
+        <include src="catListShow.wxml" />
+        </view>
+      </view>
+    </view>
+    <view class="_div data-v-0a3e4d4f sub-btns">
+      <view class="_div data-v-0a3e4d4f btn-z">
+        <image class="_img data-v-0a3e4d4f btn-icon" src="/static/images/detail/export - anticon.png"></image>
+      </view>
+    </view>
+  </view>

@@ -1,0 +1,41 @@
+
+  <view class="_div data-v-556a07da container">
+    <image class="_img data-v-5ceb7e4e peopleimage" src="{{user.userPhoto}}"></image>
+    <view class="_div data-v-556a07da peopleInfoForm">
+      <van-cell-group class="_van-cell-group data-v-556a07da">
+        <van-field value="{{user.username}}" bindchange="handleProxy" clearable label="姓名" placeholder="请填写您的真实姓名" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_van-field data-v-556a07da"></van-field>
+        <van-cell class="_van-cell data-v-556a07da">
+          <van-radio-group class="_van-radio-group data-v-556a07da genderItem" value="{{user.gender}}" bindchange="onChangeGender" data-eventid="{{'1'}}" data-comkey="{{$k}}">
+            <van-radio name="1" class="_van-radio data-v-556a07da">先生</van-radio>
+            <van-radio name="2" class="_van-radio data-v-556a07da">女士</van-radio>
+          </van-radio-group>
+        </van-cell>
+        <van-field value="{{user.weixin}}" bindchange="" clearable label="微信号" use-slot placeholder="请填写您的微信号" data-eventid="{{'3'}}" data-comkey="{{$k}}" class="_van-field data-v-556a07da">
+          <van-checkbox slot="button" value="{{user.weixinPub}}" bindchange="onChangeWeixinPub" data-eventid="{{'2'}}" data-comkey="{{$k}}" class="_van-checkbox data-v-556a07da">公开</van-checkbox>
+        </van-field>
+        <van-field value="{{user.phone}}" bindchange="" clearable label="手机号" use-slot placeholder="请填写您的手机号码" data-eventid="{{'5'}}" data-comkey="{{$k}}" class="_van-field data-v-556a07da">
+          <van-checkbox slot="button" value="{{user.phonePub}}" bindchange="onChangePhonePub" data-eventid="{{'4'}}" data-comkey="{{$k}}" class="_van-checkbox data-v-556a07da">公开</van-checkbox>
+        </van-field>
+        <van-cell class="_van-cell data-v-556a07da">
+          <van-radio-group class="_van-radio-group data-v-556a07da genderItem" value="{{user.age}}" bindchange="onChangeAge" data-eventid="{{'6'}}" data-comkey="{{$k}}">
+            <van-radio name="60" class="_van-radio data-v-556a07da">60后</van-radio>
+            <van-radio name="70" class="_van-radio data-v-556a07da">70后</van-radio>
+            <van-radio name="80" class="_van-radio data-v-556a07da">80后</van-radio>
+            <van-radio name="90" class="_van-radio data-v-556a07da">90后</van-radio>
+            <van-radio name="00" class="_van-radio data-v-556a07da">00后</van-radio>
+          </van-radio-group>
+        </van-cell>
+        <van-field value="{{user.regionData}}" bindchange="handleProxy" label="地区" placeholder="请选择您的所在地" readonly="readonly" bindtap="onAreaShow" data-eventid="{{'7'}}" data-comkey="{{$k}}" class="_van-field data-v-556a07da"></van-field>
+        <van-popup show="{{areaShow}}" label="地区" position="bottom" overlay="{{true}}" class="_van-popup data-v-556a07da">
+          <van-area area-list="{{areaList}}" value="{{areaCode}}" bindcancel="onAreaCancel" bindconfirm="onAreaConfirm" data-eventid="{{'8'}}" data-comkey="{{$k}}" class="_van-area data-v-556a07da"></van-area>
+        </van-popup>
+        <van-field value="{{user.jobData}}" bindchange="handleProxy" label="职业" placeholder="请选择您的职业" readonly="readonly" bindtap="onJobShow" data-eventid="{{'9'}}" data-comkey="{{$k}}" class="_van-field data-v-556a07da"></van-field>
+        <van-popup show="{{jobShow}}" label="职业" position="bottom" overlay="{{true}}" class="_van-popup data-v-556a07da">
+          <van-picker columns="{{jobList}}" default-index="{{1}}" show-toolbar bindcancel="onJobCancel" bindconfirm="onJobConfirm" data-eventid="{{'10'}}" data-comkey="{{$k}}" class="_van-picker data-v-556a07da"></van-picker>
+        </van-popup>
+      </van-cell-group>
+    </view>
+    <view class="_div data-v-556a07da sub-btn">
+      <view class="_div data-v-556a07da btns" bindtap="handleProxy" data-eventid="{{'11'}}" data-comkey="{{$k}}">保存</view>
+    </view>
+  </view>

@@ -1,0 +1,20 @@
+
+  <view bindtap="onTap" class="_div data-v-1d94e844 container" data-positionId="{{user.id}}">
+    <image class="_img data-v-1d94e844 userimg" src="{{user.image}}"></image>
+    <view class="_div data-v-1d94e844 description">
+      <view class="_div data-v-1d94e844 name">
+        <view class="_div data-v-1d94e844 nametitle">{{user.name}}</view>
+        <image src="/static/images/woman - anticon.png" class="_img data-v-1d94e844"></image>
+      </view>
+      <view class="_div data-v-1d94e844 moretip">
+        <view class="_div data-v-1d94e844 age">{{user.city}} | {{user.year}}</view>
+        <view class="_div data-v-1d94e844 sending">待送养: {{user.sending}}</view>
+      </view>
+      <view class="_div data-v-1d94e844 dataTips">
+        <view class="_div data-v-1d94e844 sended">已送养: {{user.sended}}</view>
+        <view class="_div data-v-1d94e844 geted">已领养: {{user.geted}}</view>
+        <view class="_div data-v-1d94e844 view">TA的主页<image class="_img data-v-1d94e844 peo-icon" src="/static/images/Group 2@2x.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>

@@ -1,0 +1,30 @@
+<!-- <import src="/components/catSongyangEditPanel.vue.wxml" /> -->
+<!-- <import src="/components/catSongyangShowPanel.vue.wxml" /> -->
+
+<view class="container">
+  <view class="title">
+    <van-tabs swipeable animated active="{{active}}" bind:change="onChange" 
+    class="_van-tabs data-v-4d8e3f81" >
+      <van-tab title="待送养" class="_van-tab data-v-4d8e3f81"></van-tab>
+      <van-tab title="已送养" class="_van-tab data-v-4d8e3f81"></van-tab>
+      <van-tab title="已下架" class="_van-tab data-v-4d8e3f81"></van-tab>
+    </van-tabs>
+  </view>
+  <view class="_div data-v-4d8e3f81 songyangList">
+    <view wx:if="{{index == 0}}" class="_div data-v-4d8e3f81 animal-container">
+      <view wx:key="index" key="{{index}}" wx:for="{{catsList}}" wx:for-index="index" wx:for-item="pet" class="_div data-v-4d8e3f81">
+      <include src="catSongyangEditPanel.wxml" />
+      </view>
+    </view>
+    <view wx:if="{{index == 1}}" class="_div data-v-4d8e3f81 animal-container">
+      <view wx:key="index" key="{{index}}" wx:for="{{catsList2}}" wx:for-index="index" wx:for-item="pet" class="_div data-v-4d8e3f81">
+      <include src="catSongyangShowPanel.wxml" />
+      </view>
+    </view>
+    <view wx:if="{{index == 2}}" class="_div data-v-4d8e3f81 animal-container">
+      <view wx:key="index" key="{{index}}" wx:for="{{catsList}}" wx:for-index="index" wx:for-item="pet" class="_div data-v-4d8e3f81">
+      <include src="catSongyangEditPanel.wxml" />
+      </view>
+    </view>
+  </view>
+</view>

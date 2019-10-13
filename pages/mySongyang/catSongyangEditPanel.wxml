@@ -1,0 +1,24 @@
+
+<view class="_div data-v-b0ae0334 container">
+  <image class="_img data-v-b0ae0334 petimg" src="{{pet.image}}"></image>
+  <view class="_div data-v-b0ae0334 description">
+    <view class="_div data-v-b0ae0334 name">
+      <view class="_div data-v-b0ae0334 nametitle">{{pet.name}}</view>
+      <image src="/static/images/man - anticon.png" class="_img data-v-b0ae0334"></image>
+    </view>
+    <view class="_div data-v-b0ae0334 moretip">
+      <view class="_div data-v-b0ae0334 age">{{pet.age}} | {{pet.newname}}</view>
+    </view>
+    <view class="_div data-v-b0ae0334 view">
+      <image src="/static/images/Eye - simple-line-icons.png" class="_img data-v-b0ae0334"></image>{{pet.view}}
+    </view>
+    <view class="_div data-v-b0ae0334 btn-class">
+      <van-button class="_van-button data-v-b0ae0334 btns" type="default" size="small">编辑</van-button>
+      <van-button wx:if="{{operateType == '下架'}}" class="_van-button data-v-b0ae0334 btns" type="default" size="small" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}">下架</van-button>
+      <van-button wx:else class="_van-button data-v-b0ae0334 btns" type="default" size="small" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">上架</van-button>
+      <van-button wx:if="{{operateType == '下架'}}" class="_van-button data-v-b0ae0334 btns" type="default" size="small">分享</van-button>
+      <van-button wx:else class="_van-button data-v-b0ae0334 btns" type="default" size="small" bindtap="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}">删除</van-button>
+    </view>
+  </view>
+  <van-dialog id="van-dialog" class="_van-dialog data-v-b0ae0334"></van-dialog>
+</view>

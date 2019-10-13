@@ -1,0 +1,23 @@
+<view class="_div data-v-2bd272d3 container">
+  <image class="_img data-v-2bd272d3 petimg" src="{{pet.image}}"></image>
+  <view class="_div data-v-2bd272d3 description">
+    <view class="_div data-v-2bd272d3 basicTip">
+      <view class="_div data-v-2bd272d3 name">
+        <view class="_div data-v-2bd272d3 nametitle">{{pet.name}}</view>
+        <image src="/static/images/man - anticon.png" class="_img data-v-2bd272d3"></image>
+      </view>
+      <view class="_div data-v-2bd272d3 lingyangName"><label class="_span data-v-2bd272d3 lingyangNametitle">领养人：{{pet.lingyangName}}</label></view>
+    </view>
+    <view class="_div data-v-2bd272d3 moretip">
+      <view class="_div data-v-2bd272d3 phone">
+        <image src="/static/images/detail/smartphone - material.png" class="_img data-v-2bd272d3"></image>
+        <view class="_div data-v-2bd272d3 phonetitle">{{pet.phone}}</view>
+      </view>
+      <view class="_div data-v-2bd272d3 weixin">
+        <image src="/static/images/detail/weixin.png" class="_img data-v-2bd272d3"></image>
+        <view class="_div data-v-2bd272d3 weixintitle">{{pet.weixin}}</view>
+      </view>
+    </view>
+    <view class="_div data-v-2bd272d3 date">{{pet.date}}</view>
+  </view>
+</view>

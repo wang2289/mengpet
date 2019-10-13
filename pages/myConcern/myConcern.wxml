@@ -1,0 +1,8 @@
+
+  <view class="_div data-v-255c4daa container">
+    <view class="_div data-v-255c4daa user-container">
+      <view wx:key="index" key="{{index}}" wx:for="{{userList}}" wx:for-index="index" wx:for-item="user" class="_div data-v-255c4daa">
+      <include src="userListShow.wxml" />
+      </view>
+    </view>
+  </view>

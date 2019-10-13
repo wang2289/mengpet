@@ -1,9 +1,9 @@
 <view  class="container">
   <image class='petimg' src="{{pet.image||pet.img}}"></image>
   <view class="description">
-    <view class='name'><view class='nametitle'>{{pet.name}}</view><image src="/img/ling/man - anticon.png" /></view>
+    <view class='name'><view class='nametitle'>{{pet.name}}</view><image src="/images/man-anticon.png" /></view>
     <view class='moretips'>
-      <view class='phone'><image src="/img/detail/smartphone - material.png" />17628392716</view>
+      <view class='phone'><image src="/images/smartphone-material.png" />17628392716</view>
     </view>
     <view class='area'>2019.03.02</view>
     <view class='btn-class'>
@@ -12,6 +12,6 @@
   </view>
   <view class='peopledetail'>
     <view class='pname'>领养人：小娃</view>
-    <view class='weixing'><image src="/img/detail/weixin.png" />sjudhw</view>
+    <view class='weixing'><image src="/images/weixin.png" />sjudhw</view>
   </view>
 </view>

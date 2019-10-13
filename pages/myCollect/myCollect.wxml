@@ -1,0 +1,9 @@
+<!-- <import src="/components/catListShow.vue.wxml" /> -->
+
+  <view class="_div data-v-345a9b35 container card">
+    <view class="_div data-v-345a9b35 animal-container">
+      <view wx:key="index" key="{{index}}" wx:for="{{catsList}}" wx:for-index="index" wx:for-item="pet" class="_div data-v-345a9b35">
+      <include src="catListShow.wxml" />
+      </view>
+    </view>
+  </view>

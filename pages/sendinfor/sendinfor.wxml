@@ -1,103 +1,89 @@
 <view class='container'>
   <view class='pic'>
-    <view class='pic-box'>
-      <image class='pic-img' src="/img/detail/add_a_photo - material.png"></image>
+    <view class='pic-box' bindtap='chooseImg'>
+      <image class='pic-img {{showon ? "on":""}}' src="{{showpic}}"></image>
     </view>
     <view class='add'>添加图片
       <text>（最多3张）</text>
     </view>
   </view>
   <view class='titles'>宠物信息</view>
-  <view class="own-info-item">
-    <view class="info-name">
-      <text>昵称  </text>
-    </view>
-    <view class="info-text">
-      <input name="name" class="input-text" placeholder='请填写宠物昵称' placeholder-style='color:#8391A8;font-size:28rpx' />
-    </view>
+  <view class="own-info-item chongwu">
+    <van-cell-group>
+      <van-field value="{{ name }}" bind:change="onChange1" clearable label="昵称" placeholder="请填写宠物昵称" />
+    </van-cell-group>
   </view>
-  <view class='line'></view>
+  <!-- <view class='line'></view> -->
   <view class="own-info-item info-center">
-    <radio-group class="radio-group" bindchange="radioChange">
-      <label class="radio" wx:for="{{items}}">
-        <radio value="{{item.name}}" checked="{{item.checked}}" />{{item.value}}
-      </label>
-    </radio-group>
+    <van-radio-group class='xingbie' value="{{ radio1 }}" bind:change="onChange2">
+      <van-radio name="1">弟弟</van-radio>
+      <van-radio name="2">妹妹</van-radio>
+    </van-radio-group>
   </view>
   <view class='line'></view>
-  <view class="own-info-item">
-    <view class="info-name">
-      <text>年龄  </text>
-    </view>
-    <view class="info-text">
-      <input name="name" class="input-text" placeholder='请选择宠物年龄' placeholder-style='color:#8391A8;font-size:28rpx' />
-    </view>
-    <image class='pic-icon' src="/img/detail/right - anticon.png"></image>
+  <view class="own-info-item chongwu">
+    <van-cell-group>
+      <van-field value="{{ age }}" bind:change="onChange3" icon="arrow" clearable label="年龄" placeholder="请选择宠物年龄" />
+    </van-cell-group>
   </view>
-  <view class='line'></view>
-  <view class="own-info-item">
-    <view class="info-name">
-      <text>地区  </text>
-    </view>
-    <view class="info-text">
-      <input name="name" class="input-text" placeholder='请选择宠物的所在地' placeholder-style='color:#8391A8;font-size:28rpx' />
-    </view>
-    <image class='pic-icon' src="/img/detail/right - anticon.png"></image>
+  <view class="own-info-item chongwu">
+    <van-cell-group>
+      <van-field value="{{ area }}" bind:change="onChange4" icon="arrow" clearable label="地区" placeholder="请选择宠物的所在地" />
+    </van-cell-group>
   </view>
-  <view class='line'></view>
+
   <view class="own-info-item">
     <view class="section">
       <text>宠物故事  </text>
-       <view class="">
-      <textarea placeholder="请简单描述TA的来源、特点、和特殊的领养要求" placeholder-style="color:#8391A8;" />
-    </view>
+      <van-field class='mesg' value="{{ message }}" label="" type="textarea" placeholder="请简单描述TA的来源、特点、和特殊的领养要求" placeholder-style="color:#8391A8;" autosize bind:change="onChange8" />
     </view>
   </view>
-  <view class='line'></view>
   <view class='titles  topmin'>身体情况</view>
   <view class="own-info-item">
     <view class="info-name">
       <text>驱虫  </text>
     </view>
-    <radio-group class="radio-group" bindchange="radioChange">
-      <label class='radio' wx:for="{{quchong}}">
-        <radio value="{{item.name}}" class='age' checked="{{item.checked}}" />{{item.value}}
-      </label>
-    </radio-group>
+    <van-radio-group class='quchong' value="{{ radio2 }}" bind:change="onChange5">
+      <van-radio name="1">未驱虫</van-radio>
+      <van-radio name="2">已驱虫</van-radio>
+    </van-radio-group>
   </view>
   <view class='line'></view>
   <view class="own-info-item">
     <view class="info-name">
       <text>疫苗  </text>
     </view>
-    <radio-group class="radio-group" bindchange="radioChange">
-      <label class='radio' wx:for="{{yimiao}}">
-        <radio value="{{item.name}}" class='age' checked="{{item.checked}}" />{{item.value}}
-      </label>
-    </radio-group>
+    <van-radio-group class='yimiao' value="{{ radio3 }}" bind:change="onChange6">
+      <van-radio name="1">未疫苗</van-radio>
+      <van-radio name="2">疫苗中</van-radio>
+      <van-radio name="3">已疫苗</van-radio>
+    </van-radio-group>
   </view>
   <view class='line'></view>
   <view class="own-info-item">
     <view class="info-name">
       <text>绝育  </text>
     </view>
-    <radio-group class="radio-group" bindchange="radioChange">
-    <label class='radio' wx:for="{{jueyu}}">
-        <radio value="{{item.name}}" class='age' checked="{{item.checked}}" />{{item.value}}
-      </label>
-    </radio-group>
+    <van-radio-group class='jue' value="{{ radio4 }}" bind:change="onChange7">
+      <van-radio name="1">未绝育</van-radio>
+      <van-radio name="2">已绝育</van-radio>
+    </van-radio-group>
   </view>
   <view class='line'></view>
   <view class='titles topmin'>宠物花色</view>
   <view class='con-box'>
-    <view class='btns2' wx:for='{{color}}'>{{item.value}}</view>
+    <block wx:for="{{color}}" wx:key="{{id}}">
+      <view class='btns2 {{item.status == 1 ? "active":"" }}' bind:tap="onTap1" data-value='{{item.name}}' data-index='{{index}}'>{{item.name}}</view>
+    </block>
   </view>
-  
+
   <view class='titles topmin'>宠物特点</view>
   <view class='con-box'>
-    <view class='btns2' wx:for='{{feature}}'>{{item.value}}</view>
+    <block wx:for="{{feature}}" wx:key="{{id}}">
+      <view class='btns2 {{item.status == 1 ? "active":"" }}' bind:tap="onTap2" data-value='{{item.name}}' data-index='{{index}}'>{{item.name}}</view>
+    </block>
   </view>
 </view>
 <view class='sub-btn'>
-  <view class='btns'>发布</view>
+  <view class='btns' bindtap='Finish'>发布</view>
 </view>

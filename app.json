@@ -1,7 +1,14 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/sendinfor/sendinfor",
+    "pages/myInfo/myInfo",    
+    "pages/compPubInfo/compPubInfo",
+    "pages/myPages/myPages",
+    "pages/myConcern/myConcern",
+    "pages/myCollect/myCollect",
+    "pages/myReceiveApply/myReceiveApply",
+    "pages/mySongyang/mySongyang",
+    "pages/sendinfor/sendinfor",   
     "pages/mysong/mysong",
     "pages/infor/infor",
     "pages/searchpet/searchpet",
@@ -27,35 +34,60 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "selectedIconPath": "/img/ling/Group 15.png",
-        "iconPath": "/img/ling/Combined Shape.png",
+        "selectedIconPath": "/images/Group15.png",
+        "iconPath": "/images/CombinedShape.png",
         "text": "领养"
       },
       {
         "pagePath": "pages/index/index",
-        "selectedIconPath": "/img/ling/Disc - simple-line-icons.png",
-        "iconPath": "/img/ling/Disc - simple-line-icons.png",
+        "selectedIconPath": "/images/Disc-simple-line-icons.png",
+        "iconPath": "/images/Disc-simple-line-icons.png",
         "text": "资讯"
       },
       {
         "pagePath": "pages/sendinfor/sendinfor",
-        "selectedIconPath": "/img/ling/Group 13.png",
-        "iconPath": "/img/ling/Group 13.png",
+        "selectedIconPath": "/images/Group13.png",
+        "iconPath": "/images/Group13.png",
         "text": "发布"
       },
       {
         "pagePath": "pages/index/index",
-        "selectedIconPath": "/img/ling/message - anticon.png",
-        "iconPath": "/img/ling/message - anticon.png",
+        "selectedIconPath": "/images/message-anticon.png",
+        "iconPath": "/images/message-anticon.png",
         "text": "消息"
       },
       {
         "pagePath": "pages/my/my",
-        "selectedIconPath": "/img/ling/Group.png",
-        "iconPath": "/img/ling/user - anticon.png",
+        "selectedIconPath": "/images/Group.png",
+        "iconPath": "/images/user-anticon.png",
         "text": "我的"
       }
     ]
+  },
+  "usingComponents": {
+    "van-search": "vant-weapp/search/index",
+    "van-row": "vant-weapp/row/index",
+    "van-col": "vant-weapp/col/index",
+    "van-tab": "vant-weapp/tab/index",
+    "van-tabs": "vant-weapp/tabs/index",
+    "van-cell": "vant-weapp/cell/index",
+    "van-cell-group": "vant-weapp/cell-group/index",
+    "van-radio": "vant-weapp/radio/index",
+    "van-radio-group": "vant-weapp/radio-group/index",
+    "van-checkbox": "vant-weapp/checkbox/index",
+    "van-checkbox-group": "vant-weapp/checkbox-group/index",
+    "van-field": "vant-weapp/field/index",
+    "van-button": "vant-weapp/button/index",
+    "van-card": "vant-weapp/card/index",
+    "van-popup": "vant-weapp/popup/index",
+    "van-icon": "vant-weapp/icon/index",
+    "van-panel": "vant-weapp/panel/index",
+    "van-action-sheet": "vant-weapp/cell-group/index",
+    "van-switch-cell": "vant-weapp/switch-cell/index",
+    "van-area": "vant-weapp/area/index",
+    "van-dialog": "vant-weapp/dialog/index",
+    "van-picker": "vant-weapp/picker/index",
+    "van-tag": "vant-weapp/tag/index"
   },
   "sitemapLocation": "sitemap.json"
 }

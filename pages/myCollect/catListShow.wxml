@@ -1,0 +1,18 @@
+
+  <view bindtap="handleProxy" class="_div data-v-01118629 container">
+    <image class="_img data-v-01118629 petimg" src="{{pet.image}}"></image>
+    <view class="_div data-v-01118629 description">
+      <view class="_div data-v-01118629 name">
+        <view class="_div data-v-01118629 nametitle">{{pet.name}}</view>
+        <image src="/static/images/man - anticon.png" class="_img data-v-01118629"></image>
+      </view>
+      <view class="_div data-v-01118629 moretip">
+        <view class="_div data-v-01118629 age">{{pet.age}} | {{pet.newname}}</view>
+      </view>
+      <view class="_div data-v-01118629 tips">{{pet.tips}}</view>
+      <view class="_div data-v-01118629 area">{{pet.city}} {{pet.area}}</view>
+      <view class="_div data-v-01118629 view">
+        <image src="/static/images/Eye - simple-line-icons.png" class="_img data-v-01118629"></image>{{pet.view}}
+      </view>
+    </view>
+  </view>

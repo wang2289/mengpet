@@ -1,0 +1,185 @@
+.container.data-v-0a3e4d4f {
+  background-color: white;
+  width: 100%;
+  position: relative;
+}
+.personalInfo.data-v-0a3e4d4f {
+  height: 180rpx;
+  background: rgba(255, 255, 255, 1);
+  border-bottom: 2rpx solid #E6EAEF;
+  border-radius: 16rpx;
+  display: flex;
+  position: relative;
+}
+.peo-icon.data-v-0a3e4d4f {
+  width: 20rpx;
+  height: 20rpx;
+  margin: 0 5rpx;
+}
+.peopleimage.data-v-0a3e4d4f {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  margin-top: 20rpx;
+  margin-left: 30rpx;
+  display: inline-block;
+}
+.peopleinfo.data-v-0a3e4d4f {
+  display: flex;
+  display: inline-block;
+  flex-direction: column;
+  margin-top: 32rpx;
+  margin-left: 20rpx;
+  width: 500rpx;
+}
+.peoplename.data-v-0a3e4d4f {
+  font-size: 34rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(51, 62, 82, 1);
+  display: block;
+}
+.peopleid.data-v-0a3e4d4f {
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(131, 145, 168, 1);
+  display: block;
+}
+.peoplePage.data-v-0a3e4d4f {
+  position: absolute;
+  font-size: 22rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(186, 196, 209, 1);
+  top: 32rpx;
+  right: 30rpx;
+}
+.headline.data-v-0a3e4d4f {
+  font-size: 34rpx;
+  font-weight: 500;
+  color: #2f2f2f;
+  margin-top: 60rpx;
+  margin-bottom: 20rpx;
+  padding: 20rpx;
+}
+.animal-container.data-v-0a3e4d4f {
+  position: relative;
+  margin-top: 10rpx;
+  padding: 20rpx;
+}
+.sub-btns.data-v-0a3e4d4f {
+  bottom: 120rpx;
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  background-color: transparent;
+  box-sizing: border-box;
+  z-index: 999;
+  right: 30rpx;
+  height: 160rpx;
+}
+.btn-z.data-v-0a3e4d4f {
+  width: 96rpx;
+  height: 96rpx;
+  background: rgba(193,232,230,1);
+  box-shadow: 0 28rpx 56rpx 0 rgba(79,99,130,0.06),0 16rpx 32rpx 0 rgba(79,99,130,0.03);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-icon.data-v-0a3e4d4f {
+  width: 33rpx;
+  height: 33rpx;
+}
+.container.data-v-01118629 {
+  width: 100%;
+  height: 256rpx;
+  padding: 8rpx 0rpx;
+  display: flex;
+  flex-direction: row;
+}
+.petimg.data-v-01118629 {
+  width: 240rpx;
+  height: 240rpx;
+  border-radius: 8rpx;
+}
+.description.data-v-01118629 {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20rpx;
+  position: relative;
+  flex: 1;
+}
+.age.data-v-01118629 {
+  font-size: 22rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(131, 145, 168, 1);
+}
+.tips.data-v-01118629 {
+  width: 76rpx;
+  height: 38rpx;
+  text-align: center;
+  margin-top: 30rpx;
+  line-height: 38rpx;
+  background: rgba(90, 175, 224, 0.1);
+  border-radius: 8rpx;
+  font-size: 22rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(90, 175, 224, 1);
+}
+.name.data-v-01118629 {
+  display: flex;
+  padding-top: 5rpx;
+  margin-bottom: 3rpx;
+  align-items: center;
+  margin-top: 17rpx;
+}
+.nametitle.data-v-01118629 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  line-height: 40rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(51, 62, 82, 1);
+  max-width: 408rpx;
+}
+.name image.data-v-01118629 {
+  width: 20rpx;
+  height: 21rpx;
+  margin-left: 8rpx;
+}
+.moretip.data-v-01118629 {
+  display: flex;
+  justify-content: space-between;
+  line-height: 45rpx;
+}
+.area.data-v-01118629 {
+  font-size: 22rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(186, 196, 209, 1);
+  line-height: 70rpx;
+}
+.view.data-v-01118629 {
+  font-size: 22rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(186, 196, 209, 1);
+  line-height: 54rpx;
+  margin-right: 12rpx;
+  position: absolute;
+  bottom: 0rpx;
+  right: 30rpx;
+}
+.view image.data-v-01118629 {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 8rpx;
+  vertical-align: -3rpx;
+}

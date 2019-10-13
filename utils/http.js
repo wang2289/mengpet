@@ -1,9 +1,9 @@
-import { config } from '../config.js'
+import { Config } from 'config.js'
 
 
 class HTTP {
   constructor() {
-    this.baseRestUrl = config.api_blink_url
+    this.baseRestUrl = Config.apiUrl
   }
 
   //http 请求类, 当noRefech为true时，不做未授权重试机制
@@ -19,8 +19,7 @@ class HTTP {
       data: params.data,
       method: params.method,
       header: {
-        'content-type': 'application/json',
-        'appkey':config.appkey
+        'content-type': 'application/json'
       },
       success: function (res) {
         // 判断以2（2xx)开头的状态码为正确
