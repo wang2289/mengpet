@@ -118,8 +118,9 @@ Page({
     });
   },
   onChange8(event) {
+    // console.log(event)
     this.setData({
-      message: event.detail
+      message: event.detail.value
     });
   },
   Finish: function() {
