@@ -19,7 +19,9 @@
   justify-content: center;
   z-index: 99;
 }
-
+van-search{
+  width:100%;
+}
 .box {
   display: flex;
   flex-direction: row;

@@ -6,7 +6,6 @@ Page({
    */
   data: {
     isshow:false,
-    isshow2:true,
     islist:false,
     pets: Object
   },
@@ -43,7 +42,11 @@ Page({
       pets: data
     })
   },
-
+  getAddInfo(e) {
+    this.setData({
+      isshow: e.detail.list
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -86,14 +89,7 @@ Page({
 
   },
   onTap: function (e) {
-    console.log(e.detail.list)// 自定义组件触发事件时提供的detail对象
-    
-    this.setData({
-      isshow: e.detail.list
-    })
-    this.setData({
-      isshow2: !this.data.isshow
-    })
+  
   },
   /**
    * 用户点击右上角分享

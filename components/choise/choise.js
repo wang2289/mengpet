@@ -18,8 +18,8 @@ Component({
     onActive:false,
     onActive3: false,
     textActive:'综合排序',
-    nlistUrl: '/image/appstore-o - anticon2.png',
-    listUrl: '/image/appstore-o - anticon.png'
+    nlistUrl: '/images/appstore-o-anticon2.png',
+    listUrl: '/images/appstore-o-anticon.png'
   },
 
   /**
@@ -30,10 +30,13 @@ Component({
       this.setData({
         list: !this.data.list,
       })
-      this.properties.islist = this.data.list
-      var myEventDetail = { list: this.data.list} // detail对象，提供给事件监听函数
-      var myEventOption = {} // 触发事件的选项
-      this.triggerEvent('tap', myEventDetail, myEventOption)
+      let item = { list: this.data.list }
+      this.triggerEvent('addInfo', item)
+      // this.properties.islist = this.data.list
+      // var myEventDetail = { list: this.data.list} // detail对象，提供给事件监听函数
+      // var myEventOption = {} // 触发事件的选项
+      // this.triggerEvent('tap', myEventDetail, myEventOption)
+
     },
     onChange:function(){
       this.setData({

@@ -1,18 +1,15 @@
 <view  class="container">
    <view class="header">
-    <view class='box'>
-      <image src="/image/serch.png" />
-      <text>搜索</text>
-    </view> 
+    <van-search value="{{ value }}" placeholder="请输入搜索关键词" />
   </view> 
-  <choise-cmp  bind:tap="onTap"  class='choise' />
+  <choise-cmp  bind:addInfo="getAddInfo" class='choise' />
   <view class="sub-container">
-    <view class="animal-container2" hidden='{{isshow}}'>
+    <view class="animal-container2"wx:if="{{!isshow}}" >
       <block wx:for="{{pets}}" wx:key="{{id}}">
         <pet-cmp pet="{{item}}" class="pets" />
       </block>
     </view>
-    <view class="animal-container" hidden='{{isshow2}}'>
+    <view class="animal-container" wx:if="{{isshow}}">
       <block wx:for="{{pets}}" wx:key="{{id}}">
         <petl-cmp pet="{{item}}" class="pets" />
       </block>
