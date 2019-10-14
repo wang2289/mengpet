@@ -6,6 +6,7 @@
     "van-radio-group": "vant-weapp/radio-group",
     "van-field": "vant-weapp/field"
   },
+  "disableScroll": true,
   "backgroundColor": "#f5f5f5",
   "navigationBarTitleText": "发布送养"
 }

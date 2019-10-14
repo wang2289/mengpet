@@ -55,14 +55,22 @@
 }
 .line {
   width: 690rpx;
-  height: 1px;
+  height: 1rpx;
   background: #eee;
+  margin-left: 30rpx;
+  transform: rotateZ(360deg)
 }
-van-cell-group{
+.linenew{
+  width: 690rpx;
+  height: 1rpx;
+  background: #eee;
+  transform: rotateZ(360deg)
+}
+van-field{
    width: 100%;
 }
-van-field.mesg{
-  width: 100%;
+.mesg{
+  width: 690rpx;
   min-height: 300rpx !important;
 }
 .info-center {
@@ -140,17 +148,13 @@ van-field.mesg{
 width: 100%;
 }
 textarea{
-  margin-top: 40rpx;
-  width: 100%;
-  padding: 0 30rpx;
+  margin-top: 20rpx;
   box-sizing: border-box;
-}
-.section text{
-  padding-left: 30rpx;
 }
 .con-box{
   text-align: left;
   padding: 0 30rpx;
+  overflow: hidden;
 }
 .btns2{
   text-align: center;
@@ -173,7 +177,7 @@ van-radio-group{
   flex-direction: row;
 }
 .chongwu{
-  padding: 0rpx;
+  padding: 10rpx 0rpx;
 }
 .xingbie van-radio:last-child{
   margin: 0 60rpx;
