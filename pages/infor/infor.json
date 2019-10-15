@@ -1,7 +1,10 @@
 {
   "usingComponents": {
     "search-cmp": "/components/search/search",
-    "book-cmp":"/components/book/index"
+    "book-cmp":"/components/book/index",
+    "van-radio": "vant-weapp/radio",
+    "van-radio-group": "vant-weapp/radio-group",
+    "van-field": "vant-weapp/field"
   },
   "backgroundColor":"#f5f5f5",
   "navigationBarTitleText":"我的资料"

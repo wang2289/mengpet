@@ -4,7 +4,9 @@
     "book-cmp": "/components/book/index",
     "van-radio": "vant-weapp/radio",
     "van-radio-group": "vant-weapp/radio-group",
-    "van-field": "vant-weapp/field"
+    "van-field": "vant-weapp/field",
+    "van-checkbox": "path/to/vant-weapp/dist/checkbox/index",
+    "van-checkbox-group": "path/to/vant-weapp/dist/checkbox-group/index"
   },
   "disableScroll": true,
   "backgroundColor": "#f5f5f5",

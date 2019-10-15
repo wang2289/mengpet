@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/infor/infor",
     "pages/index/index",
     "pages/myInfo/myInfo",    
     "pages/compPubInfo/compPubInfo",
@@ -10,7 +11,7 @@
     "pages/mySongyang/mySongyang",
     "pages/sendinfor/sendinfor",   
     "pages/mysong/mysong",
-    "pages/infor/infor",
+    
     "pages/searchpet/searchpet",
     "pages/searchcity/searchcity",
     "pages/detail/detail",
