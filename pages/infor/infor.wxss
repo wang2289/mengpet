@@ -89,3 +89,7 @@ van-radio-group{
 .nian van-radio{
   margin: 10rpx 30rpx 20rpx 0rpx;
 }
+van-field{
+width: 74%;
+}
+
