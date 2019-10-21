@@ -1,10 +1,10 @@
 <view class='container'>
   <view class='choise-left'>
     <view class='choise-btn {{onActive ? "active":"" }}'  bind:tap="onChange">{{textActive}}
-      <image src='/images/right-anticon(2).png'></image>
+      <image src='{{onActive ? "/images/right-anticon(1).png":"/images/right-anticon(2).png"}}'></image>
     </view>
-    <view class='choise-btn choise-btn2 {{onActive ? "active":"" }}'>类别
-      <image src='/images/right-anticon(2).png'></image>
+    <view class='choise-btn choise-btn2 {{onActive2 ? "active":"" }}' bind:tap="onChange2">类别
+      <image src='{{onActive2 ? "/images/right-anticon(1).png":"/images/right-anticon(2).png"}}'></image>
     </view>
   </view>
   <view class='choise-right'>
@@ -15,11 +15,43 @@
     </view>
   </view>
 </view>
-<view class='choise-container' hidden='{{isshowpet}}'>
+<!-- <view class='choise-container' hidden='{{isshowpet}}'>
   <view class='choise-list  {{isActive == 0 ? "active":"" }}' data-tab="0" data-text="综合排序"  bind:tap="onActive" >综合排序</view>
   <view class='choise-list  {{isActive == 1 ? "active":"" }}' data-tab="1"data-text="最新发布"  bind:tap="onActive">最新发布</view>
   <view class='choise-list  {{isActive == 2 ? "active":"" }}' data-tab="2" data-text="最多浏览" bind:tap="onActive">最多浏览</view>
   <view class='choise-list  {{isActive == 3 ? "active":"" }}' data-tab="3" data-text="离我最近" bind:tap="onActive">离我最近</view>
+</view> -->
+<view class='meng' hidden="{{ isshowpet }}" catchtap="Onclose">
+    <view class="zonghe">
+      <view class="zongtab {{isActive == 1 ? 'active':'' }}" catchtap="onActive"data-text="综合排序"  data-tab="1">综合排序
+        <view class="line"></view>
+      </view>
+      <view class="zongtab {{isActive == 2 ? 'active':'' }}" catchtap="onActive"data-text="最新发布"  data-tab="2">最新发布
+        <view class="line"></view>
+      </view>
+      <view class="zongtab {{isActive == 3 ? 'active':'' }}" catchtap="onActive"data-text="最多浏览" data-tab="3">最多浏览
+        <view class="line"></view>
+      </view>
+      <view class="zongtab {{isActive == 4 ? 'active':'' }}" catchtap="onActive" data-text="离我最近" data-tab="4">离我最近
+        <view class="line"></view>
+      </view>
+    </view>
+</view>
+<view class='meng' hidden="{{ isshowpet2 }}" catchtap="Onclose">
+    <view class="zonghe">
+      <view class="zongtab {{isActive2 == 1 ? 'active':'' }}" catchtap="onActive2"data-text="综合排序"  data-tab="1">综合排序
+        <view class="line"></view>
+      </view>
+      <view class="zongtab {{isActive2 == 2 ? 'active':'' }}" catchtap="onActive2"data-text="最新发布"  data-tab="2">最新发布
+        <view class="line"></view>
+      </view>
+      <view class="zongtab {{isActive2 == 3 ? 'active':'' }}" catchtap="onActive2"data-text="最多浏览" data-tab="3">最多浏览
+        <view class="line"></view>
+      </view>
+      <view class="zongtab {{isActive2 == 4 ? 'active':'' }}" catchtap="onActive2" data-text="离我最近" data-tab="4">离我最近
+        <view class="line"></view>
+      </view>
+    </view>
 </view>
 <view class='choise-container' hidden='{{isshowchoise}}'>
   <view class='choise-tab'>

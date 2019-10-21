@@ -1,0 +1,249 @@
+<view class="container">
+  <view class="tips">首次领养请花5-10分钟填写领养问卷，提交后可在【我的】修改。</view>
+  <view class="steps">
+    <van-steps steps="{{ steps }}" active-color='#5AAFE0' active="{{ active }}" />
+  </view>
+  <view class="ques {{index == 0 ? '':'none'}} ">
+    <view class="own-info-item">
+      <view class="info-name">
+        <text>您是否养过小动物？  </text>
+      </view>
+      <van-radio-group class='radios' value="{{ result1 }}" bind:change="onChange1">
+        <van-radio name="1">是</van-radio>
+        <van-radio name="2">否</van-radio>
+      </van-radio-group>
+    </view>
+    <view class="own-info-item">
+      <view class="info-name">
+        <text>它是什么小动物呢?  </text>
+      </view>
+      <van-radio-group class='radios' value="{{ result2 }}" bind:change="onChange2">
+        <van-radio name="1">猫</van-radio>
+        <van-radio name="2">狗</van-radio>
+        <van-radio name="3">其它</van-radio>
+      </van-radio-group>
+      <textarea maxlength='-1' bindinput='Oninput1' value='{{value1}}' placeholder="请填写您养过的其它小动物" auto-height='true'></textarea>
+    </view>
+    <view class="own-info-item">
+      <view class="info-name">
+        <text>它来您家时多大啦？  </text>
+      </view>
+      <van-radio-group class='radios' value="{{ result3 }}" bind:change="onChange3">
+        <van-radio name="1">幼年</van-radio>
+        <van-radio name="2">成年</van-radio>
+        <van-radio name="3">老年</van-radio>
+      </van-radio-group>
+    </view>
+    <view class="own-info-item">
+      <view class="info-name">
+        <text>它陪伴了您多久？  </text>
+      </view>
+      <van-radio-group class='radios' value="{{ result4 }}" bind:change="onChange4">
+        <van-radio name="1">半年以下</van-radio>
+        <van-radio name="2">半年到一年</van-radio>
+        <van-radio name="3">一到三年</van-radio>
+        <van-radio name="4">三年以上</van-radio>
+      </van-radio-group>
+    </view>
+    <view class="own-info-item">
+      <view class="info-name">
+        <text>它平时吃什么呢？(多选)  </text>
+      </view>
+      <van-checkbox-group value="{{ result5 }}" bind:change="onChange5">
+        <van-checkbox name="1">猫、狗粮</van-checkbox>
+        <van-checkbox name="2">罐头</van-checkbox>
+        <van-checkbox name="3">自制食物</van-checkbox>
+        <van-checkbox name="4">营养膏、零食</van-checkbox>
+      </van-checkbox-group>
+    </view>
+    <view class="own-info-item">
+      <view class="info-name">
+        <text>它的主粮品牌是？  </text>
+      </view>
+      <textarea maxlength='-1' bindinput='Oninput2' placeholder="请填写您的宠物的主粮品牌" auto-height='true'></textarea>
+    </view>
+    <view class="own-info-item">
+      <view class="info-name">
+        <text>现在您家中还有动植物吗？  </text>
+      </view>
+      <textarea maxlength='-1' bindinput='Oninput3' placeholder="请填写您家中的动植物名称" auto-height='true'></textarea>
+    </view>
+    <view class="btn">
+      <view class="next" data-index='1' bindtap='Nexttap'>下一步</view>
+    </view>
+  </view>
+  <view class="ques {{index == 1 ? '':'none'}}">
+    <view class="own-info-item">
+      <view class="info-name">
+        <text>您目前的住房类型是？  </text>
+      </view>
+      <van-radio-group class='radios' value="{{ result6 }}" bind:change="onChange6">
+        <van-radio name="1">自有住房</van-radio>
+        <van-radio name="2">整租</van-radio>
+        <van-radio name="3">合租</van-radio>
+        <van-radio name="4">学生宿舍</van-radio>
+      </van-radio-group>
+    </view>
+    <view class="own-info-item">
+      <view class="info-name">
+        <text>您的小屋多大呢？(多选) </text>
+      </view>
+       <van-checkbox-group value="{{ result7 }}" bind:change="onChange7">
+        <van-checkbox name="1">一室户</van-checkbox>
+        <van-checkbox name="2">一室一厅</van-checkbox>
+        <van-checkbox name="3">二室一厅</van-checkbox>
+        <van-checkbox name="4">人均面积小于25平</van-checkbox>
+        <van-checkbox name="5">人均面积25-40平</van-checkbox>
+        <van-checkbox name="6">人均面积大于40平</van-checkbox>
+      </van-checkbox-group>
+    </view>
+    <view class="own-info-item">
+      <view class="info-name">
+        <text>是否有人与您同住？  </text>
+      </view>
+      <van-radio-group class='radios' value="{{ result8 }}" bind:change="onChange8">
+        <van-radio name="1">无</van-radio>
+        <van-radio name="2">与家庭成员同住</van-radio>
+        <van-radio name="3">与非家庭成员同住</van-radio>
+      </van-radio-group>
+    </view>
+    <view class="own-info-item">
+      <view class="info-name">
+        <text>您身边的人是否接纳宠物呢？(多选)  </text>
+      </view>
+       <van-checkbox-group value="{{ result9 }}" bind:change="onChange9">
+        <van-checkbox name="1">室友接纳</van-checkbox>
+        <van-checkbox name="2">房东接纳</van-checkbox>
+        <van-checkbox name="3">宠物不吵的话可以偷偷养</van-checkbox>
+        <van-checkbox name="4">养在房间里不影响别人</van-checkbox>
+        <van-checkbox name="5">我之后再问问</van-checkbox>
+      </van-checkbox-group>
+    </view>
+    <view class="own-info-item">
+      <view class="info-name">
+        <text>您的家人是否接纳宠物呢？(多选)  </text>
+      </view>
+      <van-checkbox-group value="{{ result10 }}" bind:change="onChange10">
+        <van-checkbox name="1">我们一家人一起住，一家都很喜欢动物</van-checkbox>
+        <van-checkbox name="2">宠物都是我自己养，和父母不住在一起无所谓</van-checkbox>
+        <van-checkbox name="3">没问过，但家人很喜欢动物，应该没问题</van-checkbox>
+        <van-checkbox name="4">我之后再问问</van-checkbox>
+      </van-checkbox-group>
+    </view>
+    <view class="own-info-item">
+      <view class="info-name">
+        <text>您的小屋是否有纱窗？(多选)  </text>
+      </view>
+       <van-checkbox-group value="{{ result11 }}" bind:change="onChange11">
+        <van-checkbox name="1">全屋都有</van-checkbox>
+        <van-checkbox name="2">有的窗户没有</van-checkbox>
+        <van-checkbox name="3">如要求，可以装</van-checkbox>
+        <van-checkbox name="4">窗子平时不开没必要装</van-checkbox>
+      </van-checkbox-group>
+    </view>
+    <view class="own-info-item">
+      <view class="info-name">
+        <text>请上传一张宠物活动区域照片</text>
+        <view class='pic'>
+          <view class='pic-box' bindtap='chooseImg1'>
+            <image class='pic-img {{showon1 ? "on":""}}' src="{{showpic1}}"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="own-info-item">
+      <view class="info-name">
+        <text>请上传一张纱窗或纱门的照片</text>
+        <view class='pic'>
+          <view class='pic-box' bindtap='chooseImg2'>
+            <image class='pic-img {{showon2 ? "on":""}}' src="{{showpic2}}"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="btn">
+      <view class="next" data-index='2' bindtap='Nexttap'>下一步</view>
+    </view>
+
+  </view>
+  <view class="ques {{index == 2 ? '':'none'}}">
+    <view class="own-info-item">
+      <view class="info-name">
+        <text>您的婚姻状态是？  </text>
+      </view>
+      <van-radio-group class='radios' value="{{ result12 }}" bind:change="onChange12">
+        <van-radio name="1">单身</van-radio>
+        <van-radio name="2">热恋</van-radio>
+        <van-radio name="3">已婚</van-radio>
+        <van-radio name="4">已育</van-radio>
+      </van-radio-group>
+    </view>
+    <view class="own-info-item">
+      <view class="info-name">
+        <text>您的年收入大约多少呢？ </text>
+      </view>
+      <van-radio-group class='radios' value="{{ result13 }}" bind:change="onChange13">
+        <van-radio name="1">6万元以下</van-radio>
+        <van-radio name="2">6-10万元</van-radio>
+        <van-radio name="3">10-15万元</van-radio>
+        <van-radio name="4">15万元以上</van-radio>
+      </van-radio-group>
+    </view>
+    <view class="own-info-item">
+      <view class="info-name">
+        <text>您每个月的宠物预算大约多少？（不含医疗）  </text>
+      </view>
+      <van-radio-group class='radios' value="{{ result14 }}" bind:change="onChange14">
+        <van-radio name="1">300元以下</van-radio>
+        <van-radio name="2">300～600元</van-radio>
+        <van-radio name="3">600～800元</van-radio>
+        <van-radio name="4">900元以上</van-radio>
+      </van-radio-group>
+    </view>
+    <view class="own-info-item">
+      <view class="info-name">
+        <text>您打算在这个城市发展多久？  </text>
+      </view>
+      <van-radio-group class='radios' value="{{ result15 }}" bind:change="onChange15">
+        <van-radio name="1">本市户口</van-radio>
+        <van-radio name="2">长期发展</van-radio>
+        <van-radio name="3">1-2年内在本城市发展</van-radio>
+        <van-radio name="4">已规划去其他城市</van-radio>
+      </van-radio-group>
+    </view>
+    <view class="own-info-item">
+      <view class="info-name">
+        <text>您会带狗狗去办理狗证吗？ </text>
+      </view>
+      <van-radio-group class='radios' value="{{ result16 }}" bind:change="onChange16">
+        <van-radio name="1">一定会 </van-radio>
+        <van-radio name="2">不会，没必要</van-radio>
+        <van-radio name="3">有必要会办</van-radio>
+        <van-radio name="4">不会，办不出</van-radio>
+      </van-radio-group>
+    </view>
+    <view class="own-info-item">
+      <view class="info-name">
+        <text>您带狗狗出门会牵狗绳吗？ </text>
+      </view>
+      <van-radio-group class='radios' value="{{ result17 }}" bind:change="onChange17">
+        <van-radio name="1">一直会</van-radio>
+        <van-radio name="2">有人的地方一定会牵 </van-radio>
+        <van-radio name="3">狗狗很乖的话可能不牵</van-radio>
+      </van-radio-group>
+    </view>
+    <view class="own-info-item">
+      <view class="info-name">
+        <text>请上传一张准备的宠物食品/用品照片(选填)</text>
+        <view class='pic'>
+          <view class='pic-box' bindtap='chooseImg3'>
+            <image class='pic-img {{showon3 ? "on":""}}' src="{{showpic3}}"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="btn">
+      <view class="next" bindtap='Submit'>提交</view>
+    </view>
+  </view>
+</view>

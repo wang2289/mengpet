@@ -1,24 +1,23 @@
 {
   "pages": [
-    "pages/infor/infor",
+    "pages/wenjuan/wenjuan",
+    "pages/searchpet/searchpet",
     "pages/index/index",
-    "pages/myInfo/myInfo",    
+    "pages/myInfo/myInfo",
     "pages/compPubInfo/compPubInfo",
     "pages/myPages/myPages",
     "pages/myConcern/myConcern",
     "pages/myCollect/myCollect",
     "pages/myReceiveApply/myReceiveApply",
     "pages/mySongyang/mySongyang",
-    "pages/sendinfor/sendinfor",   
+    "pages/sendinfor/sendinfor",
     "pages/mysong/mysong",
-    
-    "pages/searchpet/searchpet",
+    "pages/infor/infor",
     "pages/searchcity/searchcity",
     "pages/detail/detail",
     "pages/my/my",
     "pages/getapply/getapply",
     "pages/logs/logs"
-
   ],
   "window": {
     "backgroundTextStyle": "light",

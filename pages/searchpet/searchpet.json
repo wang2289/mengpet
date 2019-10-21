@@ -3,7 +3,8 @@
     "choise-cmp": "/components/choise/choise",
     "pet-cmp": "/components/pets/index",
     "petl-cmp": "/components/petlist/index",
-    "van-search": "vant-weapp/search"
+    "van-search": "vant-weapp/search",
+    "van-tree-select": "vant-weapp/tree-select"
   },
   "navigationBarTitleText": "待领养"
 }

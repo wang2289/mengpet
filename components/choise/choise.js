@@ -1,4 +1,7 @@
 // components/choise/choise.js
+var param = {
+
+}
 Component({
   /**
    * 组件的属性列表
@@ -13,9 +16,13 @@ Component({
   data: {
     list: false,
     isshowpet:true,
+    isshowpet2: true,
     isshowchoise:true,
     isActive:0,
+    isActive2: 0,
+    isshow2: false,
     onActive:false,
+    onActive2: false,
     onActive3: false,
     textActive:'综合排序',
     nlistUrl: '/images/appstore-o-anticon2.png',
@@ -38,10 +45,24 @@ Component({
       // this.triggerEvent('tap', myEventDetail, myEventOption)
 
     },
+    Onclose: function () {
+      this.setData({
+        isshowpet: true,
+        isshowpet2: true,
+        onActive:false,
+        onActive2: false
+      })
+    },
     onChange:function(){
       this.setData({
         isshowpet: !this.data.isshowpet,
         onActive: !this.data.onActive
+      })
+    },
+    onChange2: function () {
+      this.setData({
+        isshowpet2: !this.data.isshowpet2,
+        onActive2: !this.data.onActive2
       })
     },
     onChoise: function () {
@@ -60,7 +81,15 @@ Component({
         onActive: !this.data.onActive,
         isshowpet: !this.data.isshowpet
       })
-
+    },
+    onActive2: function (e) {
+      var index = e.currentTarget.dataset.tab;//获取当前点击的元素下标
+      console.log(e.currentTarget);
+      this.setData({
+        isActive2: index,
+        onActive2: !this.data.onActive2,
+        isshowpet2: !this.data.isshowpet2
+      })
     }
   }
 })

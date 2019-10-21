@@ -1,5 +1,5 @@
 <view  class="container">
-   <view class="header">
+  <view class="header">
     <van-search value="{{ value }}" placeholder="请输入搜索关键词" />
   </view> 
   <choise-cmp  bind:addInfo="getAddInfo" class='choise' />
