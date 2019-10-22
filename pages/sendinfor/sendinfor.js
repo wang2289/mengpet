@@ -5,7 +5,8 @@ import {
 let app = getApp();
 import {
   requestsend,
-  requestsendtoken
+  requesttoken,
+  requestpic
 } from '../../utils/util.js'
 import {
   Config
@@ -25,9 +26,13 @@ Page({
     radio2: '1',
     radio3: '1',
     radio4: '1',
-    color: [],
-    feature: [],
+    color: [],    
+    colorids: [],
+    colorselectid: [],
     colorchoice: [],
+    feature: [],
+    featureids: [],
+    featureselectid: [],
     featurechoice: [],
     pics: [], //图片
     showpic: '/images/add_a_photo-material.png',
@@ -39,7 +44,8 @@ Page({
     // console.log(event);
     var index = event.target.dataset.index;
     var value = event.currentTarget.dataset.value;
-    var colorch = this.data.colorchoice
+    var colorch = this.data.colorchoice;
+    var colselid = this.data.colorselectid;
     var missionArr = this.data.color;
     for (let i in missionArr) {
       //遍历列表数据      
@@ -48,21 +54,25 @@ Page({
         if (missionArr[i].status == 1) {
           missionArr[i].status = 0
           this.remove(colorch, value);
+          this.remove(colselid, this.data.colorids[i]);
         } else {
           missionArr[i].status = 1
           colorch.push(value);
+          colselid.push(this.data.colorids[i])
         }
       }
     }
     this.setData({
-      color: missionArr
+      color: missionArr,
+      colorselectid: colselid
     });
   },
   onTap2(event) {
     // console.log(event);
-    var index = event.target.dataset.index
+    var index = event.target.dataset.index;
     var value = event.currentTarget.dataset.value;
-    var featurech = this.data.featurechoice
+    var featurech = this.data.featurechoice;
+    var fetselid = this.data.featureselectid;
     var missionArr = this.data.feature;
     for (let i in missionArr) {
       //遍历列表数据      
@@ -71,14 +81,17 @@ Page({
         if (missionArr[i].status == 1) {
           missionArr[i].status = 0
           this.remove(featurech, value);
+          this.remove(fetselid, this.data.featureids[i]);
         } else {
           missionArr[i].status = 1
           featurech.push(value);
+          fetselid.push(this.data.featureids[i]);
         }
       }
     }
     this.setData({
-      feature: missionArr
+      feature: missionArr,
+      featureselectid: fetselid
     });
   },
   onChange1(event) {
@@ -124,45 +137,64 @@ Page({
     });
   },
   Finish: function() {
+    var picsData = this.data.pics
+    var photoIdStr = "";
+    for (var i = 0; i < picsData.length; i++) {
+      requestpic('/pets/uploadImg', "POST",
+        picsData[i], undefined, function (res) {
+          console.log(res.data.id)
+          photoIdStr = res.data.id + "#";
+          console.log(photoIdStr)
+        });
+    }
+    if (photoIdStr.substring(photoIdStr.length) == "#") {
+      photoIdStr = photoIdStr.substring(0, photoIdStr);
+    }
+    console.log("=======")
+    console.log(photoIdStr)
+
+    var colorselidstr = ""
+    for (let l in this.data.colorselectid) {
+      colorselidstr += this.data.colorselectid[l];
+      if (l < this.data.colorselectid.length - 1) {
+        colorselidstr += "#"
+      }
+    }
+
+    var featureselidstr = ""
+    for (let l in this.data.featureselectid) {
+      featureselidstr += this.data.featureselectid[l];
+      if (l < this.data.featureselectid.length - 1) {
+        featureselidstr += "#"
+      }
+    }
+
     var parms = {
-      name: this.data.name,
+      nameCn: this.data.name,
       sex: this.data.radio1,
       age: this.data.age,
+      type: 1,
       area: this.data.area,
-      message: this.data.message,
+      desc: this.data.message,
       quchong: this.data.radio2,
       yimiao: this.data.radio3,
-      jue: this.data.radio4,
-      color: this.data.colorchoice,
-      feature: this.data.featurechoice,
-      pics: this.data.pics
+      jueyu: this.data.radio4,
+      // color: this.data.colorchoice,
+      // feature: this.data.featurechoice,
+      color: colorselidstr,
+      feature: featureselidstr,
+      photoId: photoIdStr
     };
+    
     console.log(parms)
-    var obj1 = JSON.stringify(parms);
-    var param = {
-      result: obj1
-    }
-    console.log(parms)
-    token.verify((tokenres) => {
-      wx.request({
-        url: Config.apiUrl + '/api/QX/TiJiaoPaper',
-        data: param,
-        method: 'POST',
-        header: {
-          "content-type": "application/x-www-form-urlencoded",
-          'authorization': 'Bearer ' + tokenres + ''
-        },
-        success: function(res) {
-          console.log(res)
-        },
-        fail: function(error) {
-          wx.showToast({
-            icon: "none",
-            title: '服务器异常，清稍候再试'
-          })
+
+    requesttoken('/pets/uploadPetInfoNoImg', "GET",
+      parms, function (res) {
+        console.log(res);
+        if (res.success) {
+
         }
       })
-    });
   },
   remove: function(array, val) {
     for (var i = 0; i < array.length; i++) {
@@ -228,24 +260,28 @@ Page({
     var that = this;
     requestsend('/util/getPickerPetUpload', "GET",
       { "type": 0, "key": 0 }, function (res) {
-        var temp = res.data.pickerList;
+        var temp = res.data.dogColor;
+        var coloridstemp = res.data.dogColorId
         var colorData = [];
         for (var i = 0; i < temp.length; i++) {
-          colorData[i] = { "name": temp[i].value, "status": 0 };
+          colorData[i] = { "name": temp[i], "status": 0 };          
         }
         that.setData({
-          color: colorData
+          color: colorData,
+          colorids: coloridstemp
         })
     });
     requestsend('/util/getPickerPetUpload', "GET",
       { "type": 0, "key": 1 }, function (res) {
-        var temp = res.data.pickerList;
+        var temp = res.data.dogFeature;
+        var featureidstemp = res.data.dogFeatureId
         var featureData = [];
         for (var i = 0; i < temp.length; i++) {
-          featureData[i] = { "name": temp[i].value, "status": 0 };
+          featureData[i] = { "name": temp[i], "status": 0 };
         }
         that.setData({
-          feature: featureData
+          feature: featureData,
+          featureids: featureidstemp
         })
     });
   },

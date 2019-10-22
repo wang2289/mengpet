@@ -1,8 +1,13 @@
-
-// import { PetsModel } from '../../models/pets.js'
+import {
+  Config
+} from '../../utils/config.js'
 import { random } from '../../utils/util.js'
 // let petsModel = new PetsModel()
 let app = getApp();
+import {
+  requestsend,
+  requesttoken
+} from '../../utils/util.js'
 Page({
 
   /**
@@ -42,72 +47,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    wx.request({
-      url: app.globalData.remoteUrl + '/pets/getPetsInfosFilter',
-      data: { "page": 1, "size": 4},
-      method: "GET",
-      success: function (res) {
-        if (res.data.success) {
-          var pets = res.data.data.list;
-          var petData = {};
-          console.log(pets);
-          for (var i = 0; i < pets.length; i++) {
-            var temp = {};
-            temp.id = pets[i].id;
-            temp.image = pets[i].photosId;
-            temp.name = pets[i].nameCn;
-            temp.age = pets[i].age;
-            temp.newname = pets[i].color;
-            temp.tips = pets[i].feature;
-            temp.city = 'city';
-            temp.area = pets[i].area;
-            temp.view = pets[i].view;
-            petData[i] = temp;
-          }
-          that.setData({
-            pets: petData
-          })
-
-        }
-      },
-      fail: function () {
-
-      },
-      complete: function () {
-
-      }
-    })
-      // var data =[
-      //   {
-      //     id:'0',
-      //     image:'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
-      //     name:'毛球球球球球球球球…',
-      //     age:'2岁1个月',
-      //     newname:'狸花',
-      //     tips:'亲人',
-      //     city:'上海',
-      //     area:'普陀',
-      //     view:'20'
-      //   },
-      //   {
-      //     id: '1',
-      //     image: 'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
-      //     name: '毛球球球球球球球球球球球wwwwww球球…',
-      //     age: '1岁1个月',
-      //     newname: '狸花',
-      //     tips: '亲人',
-      //     city: '上海',
-      //     area: '普陀',
-      //     view: '20'
-      //   }
-      // ]
-      // this.setData({
-      //   pets: data
-      // })
+    this.hasGottenUserInfo()
   },
   onShow: function (options) {
-    this.hasGottenUserInfo()
+    
+    
   },
   onActivateSearch: function (event) {
     this.setData({
@@ -176,45 +120,45 @@ Page({
 
   },
 
-  userLogin: function(userInfo) {
-    wx.request({
-      url: app.globalData.remoteUrl + '/wechat/login',
-      data: userInfo,
-      method: "GET",
-      success: function (res) {
-        if (res.data.success) {
-          app.globalData.token = res.data;
+  getRecommendList: function() {
+    var that = this;
+    requesttoken('/pets/getPetsInfosFilter', "GET",
+      { "page": 1, "size": 4 }, function (res) {
+        if (res.success) {
+          var pets = res.data.list;
+          var petData = {};
+          console.log(pets);
+          for (var i = 0; i < pets.length; i++) {
+            var temp = {};
+            temp.id = pets[i].id;
+            temp.image = Config.imgPath + "/" + pets[i].photosId;
+            temp.name = pets[i].nameCn;
+            temp.age = pets[i].age;
+            temp.newname = pets[i].color;
+            temp.tips = pets[i].feature;
+            temp.city = 'city';
+            temp.area = pets[i].area;
+            temp.view = pets[i].view;
+            petData[i] = temp;
+          }
+          that.setData({
+            pets: petData
+          })
+
         }
-        // console.log(app.globalData.token);
-      },
-      fail: function () {
-        
-      },
-      complete: function () {
-        
-      }
-    })
+      })
   },
 
-  upload: function() {
-    wx.request({
-      url: 'localhost://',//上线的话必须是https，没有appId的本地请求貌似不受影响
-      data: {},
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      // header: {}, // 设置请求的 header
-      success: function (res) {
-        console.log(res.data.result)
-        that.setData({
-          Industry: res.data.result
-        })
-      },
-      fail: function () {
-        // fail
-      },
-      complete: function () {
-        // complete
-      }
-    })
-  }
+  userLogin: function (userInfo) {
+    var that = this;
+    requestsend('/wechat/login', "GET",
+      userInfo, function (res) {
+        if (res.success) {
+          app.globalData.token = res.data;;
+          console.log(app.globalData.token);
+          that.getRecommendList();
+        }
+      });
+  },
 
 })
