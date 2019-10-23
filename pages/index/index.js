@@ -122,7 +122,7 @@ Page({
 
   getRecommendList: function() {
     var that = this;
-    requesttoken('/pets/getPetsInfosFilter', "GET",
+    requesttoken('/pets/getPetsInfosFilterMitTips', "GET",
       { "page": 1, "size": 4 }, function (res) {
         if (res.success) {
           var pets = res.data.list;
@@ -133,9 +133,26 @@ Page({
             temp.id = pets[i].id;
             temp.image = Config.imgPath + "/" + pets[i].photosId;
             temp.name = pets[i].nameCn;
+            temp.sex = pets[i].sex;
             temp.age = pets[i].age;
-            temp.newname = pets[i].color;
-            temp.tips = pets[i].feature;
+            var colors = pets[i].color;
+            var colorList = colors.split(" ");
+            var colorStr = "";
+            if (colorList.length <= 2) {
+              colorStr = colors;
+            } else {
+              colorStr = colorList[0] + "" + colorList[1];
+            }
+            temp.color = colorStr;
+            var features = pets[i].feature;
+            var featureList = features.split(" ");
+            var featureStr = "";
+            if (featureList.length <= 1) {
+              featureStr = features;
+            } else {
+              featureStr = featureList[0];
+            }
+            temp.feature = featureStr;
             temp.city = 'city';
             temp.area = pets[i].area;
             temp.view = pets[i].view;
@@ -154,8 +171,10 @@ Page({
     requestsend('/wechat/login', "GET",
       userInfo, function (res) {
         if (res.success) {
-          app.globalData.token = res.data;;
+          app.globalData.token = res.data.token;
+          app.globalData.userId = res.data.userId;
           console.log(app.globalData.token);
+          console.log(app.globalData.userId);
           that.getRecommendList();
         }
       });

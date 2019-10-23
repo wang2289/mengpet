@@ -4,7 +4,7 @@
     <image src="{{pet.image}}"></image>
     <view class='head-info'>
       <view>
-        <text class='newname'>{{pet.newname}}</text>
+        <text class='newname'>{{pet.name}}</text>
         <text class='age'>{{pet.age}}</text>
       </view>
       <view>
@@ -15,19 +15,28 @@
   <view class="sub-container">
     <text class="headline">身体状况</text>
     <view class='heath-tip'>
+      <view wx:if="{{pet.quchong == 0}}" class='heath-onetip'>未驱虫</view>
+      <view wx:if="{{pet.quchong == 1}}" class='heath-onetip'>已驱虫</view>
+      <view wx:if="{{pet.yimiao == 0}}" class='heath-onetip'>未疫苗</view>
+      <view wx:if="{{pet.yimiao == 1}}" class='heath-onetip'>已疫苗</view>
+      <view wx:if="{{pet.yimiao == 2}}" class='heath-onetip'>疫苗中</view>
+      <view wx:if="{{pet.jueyu == 0}}" class='heath-onetip'>未绝育</view>
+      <view wx:if="{{pet.jueyu == 1}}" class='heath-onetip'>已绝育</view>
+      <!-- <view class='heath-onetip'>已驱虫</view>
       <view class='heath-onetip'>已驱虫</view>
-      <view class='heath-onetip'>已驱虫</view>
-      <view class='heath-onetip'>已驱虫</view>
+      <view class='heath-onetip'>已驱虫</view> -->
     </view>
     <text class="headline">我的特点</text>
     <view class='heath-tip'>
+      <view wx:for="{{pet.color}}" class='heath-twotip' wx:for-index="key" wx:for-item="color">{{color}}</view>
+      <view wx:for="{{pet.feature}}" class='heath-twotip' wx:for-index="key" wx:for-item="feature">{{feature}}</view>
+      <!-- <view class='heath-twotip'>已驱虫</view>
       <view class='heath-twotip'>已驱虫</view>
-      <view class='heath-twotip'>已驱虫</view>
-      <view class='heath-twotip'>已驱虫</view>
+      <view class='heath-twotip'>已驱虫</view> -->
     </view>
     <text class="headline">我的故事</text>
     <view class='gushi'>
-      栗子是在大雨中的路边发现的，活泼能吃，身体健康，性格好，十分亲人，在等待一个温暖的家。栗子是在大雨中的路边发现的，活泼能吃，身体健康，性格好，十分亲人，在等待一个温暖的家。栗子是在大雨中的路边发现的，活泼能吃，身体健康，在等待一个温暖的家。
+      {{pet.desc}}
     </view>
     <text class="headline">送养人信息</text>
     <view class='songyang'>

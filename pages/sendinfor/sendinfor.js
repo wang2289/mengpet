@@ -22,10 +22,11 @@ Page({
   data: {
     searchPanel: false,
     books: Object,
+    radio0: '0',
     radio1: '1',
-    radio2: '1',
-    radio3: '1',
-    radio4: '1',
+    radio2: '0',
+    radio3: '0',
+    radio4: '0',
     color: [],    
     colorids: [],
     colorselectid: [],
@@ -36,7 +37,8 @@ Page({
     featurechoice: [],
     pics: [], //图片
     showpic: '/images/add_a_photo-material.png',
-    more: false
+    more: false,
+    photoIds: []
   },
 
   onReachBottom: function(event) {},
@@ -94,6 +96,11 @@ Page({
       featureselectid: fetselid
     });
   },
+  onChange0(event) {
+    this.setData({
+      radio0: event.detail
+    });
+  },
   onChange1(event) {
     // console.log(event.detail);
     this.setData({
@@ -139,18 +146,23 @@ Page({
   Finish: function() {
     var picsData = this.data.pics
     var photoIdStr = "";
-    for (var i = 0; i < picsData.length; i++) {
-      requestpic('/pets/uploadImg', "POST",
-        picsData[i], undefined, function (res) {
-          console.log(res.data.id)
-          photoIdStr = res.data.id + "#";
-          console.log(photoIdStr)
-        });
+    // for (var i = 0; i < picsData.length; i++) {
+    //   requestpic('/pets/uploadImg', "POST",
+    //     picsData[i], undefined, function (res) {
+    //       console.log(res.data.id)
+    //       photoIdStr = res.data.id + "#";
+    //       console.log(photoIdStr)
+    //     });
+    // }
+    // if (photoIdStr.substring(photoIdStr.length) == "#") {
+    //   photoIdStr = photoIdStr.substring(0, photoIdStr);
+    // }
+    for (let l in this.data.photoIds) {
+      photoIdStr += this.data.photoIds[l];
+      if (l < this.data.photoIds.length - 1) {
+        photoIdStr += "#";
+      } 
     }
-    if (photoIdStr.substring(photoIdStr.length) == "#") {
-      photoIdStr = photoIdStr.substring(0, photoIdStr);
-    }
-    console.log("=======")
     console.log(photoIdStr)
 
     var colorselidstr = ""
@@ -170,10 +182,11 @@ Page({
     }
 
     var parms = {
+      userId: app.globalData.userId,
       nameCn: this.data.name,
+      type: this.data.radio0,
       sex: this.data.radio1,
       age: this.data.age,
-      type: 1,
       area: this.data.area,
       desc: this.data.message,
       quchong: this.data.radio2,
@@ -207,7 +220,7 @@ Page({
   //上传图片开始
   chooseImg: function(e) {
     var that = this,
-      pics = this.data.pics;
+    pics = this.data.pics;
     console.log(pics);
     if (pics.length < 3) {
       wx.chooseImage({
@@ -217,12 +230,12 @@ Page({
         success: function(res) {
           // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
           var tempFilePaths = res.tempFilePaths;
-          // wx.showToast({
-          //   title: '正在上传...',
-          //   icon: 'loading',
-          //   mask: true,
-          //   duration: 10000
-          // });
+          wx.showToast({
+            title: '正在上传...',
+            icon: 'loading',
+            mask: true,
+            duration: 10000
+          });
           for (var i = 0; i < tempFilePaths.length; i++) {
             pics.push(tempFilePaths[i]);
           }
@@ -232,6 +245,13 @@ Page({
               showon: true,
               showpic: tempFilePaths[num]
             })
+            requestpic('/pets/uploadImg', "POST",
+              pics[0], undefined, function (res) {
+                console.log(res.data.id)
+                that.data.photoIds.push(res.data.id);
+                console.log(that.data.photoIds)
+                wx.hideToast();
+              });
           }else{
             that.setData({
               showon: false,

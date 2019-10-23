@@ -8,6 +8,11 @@ import {
 import {
   CommentModel
 } from '../../models/comment.js'
+let app = getApp();
+import {
+  requestsend,
+  requesttoken
+} from '../../utils/util.js'
 
 // let petsModel = new PetsModel()
 let commentModel = new CommentModel()
@@ -31,21 +36,57 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    var that = this;
+    let bid = options.bid;
+    console.log(bid);
+    requesttoken('/pets/getPetDetail', 'GET',
+        {"petId": bid}, function (res) {
+          console.log(res);
+          var pickerList = res.data.pickerList
+          var colors = [];
+          var features = [];        
+          for (let l in pickerList) {
+            if (pickerList[l].key == 1) {              
+              colors.push(pickerList[l].value);
+            } else if (pickerList[l].key == 0) {
+              features.push(pickerList[l].value);
+            }
+          }
+          var data =
+          {
+            id: res.data.id,
+            image: 'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
+            name: res.data.nameCn,
+            age: res.data.age,
+            color: colors,
+            feature: features,
+            city: 'city',
+            area: res.data.area,
+            view: res.data.view,
+            desc: res.data.desc,
+            yimiao: res.data.yimiao,
+            jueyu: res.data.jueyu,
+            quchong: res.data.quchong
+          }
+          that.setData({
+            pet: data
+          })
+        });
 
-    let bid = options.bid
-    // petsModel.getDetail(bid, (data) => {
-    var data = 
-      {
-        id: '0',
-        image: 'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
-        name: '毛球球球球球球球球…',
-        age: '1岁1个月',
-        newname: '狸花',
-        tips: '亲人',
-        city: '上海',
-        area: '普陀',
-        view: '20'
-      }
+    
+
+    // var data = 
+    //   {
+    //     id: '0',
+    //     image: 'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
+    //     name: '毛球球球球球球球球…',
+    //     age: '1岁1个月',
+    //     newname: '狸花',
+    //     tips: '亲人',
+    //     city: '上海',
+    //     area: '普陀',
+    //     view: '20'
+    //   }
     var data2 = [
       {
         id: '0',
@@ -73,9 +114,7 @@ Page({
     this.setData({
       pets: data2
     })
-      this.setData({
-        pet: data
-      })
+      
    // })
 
     commentModel.getComment(bid, (data) => {

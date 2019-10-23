@@ -9,6 +9,13 @@
       </view>
     </view>
     <view class='titles'>宠物信息</view>
+    <view class="own-info-item info-center">
+      <van-radio-group class='xingbie' value="{{ radio0 }}" bind:change="onChange0">
+        <van-radio name="0">狗狗</van-radio>
+        <van-radio name="1">猫猫</van-radio>
+      </van-radio-group>
+    </view>
+    <view class='line'></view>
     <view class="own-info-item chongwu">
       <van-field value="{{ name }}" bind:change="onChange1" border="{{ false }}" clearable label="昵称" placeholder="请填写宠物昵称" />
     </view>
@@ -16,7 +23,7 @@
     <view class="own-info-item info-center">
       <van-radio-group class='xingbie' value="{{ radio1 }}" bind:change="onChange2">
         <van-radio name="1">弟弟</van-radio>
-        <van-radio name="2">妹妹</van-radio>
+        <van-radio name="0">妹妹</van-radio>
       </van-radio-group>
     </view>
     <view class='line'></view>
@@ -42,8 +49,8 @@
         <text>驱虫  </text>
       </view>
       <van-radio-group class='quchong' value="{{ radio2 }}" bind:change="onChange5">
-        <van-radio name="1">未驱虫</van-radio>
-        <van-radio name="2">已驱虫</van-radio>
+        <van-radio name="0">未驱虫</van-radio>
+        <van-radio name="1">已驱虫</van-radio>
       </van-radio-group>
     </view>
     <view class='line'></view>
@@ -52,9 +59,9 @@
         <text>疫苗  </text>
       </view>
       <van-radio-group class='yimiao' value="{{ radio3 }}" bind:change="onChange6">
-        <van-radio name="1">未疫苗</van-radio>
+        <van-radio name="0">未疫苗</van-radio>
         <van-radio name="2">疫苗中</van-radio>
-        <van-radio name="3">已疫苗</van-radio>
+        <van-radio name="1">已疫苗</van-radio>
       </van-radio-group>
     </view>
     <view class='line'></view>
@@ -63,8 +70,8 @@
         <text>绝育  </text>
       </view>
       <van-radio-group class='jue' value="{{ radio4 }}" bind:change="onChange7">
-        <van-radio name="1">未绝育</van-radio>
-        <van-radio name="2">已绝育</van-radio>
+        <van-radio name="0">未绝育</van-radio>
+        <van-radio name="1">已绝育</van-radio>
       </van-radio-group>
     </view>
     <view class='line'></view>

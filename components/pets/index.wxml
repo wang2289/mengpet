@@ -1,10 +1,17 @@
 <view bind:tap="onTap" class="container">
   <image class='petimg' src="{{pet.image||pet.img}}"></image>
   <view class="description">
-    <view class='name'><view class='nametitle'>{{pet.name}}</view><image src="/images/man-anticon.png" /></view>
+    <view class='name'><view class='nametitle'>{{pet.name}}</view>
+      <view wx:if="{{pet.sex == 0}}">
+        <image src="/images/woman-anticon.png" />
+      </view>
+      <view wx:if="{{pet.sex == 1}}">
+        <image src="/images/man-anticon.png" />
+      </view>
+    </view>
     <view class='moretip'>
-      <view class='age'>{{pet.age}} | {{pet.newname}}</view>
-      <view class='tips'>{{pet.tips}}</view>
+      <view class='age'>{{pet.age}} | {{pet.color}}</view>
+      <view class='tips'>{{pet.feature}}</view>
     </view>
   </view>
    <view class="descriptions">
