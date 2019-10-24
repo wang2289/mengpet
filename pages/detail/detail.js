@@ -3,6 +3,9 @@
 //   PetsModel
 // } from '../../models/pets.js'
 import {
+  Config
+} from '../../utils/config.js'
+import {
   LikeModel
 } from '../../models/like.js'
 import {
@@ -52,6 +55,11 @@ Page({
               features.push(pickerList[l].value);
             }
           }
+          var createTime = res.data.photoList[0].createTime;
+          var createDate = createTime.substring(0, 10);
+          var imagePath = Config.imgPath + "/" + createDate + "/" + res.data.photoList[0].path
+
+
           var data =
           {
             id: res.data.id,
@@ -66,16 +74,15 @@ Page({
             desc: res.data.desc,
             yimiao: res.data.yimiao,
             jueyu: res.data.jueyu,
-            quchong: res.data.quchong
+            quchong: res.data.quchong,
+            image: imagePath
           }
           that.setData({
             pet: data
           })
         });
 
-    
-
-    // var data = 
+    // var data2 = [
     //   {
     //     id: '0',
     //     image: 'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
@@ -86,34 +93,22 @@ Page({
     //     city: '上海',
     //     area: '普陀',
     //     view: '20'
+    //   },
+    //   {
+    //     id: '1',
+    //     image: '/images/icon/search.png',
+    //     name: '毛球球球球球球球球球球球wwwwww球球…',
+    //     age: '1岁1个月',
+    //     newname: '狸花',
+    //     tips: '亲人',
+    //     city: '上海',
+    //     area: '普陀',
+    //     view: '20'
     //   }
-    var data2 = [
-      {
-        id: '0',
-        image: 'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
-        name: '毛球球球球球球球球…',
-        age: '1岁1个月',
-        newname: '狸花',
-        tips: '亲人',
-        city: '上海',
-        area: '普陀',
-        view: '20'
-      },
-      {
-        id: '1',
-        image: '/images/icon/search.png',
-        name: '毛球球球球球球球球球球球wwwwww球球…',
-        age: '1岁1个月',
-        newname: '狸花',
-        tips: '亲人',
-        city: '上海',
-        area: '普陀',
-        view: '20'
-      }
-    ]
-    this.setData({
-      pets: data2
-    })
+    // ]
+    // this.setData({
+    //   pets: data2
+    // })
       
    // })
 
