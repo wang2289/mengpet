@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/my/my",
+    "pages/index/index",
     "pages/wenjuan/wenjuan",
     "pages/searchpet/searchpet",
-    "pages/index/index",
     "pages/myInfo/myInfo",
     "pages/compPubInfo/compPubInfo",
     "pages/myPages/myPages",
@@ -15,7 +16,6 @@
     "pages/infor/infor",
     "pages/searchcity/searchcity",
     "pages/detail/detail",
-    "pages/my/my",
     "pages/getapply/getapply",
     "pages/logs/logs"
   ],

@@ -122,7 +122,7 @@ Page({
 
   getRecommendList: function() {
     var that = this;
-    requesttoken('/pets/getPetsInfosFilterMitTips', "GET",
+    requesttoken('pets/getPetsInfosFilterMitTips', "GET",
       { "page": 1, "size": 4 }, function (res) {
         if (res.success) {
           var pets = res.data.list;

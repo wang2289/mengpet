@@ -228,6 +228,104 @@ Page({
       });
     }
   },
+  //上传图片开始
+  chooseImg2: function (e) {
+    var that = this,
+      pics = this.data.pics1;
+    console.log(pics);
+    if (pics.length < 3) {
+      wx.chooseImage({
+        count: 3, // 最多可以选择的图片张数，默认9
+        sizeType: ['original', 'compressed'], // original 原图，compressed 压缩图，默认二者都有
+        sourceType: ['album', 'camera'], // album 从相册选图，camera 使用相机，默认二者都有
+        success: function (res) {
+          // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+          var tempFilePaths = res.tempFilePaths;
+          // wx.showToast({
+          //   title: '正在上传...',
+          //   icon: 'loading',
+          //   mask: true,
+          //   duration: 10000
+          // });
+          for (var i = 0; i < tempFilePaths.length; i++) {
+            pics.push(tempFilePaths[i]);
+          }
+          var num = tempFilePaths.length - 1
+          if (tempFilePaths.length > 0) {
+            that.setData({
+              showon2: true,
+              showpic2: tempFilePaths[num]
+            })
+          } else {
+            that.setData({
+              showon2: false,
+              showpic2: '/images/add_a_photo-material.png'
+            })
+          }
+
+          console.log(pics);
+          that.setData({
+            pics2: pics
+          })
+        },
+      });
+    } else {
+      wx.showToast({
+        title: '最多上传3张图片',
+        icon: 'none',
+        duration: 3000
+      });
+    }
+  },
+  //上传图片开始
+  chooseImg3: function (e) {
+    var that = this,
+      pics = this.data.pics1;
+    console.log(pics);
+    if (pics.length < 3) {
+      wx.chooseImage({
+        count: 3, // 最多可以选择的图片张数，默认9
+        sizeType: ['original', 'compressed'], // original 原图，compressed 压缩图，默认二者都有
+        sourceType: ['album', 'camera'], // album 从相册选图，camera 使用相机，默认二者都有
+        success: function (res) {
+          // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+          var tempFilePaths = res.tempFilePaths;
+          // wx.showToast({
+          //   title: '正在上传...',
+          //   icon: 'loading',
+          //   mask: true,
+          //   duration: 10000
+          // });
+          for (var i = 0; i < tempFilePaths.length; i++) {
+            pics.push(tempFilePaths[i]);
+          }
+          var num = tempFilePaths.length - 1
+          if (tempFilePaths.length > 0) {
+            that.setData({
+              showon: true,
+              showpic: tempFilePaths[num]
+            })
+          } else {
+            that.setData({
+              showon: false,
+              showpic: '/images/add_a_photo-material.png'
+            })
+          }
+
+          console.log(pics);
+          that.setData({
+            pics: pics
+          })
+        },
+      });
+    } else {
+      wx.showToast({
+        title: '最多上传3张图片',
+        icon: 'none',
+        duration: 3000
+      });
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */

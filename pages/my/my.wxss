@@ -8,7 +8,8 @@
 .myTips.data-v-6764498b {
   position: relative;
   width: 100%;
-  padding: 30rpx 30rpx;
+  padding-top: 0rpx;
+  box-sizing: border-box;
 }
 .peo-icon.data-v-6764498b {
   width: 20rpx;
@@ -44,6 +45,15 @@
   font-weight: 400;
   color: rgba(131, 145, 168, 1);
   display: block;
+  margin-top: 12rpx;
+}
+.line {
+  width: 690rpx;
+  margin: auto;
+  height: 1rpx;margin-top: 1rpx;
+  margin-bottom: 1rpx;
+  background: rgba(221, 221, 221, 1);
+  transform: rotateZ(360deg);
 }
 .peoplePage.data-v-6764498b {
   position: absolute;
