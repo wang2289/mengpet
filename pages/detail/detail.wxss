@@ -146,6 +146,7 @@
 .heath-tip {
   display: flex;
   flex-direction: row;
+  flex-wrap:wrap;
 }
 
 .heath-onetip {

@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/my/my",
+   
     "pages/index/index",
     "pages/wenjuan/wenjuan",
     "pages/searchpet/searchpet",
@@ -14,6 +14,7 @@
     "pages/sendinfor/sendinfor",
     "pages/mysong/mysong",
     "pages/infor/infor",
+    "pages/my/my",
     "pages/searchcity/searchcity",
     "pages/detail/detail",
     "pages/getapply/getapply",
