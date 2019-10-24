@@ -1,19 +1,28 @@
+import {
+  Config
+} from '../../utils/config.js'
 // pages/book/book.js
 import {BookModel} from '../../models/book.js'
 import {random} from '../../utils/util.js'
-let bookModel = new BookModel()
+// let bookModel = new BookModel()
+let app = getApp();
+import {
+  requestsend,
+  requesttoken
+} from '../../utils/util.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    modify: false,
     searchPanel:false,
     books:Object,
-    radio1:"1",
+    radio1: "0",
     radio2: true,
     radio3: true,
-    radio4: "1",
+    radio4: "0",
     radio5: true,
     radio6: true,
     more:false,
@@ -84,29 +93,59 @@ Page({
   },
   onSave: function () {
     var parms = {
-      name: this.data.name,
+      nickName: this.data.name,
       sex: this.data.radio1,
-      weixing: this.data.weixing,
-      shouji: this.data.shouji,
-      diqu: this.data.diqu,
-      zhiye: this.data.zhiye,
-      weigong: this.data.radio2,
-      phonegong: this.data.radio3,
-      ages: this.data.radio4,
-      diqugong: this.data.radio5,
-      zhiyegong: this.data.radio6,
+      wechat: this.data.weixing,
+      phoneNumber: this.data.shouji,
+      age: this.data.radio4,
+      area: this.data.diqu,
+      profession: this.data.zhiye,
+      wechatP: this.data.radio2 ? 1 : 0,
+      phoneNumberP: this.data.radio3 ? 1 : 0,
+      areaP: this.data.radio5 ? 1 : 0,
+      professionP: this.data.radio6 ? 1 : 0,
     };
     console.log(parms);
+
+    requesttoken('/user/updateUserInfo', "GET",
+      parms, function (res) {
+        console.log(res);
+        if (res.success) {
+
+        }
+      })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    bookModel.getHotList((data)=>{
+    var that = this;
+    let type = options.type;
+    if(type == 'show') {
       this.setData({
-        books:data
-      })
-    })
+        modify: true
+      });
+      requesttoken('/user/getMyInfo', "GET",
+        {}, function (res) {
+          console.log(res);
+          if (res.success) {
+            that.setData({
+              radio1: res.data.sex + '',
+              radio2: res.data.wechatP == 1 ? true : false,
+              radio3: res.data.phoneNumberP == 1 ? true : false,
+              radio4: res.data.age + '',
+              radio5: res.data.areaP == 1 ? true : false,
+              radio6: res.data.professionP == 1 ? true : false,
+              name: res.data.nickName,
+              weixing: res.data.wechat,
+              shouji: res.data.phoneNumber,
+              diqu: res.data.area,
+              zhiye: res.data.profession
+            })
+          }
+        })
+    }
+    
   },
 
   onActivateSearch:function(event){

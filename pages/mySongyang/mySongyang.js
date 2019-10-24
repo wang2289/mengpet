@@ -1,3 +1,11 @@
+import {
+  Config
+} from '../../utils/config.js'
+let app = getApp();
+import {
+  requestsend,
+  requesttoken
+} from '../../utils/util.js'
 Page({
 
   /**
@@ -15,7 +23,7 @@ Page({
       weixin: 'asffsgf',
       date: '2019.03.02',
       age: '1岁1个月',
-      newname: '橘猫',
+      color: '橘猫',
       view: 20
     }, {
       id: '1',
@@ -26,7 +34,7 @@ Page({
       weixin: 'asffsgf',
       date: '2019.03.02',
       age: '1岁1个月',
-      newname: '橘猫',
+      color: '橘猫',
       view: 20
     }],
 
@@ -39,7 +47,7 @@ Page({
       weixin: 'asffsgf',
       date: '2019.03.02',
       age: '1岁1个月',
-      newName: '橘猫'
+      color: '橘猫'
     }, {
       id: '1',
       image: 'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
@@ -70,7 +78,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    requesttoken('/pets/getPetsByUserIdAndStatus', "GET",
+      { "page": 1, "size": 10, "status": 1}, function (res) {
+        console.log(res);
+        if (res.success) {
+          var list = res.data.list;
+          var pets = [];
+          for (let l in list) {
+            var temp = {};
+            temp.id = list[l].id;
+            temp.name = list[l].nameCn;
+            temp.age = list[l].age;
+            temp.color = list[l].color;
+            temp.view = list[l].view;
+            temp.sex = list[l].sex;
+            temp.image = Config.imgPath + "/" + list[l].photosId
+            pets.push(temp);
+          }
+          console.log(pets);
+        that.setData({
+          catsList: pets
+        });
+        }
+      })
   },
 
   /**

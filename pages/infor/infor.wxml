@@ -1,13 +1,13 @@
 <view class='container'>
-  <view class='tips'>首次送养需完善您的个人信息，请如实填写。</view>
+  <view wx:if="{{!modify}}" class='tips'>首次送养需完善您的个人信息，请如实填写。</view>
   <view class="own-info-item">
     <van-field value="{{ name }}" bind:change="onChangename" border="{{ false }}" clearable label="姓名:" placeholder="请填写您的真实姓名" />
   </view>
   <view class='line'></view>
   <view class="own-info-item info-center">
     <van-radio-group class='xingbie' value="{{ radio1 }}" bind:change="onChange1">
-      <van-radio name="1">先生</van-radio>
-      <van-radio name="2">女士</van-radio>
+      <van-radio name="0">先生</van-radio>
+      <van-radio name="1">女士</van-radio>
     </van-radio-group>
   </view>
   <view class='line'></view>
@@ -26,11 +26,11 @@
       <text>年龄:  </text>
     </view>
     <van-radio-group class='nian' value="{{ radio4 }}" bind:change="onChange4">
-      <van-radio name="1">60后</van-radio>
-      <van-radio name="2">70后</van-radio>
-      <van-radio name="3">80后</van-radio>
-      <van-radio name="4">90后</van-radio>
-      <van-radio name="5">00后</van-radio>
+      <van-radio name="0">60后</van-radio>
+      <van-radio name="1">70后</van-radio>
+      <van-radio name="2">80后</van-radio>
+      <van-radio name="3">90后</van-radio>
+      <van-radio name="4">00后</van-radio>
     </van-radio-group>
   </view>
   <view class='line'></view>
