@@ -1,67 +1,65 @@
 <view class='container'>
-<view wx:if="{{!searchPanel}}" class="container">
-   <view class="header">
-    <view class='city' bind:tap="onCitySearch">上海 <image src="/images/right-anticon.png" /></view>
-    <view class='box' bind:tap="onActivateSearch">
-      <image src="/images/serch.png" />
-      <text>搜索</text>
-    </view> 
-  </view> 
-  <view class='sw-con'>
-   <swiper
-  indicator-dots="{{indicatorDots}}"
-  autoplay="{{autoplay}}"
-  interval="{{interval}}"
-  duration="{{duration}}"
-  circular="true"
-  next-margin="60rpx"
->
-  <block wx:for="{{imgUrls}}" wx:key="{{id}}">
-    <swiper-item>
-      <image src="{{item.url}}" class="slide-image" width="660" height="330" />
-    </swiper-item>
-  </block>
-</swiper>
-</view>
-
-<view class='sub-title'>带我回家</view>
-  <!-- <choise-cmp  class='choise' /> -->
-  <view class='choise-container' bind:tap='onPetSearch'>
-  <view class='choise-left'>
-    <view class='choise-btn'>综合排序
-      <image src='/images/right-anticon(2).png'></image>
+  <view wx:if="{{!searchPanel}}" class="container">
+    <view class="header">
+      <view class='city' bind:tap="onCitySearch">上海
+        <image src="/images/right-anticon.png" />
+      </view>
+      <view class='box' bind:tap="onActivateSearch">
+        <image src="/images/serch.png" />
+        <text>搜索</text>
+      </view>
     </view>
-    <view class='choise-btn choise-btn2'>类别
-      <image src='/images/right-anticon(2).png'></image>
+    <view class='sw-con'>
+      <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true" next-margin="60rpx">
+        <block wx:for="{{imgUrls}}" wx:key="{{id}}">
+          <swiper-item>
+            <image src="{{item.url}}" class="slide-image" width="660" height="330" />
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+
+    <view class='sub-title'>带我回家</view>
+    <!-- <choise-cmp  class='choise' /> -->
+    <view class='choise-container' bind:tap='onPetSearch'>
+      <view class='choise-left'>
+        <view class='choise-btn'>综合排序
+          <image src='/images/right-anticon(2).png'></image>
+        </view>
+        <view class='choise-btn choise-btn2'>类别
+          <image src='/images/right-anticon(2).png'></image>
+        </view>
+      </view>
+      <view class='choise-right'>
+        <image bind:tap="onTap" src="/images/appstore-o-anticon.png"></image>
+        <view class='shu'></view>
+        <view class='choise-btn choise-btn3' bind:tap="onChoise">筛选
+          <image src='/images/filter-anticon.png'></image>
+        </view>
+      </view>
+    </view>
+
+    <view class="sub-container">
+      <view class="animal-container">
+        <block wx:for="{{pets}}" wx:key="{{id}}">
+          <pet-cmp pet="{{item}}" class="pets" />
+        </block>
+      </view>
     </view>
   </view>
-  <view class='choise-right'>
-    <image bind:tap="onTap" src="/images/appstore-o-anticon.png"></image>
-    <view class='shu'></view>
-    <view class='choise-btn choise-btn3' bind:tap="onChoise">筛选
-      <image src='/images/filter-anticon.png'></image>
-    </view>
-  </view>
+  <search-cmp more="{{more}}" wx:if="{{searchPanel}}" bind:cancel="onCancel" />
 </view>
 
-<view class="sub-container">
-    <view class="animal-container">
-      <block wx:for="{{pets}}" wx:key="{{id}}">
-        <pet-cmp pet="{{item}}" class="pets" />
-      </block>
-    </view>
-  </view> 
-</view>
-<search-cmp more="{{more}}" wx:if="{{searchPanel}}" bind:cancel="onCancel" />  
-</view>
-
-<view class='meng'  hidden='{{isshow}}'>
+<view class='meng' hidden='{{isshow}}'>
   <view class='mengbox'>
-    <view class='mengtitle'>温馨提示：为更好地为您提供服务，请点击授权！</view>
+    <view class='mengtitle'>
+      <view class="mengtitle1">欢迎登陆爪盟星，愿您能在这里遇见一生相伴的TA！</view>
+      <view class="mengtitle2">登陆/使用即代表您同意用户协议</view>
+    </view>
     <view class='mengbom'>
-     <aut-btn-cmp  open-type="getUserInfo" class="avatar-position" bind:getuserinfo="onGetUserInfo">
-    <view slot="img" class='sub'> 授权 </view>
-  </aut-btn-cmp>
+      <aut-btn-cmp open-type="getUserInfo" class="avatar-position" bind:getuserinfo="onGetUserInfo">
+        <view slot="img" class='sub'> 微信登录 </view>
+      </aut-btn-cmp>
     </view>
   </view>
 </view>

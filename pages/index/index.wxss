@@ -151,7 +151,22 @@ margin: 0 8rpx 0rpx 8rpx;
   font-weight: 400;
   color: rgba(51, 62, 82, 1);
   margin-bottom: 89rpx;
+  text-align: left;
+}
+.mengtitle1{
+  font-size: 34rpx;
+  font-family: PingFangSC-Regular;
+  font-weight:700;
+  text-align: left;
+  color: rgb(102, 95, 95);
+}
+.mengtitle2{
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight:400;
   text-align: center;
+  margin-top: 15rpx;
+ color: rgba(90, 175, 224, 1);
 }
 .mengbom{
  
@@ -179,7 +194,14 @@ margin: 0 8rpx 0rpx 8rpx;
   font-size: 28rpx;
   font-family: PingFangSC-Regular;
   font-weight: 400;
-  color: rgba(90, 175, 224, 1);
+  color: #fff;
+
+  width: 500rpx;
+height: 70rpx;
+line-height: 70rpx;
+background: rgba(90, 175, 224, 1);
+border-radius: 5rpx;
+
 }
 .sub button{
 font-size: 28rpx;

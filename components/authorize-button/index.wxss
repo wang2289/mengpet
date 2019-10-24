@@ -5,6 +5,11 @@
   /* display: flex; */
   padding: 0 !important;
   border:none !important;
+  width: 500rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  background:rgba(90, 175, 224, 1) ;
+  border-radius: 5rpx;
   /* display: inline !important; */
 }
 
