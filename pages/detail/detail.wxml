@@ -22,17 +22,11 @@
       <view wx:if="{{pet.yimiao == 2}}" class='heath-onetip'>疫苗中</view>
       <view wx:if="{{pet.jueyu == 0}}" class='heath-onetip'>未绝育</view>
       <view wx:if="{{pet.jueyu == 1}}" class='heath-onetip'>已绝育</view>
-      <!-- <view class='heath-onetip'>已驱虫</view>
-      <view class='heath-onetip'>已驱虫</view>
-      <view class='heath-onetip'>已驱虫</view> -->
     </view>
     <text class="headline">我的特点</text>
     <view class='heath-tip'>
       <view wx:for="{{pet.color}}" class='heath-twotip' wx:for-index="key" wx:for-item="color">{{color}}</view>
       <view wx:for="{{pet.feature}}" class='heath-twotip' wx:for-index="key" wx:for-item="feature">{{feature}}</view>
-      <!-- <view class='heath-twotip'>已驱虫</view>
-      <view class='heath-twotip'>已驱虫</view>
-      <view class='heath-twotip'>已驱虫</view> -->
     </view>
     <text class="headline">我的故事</text>
     <view class='gushi'>
@@ -61,12 +55,12 @@
       <view class='jubao'>
         <image class='peo-icon' src="/images/exclamation-circle-o-anticon.png"></image>举报</view>
     </view>
-    <text class="headline">猜你喜欢</text>
+    <!-- <text class="headline">猜你喜欢</text>
     <view class="animal-container">
       <block wx:for="{{pets}}" wx:key="{{id}}">
         <petlist-cmp pet="{{item}}" class="petlist" />
       </block>
-    </view>
+    </view> -->
   </view>
 </view>
 <view class='sub-btns'>
