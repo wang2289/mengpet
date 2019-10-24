@@ -173,7 +173,8 @@
   font-weight: 400;
   color: rgba(90, 175, 224, 1);
   padding: 10rpx 30rpx;
-  margin-left: 20rpx;
+  margin-right: 20rpx;
+   margin-bottom: 30rpx;
 }
 
 .heath-onetip:first-child {
