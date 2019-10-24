@@ -162,7 +162,6 @@
   padding: 10rpx 30rpx;
   margin-left: 20rpx;
 }
-
 .heath-twotip {
   height: 33rpx;
   line-height: 33rpx;
