@@ -52,8 +52,11 @@
   margin: auto;
   height: 1rpx;margin-top: 1rpx;
   margin-bottom: 1rpx;
-  background: rgba(221, 221, 221, 1);
+  background: #E6EAEF;
   transform: rotateZ(360deg);
+}
+van-icon{
+  vertical-align: -3rpx;
 }
 .peoplePage.data-v-6764498b {
   position: absolute;

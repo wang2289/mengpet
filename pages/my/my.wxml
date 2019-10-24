@@ -9,7 +9,8 @@
       <label class="_span data-v-6764498b peopleid">ID: {{user.userId}}</label>
     </view>
     <label class="_span data-v-6764498b peoplePage" bindtap="viewPersonalPages" data-eventid="{{'0'}}" data-comkey="{{$k}}">个人主页
-      <image class="_img data-v-6764498b peo-icon" src="/static/images/Group 2@2x.png"></image>
+      <!-- <image class="_img data-v-6764498b peo-icon" src="/static/images/Group 2@2x.png"></image> -->
+      <van-icon name="arrow" />
     </label>
   </view>
   <view class="_div data-v-6764498b myTips">
