@@ -242,7 +242,10 @@ Page({
       parms, function (res) {
         console.log(res);
         if (res.success) {
-
+          wx.showToast({
+            title: `保存成功！`,
+            icon: "none"
+          })
         }
       })
   },

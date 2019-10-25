@@ -106,12 +106,49 @@ Page({
       professionP: this.data.radio6 ? 1 : 0,
     };
     console.log(parms);
-
+    if (!parms.nickName) {
+      wx.showToast({
+        title: `请填写姓名！`,
+        icon: "none"
+      })
+      return;
+    }
+    if (!parms.wechat) {
+      wx.showToast({
+        title: `请填写微信号！`,
+        icon: "none"
+      })
+      return;
+    }
+    if (!parms.phoneNumber) {
+      wx.showToast({
+        title: `请填写手机号！`,
+        icon: "none"
+      })
+      return;
+    }
+    if (!parms.area) {
+      wx.showToast({
+        title: `请填写地区！`,
+        icon: "none"
+      })
+      return;
+    }
+    if (!parms.profession) {
+      wx.showToast({
+        title: `请填写职业！`,
+        icon: "none"
+      })
+      return;
+    } 
     requesttoken('/user/updateUserInfo', "GET",
       parms, function (res) {
         console.log(res);
         if (res.success) {
-
+          wx.showToast({
+            title: `保存成功！`,
+            icon: "none"
+          })
         }
       })
   },

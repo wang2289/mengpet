@@ -64,9 +64,14 @@
   </view>
 </view>
 <view class='sub-btns'>
-  <view class='btn-s'><image class='btn-icon' src="/images/star-o-anticon.png"></image></view>
-  <view class='btn-z'> <image class='btn-icon2' src="/images/export-anticon.png"></image></view>
+  <view class='btn-s' bindtap='onCollect'>
+    <image class='btn-icon' src="{{isCollect?'/images/star-o-anticon.png':'/images/star-o-anticon.png'}}"></image>
+  </view>
+  <view class='btn-z'>
+    <button data-id="shareBtn"plain="true"  class="sharebtn" open-type="share"> </button>
+    <image class='btn-icon2' src="/images/export-anticon.png"></image>
+  </view>
 </view>
 <view class='sub-btn'>
-  <view class='btns'bind:tap="onTap" >申请收养</view>
+  <view class='btns' bind:tap="onTap">申请收养</view>
 </view>

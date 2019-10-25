@@ -32,6 +32,7 @@ Page({
     noComment: true,
     posting: false,
     like: false,
+    isCollect:false,
     count: 0
   },
 
@@ -181,7 +182,12 @@ Page({
       url: '../../pages/infor/infor' ,
     })
   },
-  
+  onCollect: function () {
+    this.setData({
+      isCollect: !this.data.isCollect
+    })
+
+  },
   onShareAppMessage() {
 
   }
