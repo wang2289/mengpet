@@ -1,6 +1,6 @@
 {
   "pages": [
-   
+   "pages/sendinfor/sendinfor",
     "pages/index/index",
     "pages/wenjuan/wenjuan",
     "pages/searchpet/searchpet",
@@ -11,7 +11,7 @@
     "pages/myCollect/myCollect",
     "pages/myReceiveApply/myReceiveApply",
     "pages/mySongyang/mySongyang",
-    "pages/sendinfor/sendinfor",
+    
     "pages/mysong/mysong",
     "pages/infor/infor",
     "pages/my/my",

@@ -198,9 +198,58 @@ Page({
       feature: featureselidstr,
       photoId: photoIdStr
     };
-    
     console.log(parms)
-
+    
+    if (!parms.photoId) {
+      wx.showToast({
+        title: `请上传宠物图片！`,
+        icon: "none"
+      })
+      return;
+    } 
+    if (!parms.nameCn) {
+      wx.showToast({
+        title: `请填写宠物昵称！`,
+        icon: "none"
+      })
+      return;
+    } 
+    if (!parms.age) {
+      wx.showToast({
+        title: `请填写宠物年龄！`,
+        icon: "none"
+      })
+      return;
+    } 
+    if (!parms.area) {
+      wx.showToast({
+        title: `请填写宠物地区！`,
+        icon: "none"
+      })
+      return;
+    } 
+    if (!parms.desc) {
+      wx.showToast({
+        title: `请填写宠物故事！`,
+        icon: "none"
+      })
+      return;
+    } 
+    if (!parms.color) {
+      wx.showToast({
+        title: `请选择宠物花色！`,
+        icon: "none"
+      })
+      return;
+    } 
+    if (!parms.feature) {
+      wx.showToast({
+        title: `请选择宠物特点！`,
+        icon: "none"
+      })
+      return;
+    } 
+  
     requesttoken('/pets/uploadPetInfoNoImg', "GET",
       parms, function (res) {
         console.log(res);
