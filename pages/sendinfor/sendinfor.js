@@ -146,17 +146,6 @@ Page({
   Finish: function() {
     var picsData = this.data.pics
     var photoIdStr = "";
-    // for (var i = 0; i < picsData.length; i++) {
-    //   requestpic('/pets/uploadImg', "POST",
-    //     picsData[i], undefined, function (res) {
-    //       console.log(res.data.id)
-    //       photoIdStr = res.data.id + "#";
-    //       console.log(photoIdStr)
-    //     });
-    // }
-    // if (photoIdStr.substring(photoIdStr.length) == "#") {
-    //   photoIdStr = photoIdStr.substring(0, photoIdStr);
-    // }
     for (let l in this.data.photoIds) {
       photoIdStr += this.data.photoIds[l];
       if (l < this.data.photoIds.length - 1) {
@@ -182,7 +171,6 @@ Page({
     }
 
     var parms = {
-      userId: app.globalData.userId,
       nameCn: this.data.name,
       type: this.data.radio0,
       sex: this.data.radio1,

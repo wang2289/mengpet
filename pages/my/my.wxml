@@ -27,7 +27,7 @@
     </van-cell-group>
     <view class="line"></view>
     <van-cell-group class="_van-cell-group data-v-6764498b"border="{{false}}">
-      <van-cell size="large" title="我的资料" border="{{false}}" is-link link-type="navigateTo" url="/pages/myInfo/myInfo" class="_van-cell data-v-6764498b"></van-cell>
+      <van-cell size="large" title="我的资料" border="{{false}}" is-link link-type="navigateTo" url="/pages/infor/infor?type=show" class="_van-cell data-v-6764498b"></van-cell>
       <van-cell size="large" title="我的答卷"border="{{false}}" is-link link-type="navigateTo" url="/pages/index/index" class="_van-cell data-v-6764498b"></van-cell>
     </van-cell-group>
     <view class="line"></view>

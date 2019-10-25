@@ -1,6 +1,6 @@
 {
   "pages": [
-   "pages/sendinfor/sendinfor",
+    
     "pages/index/index",
     "pages/wenjuan/wenjuan",
     "pages/searchpet/searchpet",
@@ -11,7 +11,7 @@
     "pages/myCollect/myCollect",
     "pages/myReceiveApply/myReceiveApply",
     "pages/mySongyang/mySongyang",
-    
+    "pages/sendinfor/sendinfor",
     "pages/mysong/mysong",
     "pages/infor/infor",
     "pages/my/my",
@@ -39,24 +39,14 @@
         "iconPath": "/images/CombinedShape.png",
         "text": "领养"
       },
-      {
-        "pagePath": "pages/index/index",
-        "selectedIconPath": "/images/Disc-simple-line-icons.png",
-        "iconPath": "/images/Disc-simple-line-icons.png",
-        "text": "资讯"
-      },
+      
       {
         "pagePath": "pages/sendinfor/sendinfor",
         "selectedIconPath": "/images/Group13.png",
         "iconPath": "/images/Group13.png",
         "text": "发布"
       },
-      {
-        "pagePath": "pages/index/index",
-        "selectedIconPath": "/images/message-anticon.png",
-        "iconPath": "/images/message-anticon.png",
-        "text": "消息"
-      },
+      
       {
         "pagePath": "pages/my/my",
         "selectedIconPath": "/images/Group.png",
