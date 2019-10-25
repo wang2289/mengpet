@@ -1,0 +1,196 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.pic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 60rpx;
+}
+
+.pic-box {
+  width: 180rpx;
+  height: 180rpx;
+  border: 1px solid rgba(186, 196, 209, 1);
+  border-radius: 8rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60rpx;
+}
+
+.pic-img {
+  width: 60rpx;
+  height: 60rpx;
+}
+.pic-img.on {
+  width: 180rpx;
+  height: 180rpx;
+}
+.pic-icon{
+  width: 16rpx;
+  height: 16rpx;
+  margin-top: 16rpx;
+}
+.own-info-item {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 30rpx;
+}
+
+.info-name {
+  margin-left: 30rpx;
+  width: 144rpx;
+}
+.info-name text{
+  font-size:28rpx;
+}
+.line {
+  width: 690rpx;
+  height: 1rpx;
+  background: #eee;
+  margin-left: 30rpx;
+  transform: rotateZ(360deg)
+}
+.linenew{
+  width: 690rpx;
+  height: 1rpx;
+  background: #eee;
+  transform: rotateZ(360deg)
+}
+van-field{
+   width: 100%;
+}
+.mesg{
+  width: 690rpx;
+  min-height: 300rpx !important;
+}
+.info-center {
+  align-items: center;
+  justify-content: center;
+}
+
+.info-center .radio:nth-child(2) {
+  margin-left: 60rpx;
+}
+
+.radio {
+  font-size: 28rpx;
+}
+
+.sub-btn {
+  flex-direction: column;
+  align-items: center;
+  /* width:690rpx; */
+  background-color: #fff;
+  width: 100%;
+  height: 120rpx;
+  box-sizing: border-box;
+  padding: 16rpx 20rpx;
+  z-index: 999;
+}
+
+.btns {
+  width: 690rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 48px;
+  background: rgba(90, 175, 224, 1);
+  border-radius: 16rpx;
+}
+
+.age {
+  margin-left: 25rpx;
+}
+
+.add {
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(51, 62, 82, 1);
+  padding-top: 16rpx;
+}
+
+.add text {
+  font-size: 22rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(131, 145, 168, 1);
+}
+
+.titles {
+  width: 100%;
+  text-align: left;
+  font-size: 34rpx;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: #333E52;
+  padding-left: 30rpx;
+  box-sizing: border-box;
+}
+.topmin{
+  margin-top: 60rpx;
+  margin-bottom: 30rpx;
+}
+.section{
+width: 100%;
+}
+textarea{
+  margin-top: 20rpx;
+  box-sizing: border-box;
+}
+.con-box{
+  text-align: left;
+  padding: 0 30rpx;
+  overflow: hidden;
+}
+.btns2{
+  text-align: center;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: #8391A8;
+  font-size:26rpx;
+  background:rgba(242,245,250,1);
+  border-radius: 16rpx;
+  padding: 12rpx 30rpx;
+  margin: 0rpx 20rpx 30rpx 0rpx;
+  float: left;
+}
+.btns2.active{
+  background:rgba(90, 175, 224, 1);
+  color: #fff;
+}
+van-radio-group{
+  display: flex;
+  flex-direction: row;
+}
+.chongwu{
+  padding: 10rpx 0rpx;
+}
+.xingbie van-radio:last-child{
+  margin: 0 60rpx;
+}
+.quchong van-radio:last-child{
+  margin: 0 40rpx;
+}
+.jue van-radio:last-child{
+  margin: 0 40rpx;
+}
+.yimiao van-radio:nth-child(2){
+  margin: 0 40rpx;
+}
+van-cell-group{
+  width: 100%;
+}

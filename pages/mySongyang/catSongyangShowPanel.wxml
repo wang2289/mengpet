@@ -6,18 +6,18 @@
         <view class="_div data-v-2bd272d3 nametitle">{{pet.name}}</view>
         <image src="/static/images/man - anticon.png" class="_img data-v-2bd272d3"></image>
       </view>
-      <view class="_div data-v-2bd272d3 lingyangName"><label class="_span data-v-2bd272d3 lingyangNametitle">领养人：{{pet.lingyangName}}</label></view>
+      <view class="_div data-v-2bd272d3 lingyangName"><label class="_span data-v-2bd272d3 lingyangNametitle">领养人：{{pet.nickName}}</label></view>
     </view>
     <view class="_div data-v-2bd272d3 moretip">
       <view class="_div data-v-2bd272d3 phone">
         <image src="/static/images/detail/smartphone - material.png" class="_img data-v-2bd272d3"></image>
-        <view class="_div data-v-2bd272d3 phonetitle">{{pet.phone}}</view>
+        <view class="_div data-v-2bd272d3 phonetitle">{{pet.phoneNumber}}</view>
       </view>
       <view class="_div data-v-2bd272d3 weixin">
         <image src="/static/images/detail/weixin.png" class="_img data-v-2bd272d3"></image>
-        <view class="_div data-v-2bd272d3 weixintitle">{{pet.weixin}}</view>
+        <view class="_div data-v-2bd272d3 weixintitle">{{pet.wechat}}</view>
       </view>
     </view>
-    <view class="_div data-v-2bd272d3 date">{{pet.date}}</view>
+    <view class="_div data-v-2bd272d3 date">{{pet.adoptTime}}</view>
   </view>
 </view>

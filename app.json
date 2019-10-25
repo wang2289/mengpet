@@ -12,6 +12,7 @@
     "pages/myReceiveApply/myReceiveApply",
     "pages/mySongyang/mySongyang",
     "pages/sendinfor/sendinfor",
+    "pages/sendinforModify/sendinforModify",
     "pages/mysong/mysong",
     "pages/infor/infor",
     "pages/my/my",
