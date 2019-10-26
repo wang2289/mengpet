@@ -13,7 +13,7 @@
   <view class="_div data-v-4d8e3f81 songyangList">
     <view wx:if="{{index == 0}}" class="_div data-v-4d8e3f81 animal-container">
       <view wx:key="index" key="{{index}}" wx:for="{{catsListOn}}" wx:for-index="index" wx:for-item="pet" class="_div data-v-4d8e3f81">
-      <include src="catSongyangEditPanel.wxml" data="{{operateType='off'}}"/>
+      <include src="catSongyangEditPanel.wxml"/>
       </view>
     </view>
     <view wx:if="{{index == 1}}" class="_div data-v-4d8e3f81 animal-container">

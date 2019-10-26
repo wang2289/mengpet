@@ -18,7 +18,7 @@
       <image src="/static/images/Eye - simple-line-icons.png" class="_img data-v-b0ae0334"></image>{{pet.view}}
     </view>
     <view class="_div data-v-b0ae0334 btn-class">
-      <van-button class="_van-button data-v-b0ae0334 btns" type="default" size="small" bindtap="modify" data-petId="{{pet.id}}">编辑</van-button>
+      <van-button class="_van-button data-v-b0ae0334 btns" type="default" size="small" bindtap="modify" data-petId="{{pet.id}}" data-status="{{pet.status}}">编辑</van-button>
       <van-button wx:if="{{pet.status == 1}}" class="_van-button data-v-b0ae0334 btns" type="default" size="small" bindtap="remove" data-petId="{{pet.id}}">下架</van-button>
       <van-button wx:if="{{pet.status == 3}}" class="_van-button data-v-b0ae0334 btns" type="default" size="small" bindtap="putAway" data-petId="{{pet.id}}">上架</van-button>
       <van-button wx:if="{{pet.status == 1}}" class="_van-button data-v-b0ae0334 btns" type="default" size="small" bindtap="share" data-petId="{{pet.id}}">分享</van-button>

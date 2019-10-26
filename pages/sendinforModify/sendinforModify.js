@@ -153,7 +153,6 @@ Page({
         photoIdStr += "#";
       } 
     }
-    console.log(photoIdStr)
 
     var colorselidstr = ""
     for (let l in this.data.colorselectid) {
@@ -172,6 +171,7 @@ Page({
     }
 
     var parms = {
+      id: this.data.bid,
       nameCn: this.data.name,
       type: this.data.radio0,
       sex: this.data.radio1,
@@ -239,13 +239,30 @@ Page({
       return;
     } 
   
-    requesttoken('/pets/updataPetInfoNoImg', "GET",
-      parms, function (res) {
-        console.log(res);
-        if (res.success) {
+    Dialog.confirm({
+      title: '提示',
+      message: '确认修改宠物信息吗'
+    }).then(() => {
+      requesttoken('/pets/updataPetInfoNoImg', "GET",
+        parms, function (res) {
+          console.log(res);
+          if (res.success) {
+            wx.showToast({
+              title: `保存成功！`,
+              icon: "none",
+              mask: true,
+              duration: 1000
+            })
+            wx.navigateBack({
+              delta:1
+            })
+          }
+        })
+    }).catch(() => {
 
-        }
-      })
+    });
+
+    
   },
   remove: function(array, val) {
     for (var i = 0; i < array.length; i++) {
@@ -318,17 +335,19 @@ Page({
     var that = this;
 
     let bid = options.bid;
-    console.log(bid);
+    let status = options.status;
     if (bid > 0) {
-      requesttoken('/pets/getPetDetail', 'GET',
-        { "petId": bid }, function (res) {
+      requesttoken('/pets/getPetDetailInfoByIdAndStatus', 'GET',
+        { "petId": bid , "status": status}, function (res) {
           console.log(res);
           var pickerList = res.data.pickerList       
           var createTime = res.data.photoList[0].createTime;
           var createDate = createTime.substring(0, 10);
-          var imagePath = Config.imgPath + "/" + createDate + "/" + res.data.photoList[0].path
-
+          var imagePath = Config.imgPath + "/" + createDate + "/" + res.data.photoList[0].path;
+          var photosIdTemp = res.data.photosId.split("#");
+      
           that.setData({
+            bid: bid,
             radio0: res.data.type + '',
             name: res.data.nameCn,
             radio1: res.data.sex + '',
@@ -338,7 +357,7 @@ Page({
             radio2: res.data.quchong + '',
             radio3: res.data.yimiao + '',
             radio4: res.data.jueyu + '',
-            photoIdStr: res.data.photoId,
+            photoIds: photosIdTemp,
             showon: true,
             showpic: imagePath
           })

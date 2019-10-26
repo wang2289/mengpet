@@ -109,16 +109,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.refreshPetInfo(1,10,1,0);
-    this.refreshPetInfo(1,10,3,2);
-    this.refreshPetSong(1,10,2);
+    
   },
 
   modify: function (event) {
     var petId = event.currentTarget.dataset.petid;
+    var status = event.currentTarget.dataset.status;
     console.log(petId);
     wx.navigateTo({
-      url: '/pages/sendinforModify/sendinforModify?bid=' + petId,
+      url: '/pages/sendinforModify/sendinforModify?bid=' + petId + '&status=' + status,
     })
   },
 
@@ -197,7 +196,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.refreshPetInfo(1, 10, 1, 0);
+    this.refreshPetInfo(1, 10, 3, 2);
+    this.refreshPetSong(1, 10, 2);
   },
 
   /**
