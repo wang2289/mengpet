@@ -98,9 +98,17 @@ Page({
     });
   },
   onChange0(event) {
+    
     this.setData({
-      radio0: event.detail
+      radio0: event.detail,
+      featurechoice: [],
+      featureselectid: [],
+      feature: [],
+      colorchoice: [],
+      colorselectid: [],
+      color: []
     });
+    this.changeTips(event.detail);
   },
   onChange1(event) {
     // console.log(event.detail);
@@ -345,7 +353,7 @@ Page({
           var createDate = createTime.substring(0, 10);
           var imagePath = Config.imgPath + "/" + createDate + "/" + res.data.photoList[0].path;
           var photosIdTemp = res.data.photosId.split("#");
-      
+          var tempType = res.data.type;
           that.setData({
             bid: bid,
             radio0: res.data.type + '',
@@ -363,9 +371,21 @@ Page({
           })
 
           requestsend('/util/getPickerPetUpload', "GET",
-            { "type": 0, "key": 0 }, function (res) {
-              var temp = res.data.dogColor;
-              var coloridstemp = res.data.dogColorId
+            { "type": tempType, "key": 0 }, function (res) {
+              var temp = [];
+              if (tempType == 0) {
+                temp = res.data.dogColor;
+              } else if (tempType == 1) {
+                temp = res.data.catColor;
+              }
+
+              var coloridstemp = [];
+              if (tempType == 0) {
+                coloridstemp = res.data.dogColorId;
+              } else if (tempType == 1) {
+                coloridstemp = res.data.catColorId;
+              }
+              
               var colorData = [];
               var colorselectidTemp = [];
               for (var i = 0; i < temp.length; i++) {
@@ -386,9 +406,21 @@ Page({
               })
             });
           requestsend('/util/getPickerPetUpload', "GET",
-            { "type": 0, "key": 1 }, function (res) {
-              var temp = res.data.dogFeature;
-              var featureidstemp = res.data.dogFeatureId
+            { "type": tempType, "key": 1 }, function (res) {
+              var temp = [];
+              if (tempType == 0) {
+                temp = res.data.dogFeature;
+              } else if (tempType == 1) {
+                temp = res.data.catFeature;
+              }
+
+              var featureidstemp = []
+              if (tempType == 0) {
+                featureidstemp = res.data.dogFeatureId;
+              } else if (tempType == 1) {
+                featureidstemp = res.data.dogFeatureId;
+              }
+
               var featureData = [];
               var featureselectidTemp = [];
               for (var i = 0; i < temp.length; i++) {
@@ -410,6 +442,66 @@ Page({
             });
         });
 
+    }
+
+  },
+
+  changeTips: function (type) {
+    var that = this;
+    if (type == 0) {
+      requestsend('/util/getPickerPetUpload', "GET",
+        { "type": type, "key": 0 }, function (res) {
+          var temp = res.data.dogColor;
+          var coloridstemp = res.data.dogColorId
+          var colorData = [];
+          for (var i = 0; i < temp.length; i++) {
+            colorData[i] = { "name": temp[i], "status": 0 };
+          }
+          that.setData({
+            color: colorData,
+            colorids: coloridstemp
+          })
+        });
+      requestsend('/util/getPickerPetUpload', "GET",
+        { "type": type, "key": 1 }, function (res) {
+          var temp = res.data.dogFeature;
+          var featureidstemp = res.data.dogFeatureId
+          var featureData = [];
+          for (var i = 0; i < temp.length; i++) {
+            featureData[i] = { "name": temp[i], "status": 0 };
+          }
+          that.setData({
+            feature: featureData,
+            featureids: featureidstemp
+          })
+        });
+    } else if (type == 1) {
+      requestsend('/util/getPickerPetUpload', "GET",
+        { "type": type, "key": 0 }, function (res) {
+          var temp = res.data.catColor;
+          var coloridstemp = res.data.catColorId
+          var colorData = [];
+          for (var i = 0; i < temp.length; i++) {
+            colorData[i] = { "name": temp[i], "status": 0 };
+          }
+          that.setData({
+            color: colorData,
+            colorids: coloridstemp
+          })
+        });
+      requestsend('/util/getPickerPetUpload', "GET",
+        { "type": type, "key": 1 }, function (res) {
+          var temp = res.data.catFeature;
+          var featureidstemp = res.data.catFeatureId
+          var featureData = [];
+          for (var i = 0; i < temp.length; i++) {
+            featureData[i] = { "name": temp[i], "status": 0 };
+          }
+          that.setData({
+            feature: featureData,
+            featureids: featureidstemp
+          })
+        });
     }
 
   },

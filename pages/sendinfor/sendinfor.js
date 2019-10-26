@@ -98,8 +98,15 @@ Page({
   },
   onChange0(event) {
     this.setData({
-      radio0: event.detail
+      radio0: event.detail,
+      featurechoice: [],
+      featureselectid: [],
+      feature: [],
+      colorchoice: [],
+      colorselectid: [],
+      color: []
     });
+    this.changeTips(event.detail);
   },
   onChange1(event) {
     // console.log(event.detail);
@@ -144,6 +151,7 @@ Page({
     });
   },
   Finish: function() {
+    var that = this;
     var picsData = this.data.pics
     var photoIdStr = "";
     for (let l in this.data.photoIds) {
@@ -244,8 +252,11 @@ Page({
         if (res.success) {
           wx.showToast({
             title: `保存成功！`,
-            icon: "none"
+            icon: "none",
+            mask: true,
+            duration: 1000
           })
+          that.onLoad();
         }
       })
   },
@@ -317,33 +328,93 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    this.setData({
+      searchPanel: false,
+      books: Object,
+      radio0: '0',
+      radio1: '1',
+      radio2: '0',
+      radio3: '0',
+      radio4: '0',
+      name: '',
+      age: '',
+      area: '',
+      message: '',
+      color: [],
+      colorids: [],
+      colorselectid: [],
+      colorchoice: [],
+      feature: [],
+      featureids: [],
+      featureselectid: [],
+      featurechoice: [],
+      pics: [], //图片
+      showon: false,
+      showpic: '/images/add_a_photo-material.png',
+      more: false,
+      photoIds: []
+    })
+    this.changeTips(0);
+  },
+
+  changeTips: function(type) {
     var that = this;
-    requestsend('/util/getPickerPetUpload', "GET",
-      { "type": 0, "key": 0 }, function (res) {
-        var temp = res.data.dogColor;
-        var coloridstemp = res.data.dogColorId
-        var colorData = [];
-        for (var i = 0; i < temp.length; i++) {
-          colorData[i] = { "name": temp[i], "status": 0 };          
-        }
-        that.setData({
-          color: colorData,
-          colorids: coloridstemp
-        })
-    });
-    requestsend('/util/getPickerPetUpload', "GET",
-      { "type": 0, "key": 1 }, function (res) {
-        var temp = res.data.dogFeature;
-        var featureidstemp = res.data.dogFeatureId
-        var featureData = [];
-        for (var i = 0; i < temp.length; i++) {
-          featureData[i] = { "name": temp[i], "status": 0 };
-        }
-        that.setData({
-          feature: featureData,
-          featureids: featureidstemp
-        })
-    });
+    if (type == 0) {
+      requestsend('/util/getPickerPetUpload', "GET",
+        { "type": type, "key": 0 }, function (res) {
+          var temp = res.data.dogColor;
+          var coloridstemp = res.data.dogColorId
+          var colorData = [];
+          for (var i = 0; i < temp.length; i++) {
+            colorData[i] = { "name": temp[i], "status": 0 };
+          }
+          that.setData({
+            color: colorData,
+            colorids: coloridstemp
+          })
+        });
+      requestsend('/util/getPickerPetUpload', "GET",
+        { "type": type, "key": 1 }, function (res) {
+          var temp = res.data.dogFeature;
+          var featureidstemp = res.data.dogFeatureId
+          var featureData = [];
+          for (var i = 0; i < temp.length; i++) {
+            featureData[i] = { "name": temp[i], "status": 0 };
+          }
+          that.setData({
+            feature: featureData,
+            featureids: featureidstemp
+          })
+        });
+    } else if (type == 1) {
+      requestsend('/util/getPickerPetUpload', "GET",
+        { "type": type, "key": 0 }, function (res) {
+          var temp = res.data.catColor;
+          var coloridstemp = res.data.catColorId
+          var colorData = [];
+          for (var i = 0; i < temp.length; i++) {
+            colorData[i] = { "name": temp[i], "status": 0 };
+          }
+          that.setData({
+            color: colorData,
+            colorids: coloridstemp
+          })
+        });
+      requestsend('/util/getPickerPetUpload', "GET",
+        { "type": type, "key": 1 }, function (res) {
+          var temp = res.data.catFeature;
+          var featureidstemp = res.data.catFeatureId
+          var featureData = [];
+          for (var i = 0; i < temp.length; i++) {
+            featureData[i] = { "name": temp[i], "status": 0 };
+          }
+          that.setData({
+            feature: featureData,
+            featureids: featureidstemp
+          })
+        });
+    }
+    
   },
 
   onActivateSearch: function(event) {
