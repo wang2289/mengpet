@@ -25,6 +25,7 @@ Page({
     showpic2: '/images/add_a_photo-material.png',
     showpic3: '/images/add_a_photo-material.png',
     result1: '',
+    result1Show: false,
     result2: '',
     result3: '',
     result4: '',
@@ -70,9 +71,20 @@ Page({
     });
   },
   onChange1(event) {
-    this.setData({
-      result1: event.detail
-    });
+    // this.setData({
+    //   result1: event.detail
+    // });
+    if (event.detail == 1) {
+      this.setData({
+        result1: event.detail,
+        result1Show: true,
+      });
+    } else if (event.detail == 2) {
+      this.setData({
+        result1: event.detail,
+        result1Show: false,
+      });
+    }
   },
   onChange2(event) {
     this.setData({

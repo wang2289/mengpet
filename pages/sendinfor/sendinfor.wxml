@@ -5,7 +5,7 @@
         <image class='pic-img {{showon ? "on":""}}' src="{{showpic}}"></image>
       </view>
       <view class='add'>添加图片
-        <text>（最多3张）</text>
+        <text>（最多1张）</text>
       </view>
     </view>
     <view class='titles'>宠物信息</view>

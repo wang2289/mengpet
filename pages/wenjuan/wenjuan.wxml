@@ -13,7 +13,7 @@
         <van-radio name="2">否</van-radio>
       </van-radio-group>
     </view>
-    <view class="own-info-item">
+    <view wx:if="{{result1Show}}" class="own-info-item">
       <view class="info-name">
         <text>它是什么小动物呢?  </text>
       </view>

@@ -20,8 +20,8 @@ Page({
     searchPanel:false,
     books:Object,
     radio1: "0",
-    radio2: true,
-    radio3: true,
+    radio2: false,
+    radio3: false,
     radio4: "0",
     radio5: true,
     radio6: true,
@@ -120,13 +120,13 @@ Page({
       })
       return;
     }
-    if (!parms.phoneNumber) {
-      wx.showToast({
-        title: `请填写手机号！`,
-        icon: "none"
-      })
-      return;
-    }
+    // if (!parms.phoneNumber) {
+    //   wx.showToast({
+    //     title: `请填写手机号！`,
+    //     icon: "none"
+    //   })
+    //   return;
+    // }
     if (!parms.area) {
       wx.showToast({
         title: `请填写地区！`,

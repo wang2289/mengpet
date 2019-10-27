@@ -285,7 +285,7 @@ Page({
     var that = this,
     pics = this.data.pics;
     console.log(pics);
-    if (pics.length < 3) {
+    if (pics.length < 1) {
       wx.chooseImage({
         count: 3, // 最多可以选择的图片张数，默认9
         sizeType: ['original', 'compressed'], // original 原图，compressed 压缩图，默认二者都有
@@ -330,7 +330,7 @@ Page({
       });
     } else {
       wx.showToast({
-        title: '最多上传3张图片',
+        title: '最多上传1张图片',
         icon: 'none',
         duration: 3000
       });

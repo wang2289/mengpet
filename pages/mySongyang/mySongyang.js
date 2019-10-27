@@ -91,7 +91,7 @@ Page({
             temp.image = Config.imgPath + "/" + list[l].photosId;
             temp.status = 2;
             temp.nickName = list[l].nickName;
-            temp.phoneName = list[l].phoneNumber;
+            temp.phoneNumber = list[l].phoneNumber;
             temp.wechat = list[l].wechat;
             var adoptTime = list[l].adoptTime.substring(0,10);
             temp.adoptTime = adoptTime;
