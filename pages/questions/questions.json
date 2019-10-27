@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "van-steps": "vant-weapp/steps",
+    "van-radio": "vant-weapp/radio",
+    "van-radio-group": "vant-weapp/radio-group",
+    "van-field": "vant-weapp/field",
+    "van-checkbox": "vant-weapp/checkbox",
+    "van-checkbox-group": "vant-weapp/checkbox-group",
+    "van-dialog": "vant-weapp/dialog/index"
+  },
+  "navigationBarTitleText": "领养问卷"
+}

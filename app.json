@@ -2,6 +2,7 @@
   "pages": [
     
     "pages/index/index",
+    "pages/questions/questions",
     "pages/wenjuan/wenjuan",
     "pages/searchpet/searchpet",
     "pages/myInfo/myInfo",

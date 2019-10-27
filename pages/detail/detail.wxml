@@ -32,7 +32,7 @@
     <view class='gushi'>
       {{pet.desc}}
     </view>
-    <text class="headline">送养人信息</text>
+    <!-- <text class="headline">送养人信息</text>
     <view class='songyang'>
       <view class='people'>
         <image class='peopleimage' src="{{pet.image}}"></image>
@@ -54,7 +54,7 @@
       </view>
       <view class='jubao'>
         <image class='peo-icon' src="/images/exclamation-circle-o-anticon.png"></image>举报</view>
-    </view>
+    </view> -->
     <!-- <text class="headline">猜你喜欢</text>
     <view class="animal-container">
       <block wx:for="{{pets}}" wx:key="{{id}}">

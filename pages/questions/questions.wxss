@@ -1,0 +1,104 @@
+/* pages/wenjuan/wenjuan.wxss */
+
+.tips {
+  width: width;
+  height: 62rpx;
+  line-height: 62rpx;
+  background: rgba(240, 207, 189, 0.3);
+  font-size: 22rpx;
+  font-family: PingFangSC-Regular, PingFangSC;
+  font-weight: 400;
+  color: rgba(51, 62, 82, 1);
+  padding-left: 30rpx;
+}
+
+.own-info-item {
+  padding: 30rpx;
+}
+
+.steps {
+  padding: 0 90rpx;
+}
+
+.radios van-radio {
+  display: block;
+  margin-top: 25rpx;
+  margin-bottom: 25rpx;
+}
+van-checkbox{
+  display: block;
+  margin-top: 25rpx;
+  margin-bottom: 25rpx;
+}
+.next {
+  width: 690rpx;
+  height: 88rpx;
+  background: rgba(90, 175, 224, 1);
+  border-radius: 16rpx;
+  font-size: 34rpx;
+  font-family: PingFangSC-Medium, PingFangSC;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 88rpx;
+  margin-bottom: 16rpx;
+  text-align: center;
+}
+.btn{
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+textarea{
+  width: 100%;
+  padding: 30rpx 0rpx;
+  border-bottom: 1px solid #dcdcdc;
+}
+.pic {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center;
+  justify-content: center; */
+  width: 100%;
+  padding-bottom: 20rpx;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.pic-box {
+  width: 126rpx;
+  height: 126rpx;
+  border: 1px solid rgba(186, 196, 209, 1);
+  border-radius: 8rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60rpx;
+}
+
+.pic-img {
+  width: 60rpx;
+  height: 60rpx;
+}
+.pic-img.on {
+  width: 180rpx;
+  height: 180rpx;
+}
+.pic-icon{
+  width: 16rpx;
+  height: 16rpx;
+  margin-top: 16rpx;
+}
+.none{
+  display: none;
+}
+.cus_shadow {
+    width: 100%;
+    height: 80px;
+    line-height: 24px;
+    border-radius: 1em;
+    box-shadow: #d9d9d9 2px 2px 5px;
+    text-align: center;
+    vertical-align: middle;
+}

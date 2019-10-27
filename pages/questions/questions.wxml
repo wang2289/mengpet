@@ -1,0 +1,62 @@
+<view class="container">
+  <!-- <view class="tips">首次领养请花5-10分钟填写领养问卷，提交后可在【我的】修改。</view> -->
+  <progress percent="{{process}}" stroke-width="12" />
+  <view class="cus_shadow">{{dialogDec}}</view>
+  <!-- <view class="steps">
+    <van-steps steps="{{ steps }}" active-color='#5AAFE0' active="{{ active }}" />
+  </view> -->
+  <!-- 单选、单选加填空类型 -->
+  <view wx:if="{{questionShow == 'radio'}}" class="own-info-item">
+    <view class="info-name">
+      <text>{{dec}}</text>
+    </view>
+    <van-radio-group class='radios' value="{{answerRadio}}" bind:change="changeRadio" data-checkid="{{index}}" wx:for="{{questionDetailList}}" wx:key="key" wx:for-index="index" wx:for-item="item">
+      <!-- <block class="radio" wx:for="{{questionDetailList}}" wx:key="key" wx:for-index="index" wx:for-item="item"> -->
+        <van-radio name="{{item.dec}}">{{item.dec}}</van-radio>
+        <textarea wx:if="{{item.txt == 1}}" maxlength='-1' bindinput='changeText' value='{{value1}}' placeholder="请填写内容" value="{{answerTextTemp}}" auto-height='true'></textarea>
+      <!-- </block> -->
+    </van-radio-group>
+  </view>
+
+  <!-- 多选、多选加填空类型 -->
+  <view wx:if="{{questionShow == 'checkbox'}}" class="own-info-item">
+    <view class="info-name">
+      <text>{{dec}}</text>
+    </view>
+    <van-checkbox-group value="{{answerCheckbox}}" bind:change="changeCheckbox">
+      <block class="checkbox" wx:for="{{questionDetailList}}" wx:key="key" wx:for-index="index" wx:for-item="item">
+        <van-checkbox name="{{item.dec}}">{{item.dec}}</van-checkbox>
+        <textarea wx:if="{{item.txt == 1}}" maxlength='-1' bindinput='changeText' value='{{value5}}' placeholder="请填写内容" value="{{answerTextTemp}}" auto-height='true'></textarea>
+      </block>
+      
+    </van-checkbox-group>
+  </view>
+
+  <!-- 文本输入类型 -->
+  <view wx:if="{{questionShow == 'text'}}" class="own-info-item">
+    <view class="info-name">
+      <text>{{dec}}</text>
+    </view>
+    <textarea maxlength='-1' bindinput='changeText' placeholder="请填写内容" value="{{answerTextTemp}}" auto-height='true'></textarea>
+  </view>
+
+  <!-- 上传图片类型 -->
+  <view wx:if="{{questionShow == 'image'}}" class="own-info-item">
+    <view class="info-name">
+      <text>{{dec}}</text>
+      <view class='pic'>
+        <view class='pic-box' bindtap='chooseImg'>
+          <image class='pic-img {{showon1 ? "on":""}}' src="{{showpic}}"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{prevBtn}}" class="btn">
+    <view class="next" bindtap='prevBtnEvent'>上一题</view>
+  </view>
+  <view wx:if="{{nextBtn}}" class="btn">
+    <view class="next" bindtap='nextBtnEvent'>{{nextText}}</view>
+  </view>
+</view>
+<van-dialog id="van-dialog" />
