@@ -1,7 +1,8 @@
 <view class="container">
   <!-- <view class="tips">首次领养请花5-10分钟填写领养问卷，提交后可在【我的】修改。</view> -->
   <progress percent="{{process}}" stroke-width="12" />
-  <view class="cus_shadow">{{dialogDec}}</view>
+  <!-- <view class="cus_shadow">{{dialogDec}}</view> -->
+   <view class="tips">{{dialogDec}}</view>
   <!-- <view class="steps">
     <van-steps steps="{{ steps }}" active-color='#5AAFE0' active="{{ active }}" />
   </view> -->
@@ -52,11 +53,12 @@
     </view>
   </view>
 
-  <view wx:if="{{prevBtn}}" class="btn">
-    <view class="next" bindtap='prevBtnEvent'>上一题</view>
+  <view  class="btn">
+    <view  wx:if="{{prevBtn}}" class="next" bindtap='prevBtnEvent'>上一题</view>
+     <view  wx:if="{{nextBtn}}"  class="next" bindtap='nextBtnEvent'>{{nextText}}</view>
   </view>
-  <view wx:if="{{nextBtn}}" class="btn">
-    <view class="next" bindtap='nextBtnEvent'>{{nextText}}</view>
-  </view>
+  <!-- <view wx:if="{{nextBtn}}" class="btn">
+   
+  </view> -->
 </view>
 <van-dialog id="van-dialog" />
