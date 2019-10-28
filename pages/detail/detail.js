@@ -16,6 +16,7 @@ import {
   requestsend,
   requesttoken
 } from '../../utils/util.js'
+import Dialog from 'vant-weapp/dialog/dialog'
 
 // let petsModel = new PetsModel()
 let commentModel = new CommentModel()
@@ -40,92 +41,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    var that = this;
-    let bid = options.bid;
-    console.log(bid);
-    requesttoken('/pets/getPetDetail', 'GET',
-        {"petId": bid}, function (res) {
-          console.log(res);
-          var pickerList = res.data.pickerList
-          var colors = [];
-          var features = [];        
-          for (let l in pickerList) {
-            if (pickerList[l].key == 1) {              
-              colors.push(pickerList[l].value);
-            } else if (pickerList[l].key == 0) {
-              features.push(pickerList[l].value);
-            }
-          }
-          var createTime = res.data.photoList[0].createTime;
-          var createDate = createTime.substring(0, 10);
-          var imagePath = Config.imgPath + "/" + createDate + "/" + res.data.photoList[0].path
-
-
-          var data =
-          {
-            id: res.data.id,
-            image: 'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
-            name: res.data.nameCn,
-            age: res.data.age,
-            color: colors,
-            feature: features,
-            city: 'city',
-            area: res.data.area,
-            view: res.data.view,
-            desc: res.data.desc,
-            yimiao: res.data.yimiao,
-            jueyu: res.data.jueyu,
-            quchong: res.data.quchong,
-            image: imagePath
-          }
-          that.setData({
-            pet: data
-          })
-        });
-
-    // var data2 = [
-    //   {
-    //     id: '0',
-    //     image: 'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
-    //     name: '毛球球球球球球球球…',
-    //     age: '1岁1个月',
-    //     newname: '狸花',
-    //     tips: '亲人',
-    //     city: '上海',
-    //     area: '普陀',
-    //     view: '20'
-    //   },
-    //   {
-    //     id: '1',
-    //     image: '/images/icon/search.png',
-    //     name: '毛球球球球球球球球球球球wwwwww球球…',
-    //     age: '1岁1个月',
-    //     newname: '狸花',
-    //     tips: '亲人',
-    //     city: '上海',
-    //     area: '普陀',
-    //     view: '20'
-    //   }
-    // ]
-    // this.setData({
-    //   pets: data2
-    // })
-      
-   // })
-
-    commentModel.getComment(bid, (data) => {
-      this.setData({
-        noComment: data.comments == false ? true : false,
-        comments: data.comments
-      })
+    this.setData({
+      id: options.bid
     })
-
-    // petsModel.getLikeStatus(bid, (data) => {
-    //   this.setData({
-    //     like: data.like_status,
-    //     count: data.fav_nums
-    //   })
-    // })
   },
 
   onFakePost: function() {
@@ -178,9 +96,44 @@ Page({
   },
 
   onTap: function (event) {
-    wx.navigateTo({
-      url: '../../pages/infor/infor' ,
-    })
+    var id = this.data.pet.id;
+    var code = this.data.pet.type;
+    var ownerId = this.data.pet.ownerId;
+    Dialog.confirm({
+      title: '提示',
+      message: '确认提申请领养吗'
+    }).then(() => {
+      requesttoken('/app/selectByUserIdAndCode', 'GET',
+        { "code": code }, function (res) {
+          console.log(res);
+          if (res.success) {
+            if (res.data.length <= 0) {
+              wx.navigateTo({
+                url: '/pages/questions/questions?code=' + code,
+              })
+            } else {
+              requesttoken('/app/addApplication', 'GET',
+                { "petId": id, "ownerId": ownerId }, function (res) {
+                  console.log(res);
+                  if (res.success) {
+                    wx.showToast({
+                      title: `申请成功！`,
+                      icon: "none",
+                      mask: true,
+                      duration: 3000
+                    })
+                    wx.switchTab({
+                      url: '/pages/index/index',
+                    })
+                  }
+                });
+            }
+          }
+        });
+
+    }).catch(() => {
+
+    }); 
   },
   onCollect: function () {
     this.setData({
@@ -190,5 +143,75 @@ Page({
   },
   onShareAppMessage() {
 
+  },
+  onShow: function() {
+    var that = this;
+    let bid = this.data.id;
+    requesttoken('/pets/getPetDetail', 'GET',
+      { "petId": bid }, function (res) {
+        console.log(res);
+        var pickerList = res.data.pickerList
+        var colors = [];
+        var features = [];
+        for (let l in pickerList) {
+          if (pickerList[l].key == 1) {
+            colors.push(pickerList[l].value);
+          } else if (pickerList[l].key == 0) {
+            features.push(pickerList[l].value);
+          }
+        }
+        var createTime = res.data.photoList[0].createTime;
+        var createDate = createTime.substring(0, 10);
+        var imagePath = Config.imgPath + "/" + createDate + "/" + res.data.photoList[0].path
+
+
+        var data =
+        {
+          id: res.data.id,
+          type: res.data.type,
+          image: 'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
+          name: res.data.nameCn,
+          age: res.data.age,
+          color: colors,
+          feature: features,
+          city: 'city',
+          area: res.data.area,
+          view: res.data.view,
+          desc: res.data.desc,
+          yimiao: res.data.yimiao,
+          jueyu: res.data.jueyu,
+          quchong: res.data.quchong,
+          image: imagePath,
+          ownerId: res.data.userId
+        }
+        that.setData({
+          pet: data
+        })
+
+        var param = {
+          petId: res.data.id,
+          status: 1
+        }
+        requesttoken('/app/selectAppByUserIdAndStatus', 'GET',
+          param, function (res) {
+            console.log(res);
+            if (res.success) {
+              if (res.data <= 0) {
+                that.setData({
+                  adopt: true
+                })
+              }
+            }
+          })
+      });
+
+
+    commentModel.getComment(bid, (data) => {
+      this.setData({
+        noComment: data.comments == false ? true : false,
+        comments: data.comments
+      })
+    })
+    
   }
 })

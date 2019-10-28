@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "我收到的申请",
+  "usingComponents": {
+    "petb-cmp": "/components/petbor/index",
+    "pets-cmp": "/components/petsend/index",
+    "pet-cmp": "/components/petemp/index",
+    "meng-cmp": "/components/mengceng/index"
+  }
+}

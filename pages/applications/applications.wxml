@@ -1,0 +1,16 @@
+<view class="container">
+  <!-- <view class='title'>
+    <view class='tab {{isActive == 0 ? "active":"" }}' data-tab="0"  bind:tap="onActive">待送养</view>
+    <view class='tab tab-center {{isActive == 1 ? "active":"" }}' data-tab="1"  bind:tap="onActive">已送养</view>
+    <view class='tab {{isActive == 2 ? "active":"" }}' data-tab="2"  bind:tap="onActive">已下架</view>
+  </view> -->
+  <view class="sub-container">
+    <view class="animal-container">
+     <block wx:for="{{pets}}" wx:key="{{id}}">
+        <pet-cmp pet="{{item}}" class="pets" />
+      </block>
+     
+    </view>
+  </view>
+</view>
+<meng-cmp title="{{tihsi}}"  wx:if='showif' />

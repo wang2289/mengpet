@@ -43,6 +43,12 @@ Page({
       more: random(16)
     })
   },
+  //下拉刷新
+  onPullDownRefresh: function() {
+
+    this.getRecommendList();
+
+  },
   /**
    * 生命周期函数--监听页面加载
    */

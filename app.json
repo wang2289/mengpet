@@ -1,7 +1,8 @@
 {
   "pages": [
-    
     "pages/index/index",
+    "pages/applications/applications",
+    
     "pages/questions/questions",
     "pages/wenjuan/wenjuan",
     "pages/searchpet/searchpet",
@@ -19,7 +20,6 @@
     "pages/my/my",
     "pages/searchcity/searchcity",
     "pages/detail/detail",
-    "pages/getapply/getapply",
     "pages/logs/logs"
   ],
   "window": {

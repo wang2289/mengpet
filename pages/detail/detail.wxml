@@ -25,8 +25,8 @@
     </view>
     <text class="headline">我的特点</text>
     <view class='heath-tip'>
-      <view wx:for="{{pet.color}}" class='heath-twotip' wx:for-index="key" wx:for-item="color">{{color}}</view>
-      <view wx:for="{{pet.feature}}" class='heath-twotip' wx:for-index="key" wx:for-item="feature">{{feature}}</view>
+      <view wx:for="{{pet.color}}" class='heath-twotip' wx:key="key" wx:for-index="key" wx:for-item="color">{{color}}</view>
+      <view wx:for="{{pet.feature}}" class='heath-twotip' wx:key="key" wx:for-index="key" wx:for-item="feature">{{feature}}</view>
     </view>
     <text class="headline">我的故事</text>
     <view class='gushi'>
@@ -72,6 +72,7 @@
     <image class='btn-icon2' src="/images/export-anticon.png"></image>
   </view>
 </view>
-<view class='sub-btn'>
+<view wx:if="{{adopt}}" class='sub-btn'>
   <view class='btns' bind:tap="onTap">申请收养</view>
 </view>
+<van-dialog id="van-dialog" />

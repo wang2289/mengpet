@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.tab-center{
+  margin: 0 120rpx;
+}
+.title{
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
+ align-items: center;
+ height:80rpx;
+ color:#8391A8;
+ font-size:28rpx;
+ margin-bottom: 16rpx;
+}
+.tab{
+ height:80rpx;
+ line-height: 80rpx;
+}
+.tab.active{
+  color: #333E52;
+  border-bottom: 2px solid #333E52;
+}
+.sub-container{
+  padding: 0 30rpx;
+}

@@ -1,3 +1,0 @@
-<view class='container'>
-  <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权</button>
-</view>
