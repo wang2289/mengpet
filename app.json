@@ -20,7 +20,8 @@
     "pages/my/my",
     "pages/searchcity/searchcity",
     "pages/detail/detail",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/webview/webview"
   ],
   "window": {
     "backgroundTextStyle": "light",
