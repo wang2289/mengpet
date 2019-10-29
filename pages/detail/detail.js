@@ -34,7 +34,9 @@ Page({
     posting: false,
     like: false,
     isCollect:false,
-    count: 0
+    count: 0,
+    fillInfo: true,
+    adopt: false
   },
 
   /**
@@ -96,6 +98,12 @@ Page({
   },
 
   onTap: function (event) {
+    if (!this.data.fillInfo) {
+      wx.navigateTo({
+        url: '/pages/infor/infor'
+      })
+      return;
+    }
     var id = this.data.pet.id;
     var code = this.data.pet.type;
     var ownerId = this.data.pet.ownerId;
@@ -113,7 +121,7 @@ Page({
               })
             } else {
               requesttoken('/app/addApplication', 'GET',
-                { "petId": id, "ownerId": ownerId }, function (res) {
+                { "petId": id, "ownerId": ownerId, "type": code }, function (res) {
                   console.log(res);
                   if (res.success) {
                     wx.showToast({
@@ -147,6 +155,22 @@ Page({
   onShow: function() {
     var that = this;
     let bid = this.data.id;
+    requesttoken('/user/getMyInfo', 'GET',
+      {}, function (res) {
+        console.log(res);
+        if (res.success) {
+          if (res.data.profession == undefined || res.data.profession == '') {
+            that.setData({
+              fillInfo: false
+            })
+          } else {
+            that.setData({
+              fillInfo: true
+            })
+          }
+        }
+      })
+
     requesttoken('/pets/getPetDetail', 'GET',
       { "petId": bid }, function (res) {
         console.log(res);
@@ -169,7 +193,6 @@ Page({
         {
           id: res.data.id,
           type: res.data.type,
-          image: 'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
           name: res.data.nameCn,
           age: res.data.age,
           color: colors,
@@ -192,17 +215,20 @@ Page({
           petId: res.data.id,
           status: 1
         }
-        requesttoken('/app/selectAppByUserIdAndStatus', 'GET',
-          param, function (res) {
-            console.log(res);
-            if (res.success) {
-              if (res.data <= 0) {
-                that.setData({
-                  adopt: true
-                })
+
+        if (res.data.userId != app.globalData.userId) {
+          requesttoken('/app/selectAppByUserIdAndStatus', 'GET',
+            param, function (res) {
+              console.log(res);
+              if (res.success) {
+                if (res.data <= 0) {
+                  that.setData({
+                    adopt: true
+                  })
+                }
               }
-            }
-          })
+            })
+        }
       });
 
 

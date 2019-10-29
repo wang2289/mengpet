@@ -18,7 +18,7 @@
             <view class="_div data-v-7ce44584 applyDate">{{pet.applydate}}</view>
             <view class="_div data-v-7ce44584 btn-class">
               <van-button class="_van-button data-v-7ce44584 btns" type="default" size="small" data-id="{{pet.id}}" bindtap="onDetail" >查看</van-button>
-              <!-- <van-button class="_van-button data-v-7ce44584 btns" type="default" size="small" bindtap="onConfirm" >接受</van-button> -->
+              <van-button class="_van-button data-v-7ce44584 btns" type="default" size="small" bindtap="onConfirm" >接受</van-button>
               <!-- <van-button class="_van-button data-v-7ce44584 btns" type="default" size="small" bindtap="onRefuse" >拒绝</van-button> -->
             </view>
             <!-- <view wx:else class="_div data-v-7ce44584 cancleReason">取消原因： {{pet.cancleReason}}</view> -->

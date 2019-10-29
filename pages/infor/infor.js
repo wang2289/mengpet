@@ -93,7 +93,7 @@ Page({
   },
   onSave: function () {
     var parms = {
-      nickName: this.data.name,
+      trueName: this.data.name,
       sex: this.data.radio1,
       wechat: this.data.weixing,
       phoneNumber: this.data.shouji,
@@ -106,7 +106,7 @@ Page({
       professionP: this.data.radio6 ? 1 : 0,
     };
     console.log(parms);
-    if (!parms.nickName) {
+    if (!parms.trueName) {
       wx.showToast({
         title: `请填写姓名！`,
         icon: "none"
@@ -147,7 +147,12 @@ Page({
         if (res.success) {
           wx.showToast({
             title: `保存成功！`,
-            icon: "none"
+            icon: "none",
+            mask: true,
+            duration: 1000
+          })
+          wx.navigateBack({
+            delta: 1
           })
         }
       })
@@ -173,7 +178,7 @@ Page({
               radio4: res.data.age + '',
               radio5: res.data.areaP == 1 ? true : false,
               radio6: res.data.professionP == 1 ? true : false,
-              name: res.data.nickName,
+              name: res.data.trueName,
               weixing: res.data.wechat,
               shouji: res.data.phoneNumber,
               diqu: res.data.area,

@@ -1,4 +1,12 @@
 // pages/mysong/mysong.js
+let app = getApp();
+import {
+  Config
+} from '../../utils/config.js'
+import {
+  requestsend,
+  requesttoken
+} from '../../utils/util.js'
 Page({
 
   /**
@@ -15,49 +23,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var data = [
-      {
-        id: '0',
-        image: 'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
-        name: '毛球球球球球球球球…',
-        age: '1岁1个月',
-        newname: '狸花',
-        tips: '亲人',
-        city: '上海',
-        area: '普陀',
-        view: '20'
-      },
-      {
-        id: '1',
-        image: '/images/icon/search.png',
-        name: '毛球球球球球球球球球球球wwwwww球球…',
-        age: '1岁1个月',
-        newname: '狸花',
-        tips: '亲人',
-        city: '上海',
-        area: '普陀',
-        view: '20'
-      }
-    ]
-    this.setData({
-      pets: data
-    })
-    this.setData({
-      tihsi: '是否确定重新上架该宠物是否确定重'
-    })
+    
   },
-  onActive: function (e) {
-    var index = e.currentTarget.dataset.tab;//获取当前点击的元素下标
-    this.setData({
-      isActive: index,
-    })
-  },
-  onCancle: function (e) {
-    console.log(e.detail.isshow)// 自定义组件触发事件时提供的detail对象
-  },
-  onSubmit: function (e) {
-    console.log(e.detail.isshow)// 自定义组件触发事件时提供的detail对象
-  },
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -69,7 +37,42 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var that = this;
+    requesttoken('/app/getAppList', 'GET',
+      { "status": 1 }, function (res) {
+        console.log(res);
+        if (res.success) {
+          var pets = [];
+          var tempData = res.data;
+          for (let i in tempData) {
+            var temp = {};
+            temp.id = tempData[i].id;
+            temp.petId = tempData[i].petId;
+            temp.type = tempData[i].type;
+            temp.sex = tempData[i].sex;
+            var petCreateDate = tempData[i].petCreateTime.substring(0, 10);
+            temp.image = Config.imgPath + "/" + petCreateDate + "/" + tempData[i].image;
+            temp.name = tempData[i].petName;
+            temp.appId = tempData[i].appId;
+            temp.applyName = tempData[i].nickName;
+            temp.applyarea = tempData[i].area;
+            temp.applyage = tempData[i].age;
+            temp.applydate = tempData[i].createTime.substring(0, 10);
+            pets.push(temp);
+          }
+          that.setData({
+            pets: pets
+          })
+        }
+      })
+    
+  },
 
+  onDetail: function (event) {
+    var id = event.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/pages/appDetails/appDetails?id=' + id,
+    })
   },
 
   /**

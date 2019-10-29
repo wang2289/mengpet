@@ -17,21 +17,9 @@
   <view class="line"></view>
     <van-cell-group class="_van-cell-group " border="{{false}}">
       <van-cell title="我的送养" border="{{false}}" is-link link-type="navigateTo" size="large" url="/pages/mySongyang/mySongyang" class="_van-cell data-v-6764498b"></van-cell>
-      <van-cell title="我收到的领养申请" border="{{false}}" is-link link-type="navigateTo" size="large" url="/pages/myReceiveApply/myReceiveApply" class="_van-cell data-v-6764498b"></van-cell>
+      <van-cell title="我收到的领养申请" border="{{false}}" is-link link-type="navigateTo" size="large" url="/pages/applications/applications" class="_van-cell data-v-6764498b"></van-cell>
       <van-cell title="我发起的领养申请" border="{{false}}"is-link link-type="navigateTo" size="large" url="/pages/index/index" class="_van-cell data-v-6764498b"></van-cell>
-      <!-- <van-cell size="large" title="我的收藏" border="{{false}}" is-link link-type="navigateTo" url="/pages/myCollect/myCollect" class="_van-cell data-v-6764498b"></van-cell> -->
     </van-cell-group>
-    <!-- <view class="line"></view> -->
-    <!-- <van-cell-group class="_van-cell-group data-v-6764498b" border="{{false}}"> -->
-      <!-- <van-cell size="large" title="我的收藏" border="{{false}}" is-link link-type="navigateTo" url="/pages/myCollect/myCollect" class="_van-cell data-v-6764498b"></van-cell> -->
-      <!-- <van-cell size="large" title="我的关注" border="{{false}}"is-link link-type="navigateTo" url="/pages/myConcern/myConcern" class="_van-cell data-v-6764498b"></van-cell> -->
-      <!-- <van-cell size="large" title="我的资料" border="{{false}}" is-link link-type="navigateTo" url="/pages/infor/infor?type=show" class="_van-cell data-v-6764498b"></van-cell> -->
-    <!-- </van-cell-group> -->
-    <!-- <view class="line"></view> -->
-    <!-- <van-cell-group class="_van-cell-group data-v-6764498b"border="{{false}}"> -->
-      <!-- <van-cell size="large" title="我的资料" border="{{false}}" is-link link-type="navigateTo" url="/pages/infor/infor?type=show" class="_van-cell data-v-6764498b"></van-cell> -->
-      <!-- <van-cell size="large" title="我的答卷"border="{{false}}" is-link link-type="navigateTo" url="/pages/index/index" class="_van-cell data-v-6764498b"></van-cell> -->
-    <!-- </van-cell-group> -->
     <view class="line"></view>
     <van-cell-group class="_van-cell-group data-v-6764498b"border="{{false}}">
       <van-cell size="large" title="我的资料" border="{{false}}" is-link link-type="navigateTo" url="/pages/infor/infor?type=show" class="_van-cell data-v-6764498b"></van-cell>

@@ -98,8 +98,8 @@ Page({
             mask: true,
             duration: 3000
           })
-          wx.switchTab({
-            url: '/pages/index/index',
+          wx.navigateBack({
+            delta: 1
           })
         }
       })
@@ -643,6 +643,9 @@ Page({
    */
   onLoad: function (options) {
     let code = options.code;
+    this.setData({
+      code: code
+    })
     this.loadGroup(code);
     // this.loadDialogs(code);
   },
