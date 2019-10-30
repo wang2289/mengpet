@@ -13,6 +13,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    quesDetails: [],
     id: 0
   },
 
@@ -36,12 +37,54 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var that = this;
     var id = this.data.id;
     requesttoken('/app/getDetails', 'GET',
       { "id": id, "status": 1 }, function (res) {
         console.log(res);
         if (res.success) {
+          var results = [];
+          var resultItem = {};
+          var answerItems = [];
+          var answers = res.data;
+          var temp = answers[0].questionId;
+          for (let i = 0; i < answers.length; i++) {
+            var questionAnswer = answers[i].questionAnswer;
+            var questionDec = answers[i].questionDec;
+            var questionId = answers[i].questionId;
+            var answerSplit = questionAnswer.split('.');
 
+            if (answerSplit.length > 1 && (answerSplit[1] == 'png' || answerSplit[1] == 'jpg')) {
+              // 图片
+              var createDate = answers[i].createTime.substring(0, 10);
+              questionAnswer = Config.imgPath + "/" + createDate + "/" + questionAnswer;
+            }
+
+            if (questionId != temp) {
+              resultItem.answerItems = answerItems;
+              results.push(resultItem);
+              resultItem = {};
+              answerItems = [];
+            }
+
+            resultItem.desc = questionDec;
+            resultItem.id = questionId;
+            answerItems.push(questionAnswer);
+            
+            if ((answers.length != 1 && i == answers.length - 1) 
+              || answers.length == 1) {
+              resultItem.answerItems = answerItems;
+              results.push(resultItem);
+              resultItem = {};
+              answerItems = [];
+            }
+            temp = questionId;          
+          }
+
+          that.setData({
+            quesDetails: results
+          })
+          console.log(that.data.quesDetails);
         }
       })
   },

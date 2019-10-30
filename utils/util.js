@@ -87,7 +87,7 @@ function requesttoken(url, method, data, callBack) {
       fail: function(error) {
         wx.showToast({
           icon: "none",
-          title: '服务器异常，清稍候再试'
+          title: '服务器异常，请稍候再试'
         })
       }
 
@@ -115,7 +115,7 @@ function requestpic(url, method, filePath, data, callBack) {
     fail: function (error) {
       wx.showToast({
         icon: "none",
-        title: '服务器异常，清稍候再试'
+        title: '服务器异常，请稍候再试'
       })
     }
 
@@ -185,7 +185,7 @@ function requestsendtoken(url, method, data, callBack) {
 
             icon: "none",
 
-            title: '服务器异常，清稍候再试'
+            title: '服务器异常，请稍候再试'
 
           })
         }
@@ -215,7 +215,7 @@ function shangzhiborequestsend(bianhao, callBack) {
 
         icon: "none",
 
-        title: '服务器异常，清稍候再试'
+        title: '服务器异常，请稍候再试'
 
       })
     }
