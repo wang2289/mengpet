@@ -1,12 +1,13 @@
 <!-- <template name="7db7e8c6"> -->
 <view class="_div data-v-6764498b container">
   <view class="_div data-v-6764498b myInfo">
-    <image class="_img data-v-6764498b peopleimage" src="{{user.userPhoto}}"></image>
+    <image class="_img data-v-6764498b peopleimage" src="{{userPhoto}}"></image>
     <view class="_div data-v-6764498b peopleinfo">
-      <label class="_span data-v-6764498b peoplename">{{user.userName}}
-        <image class="_img data-v-6764498b peo-icon" src="/static/images/woman - anticon.png"></image>
+      <label class="_span data-v-6764498b peoplename">{{userName}}
+        <image wx:if="{{userSex == 1}}" src="/images/woman-anticon.png"  class="_img data-v-6764498b peo-icon"/>
+        <image wx:if="{{userSex == 0}}" src="/images/man-anticon.png"  class="_img data-v-6764498b peo-icon"/>
       </label>
-      <label class="_span data-v-6764498b peopleid">ID: {{user.userId}}</label>
+      <!-- <label class="_span data-v-6764498b peopleid">ID: {{user.userId}}</label> -->
     </view>
     <!-- <label class="_span data-v-6764498b peoplePage" bindtap="viewPersonalPages" data-eventid="{{'0'}}" data-comkey="{{$k}}">个人主页
       <image class="_img data-v-6764498b peo-icon" src="/static/images/Group 2@2x.png"></image>

@@ -46,7 +46,27 @@ Page({
           var results = [];
           var resultItem = {};
           var answerItems = [];
-          var answers = res.data;
+          var answers = res.data.answersList;
+          var info = res.data.appUserPetInfo;
+
+          var phCreateDate = info.phCreateTime.substring(0, 10);
+          var pet = {};
+          pet.image = Config.imgPath + "/" + phCreateDate + "/" + info.path;
+          pet.name = info.nameCn;
+
+          var user = {};
+          user.name = info.nickName;
+          user.sex = info.sex;
+          user.area = info.area;
+          user.age = info.age;
+          user.phoneNumber = info.phoneNumber;
+          user.wechat = info.wechat;
+
+
+          that.setData({
+            pet: pet,
+            user: user
+          })
           var temp = answers[0].questionId;
           for (let i = 0; i < answers.length; i++) {
             var questionAnswer = answers[i].questionAnswer;
