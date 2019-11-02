@@ -14,9 +14,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    page: 1,
+    size: 4,
     isshow: true,
     searchPanel: false,
-    pets: Object,
+    pets: [],
     more: false,
     imgUrls: [
       {
@@ -39,14 +41,17 @@ Page({
     duration: 1000
   },
   onReachBottom: function (event) {
+    var page = this.data.page + 1;
+    var size = this.data.size;
     this.setData({
-      more: random(16)
+      page: page
     })
+    this.getRecommendList(page, size, false);
   },
   //下拉刷新
   onPullDownRefresh: function() {
-
-    this.getRecommendList();
+    var size = this.data.size;
+    this.getRecommendList(1, size, true);
 
   },
   /**
@@ -126,14 +131,13 @@ Page({
 
   },
 
-  getRecommendList: function() {
+  getRecommendList: function(page, size, reload) {
     var that = this;
     requesttoken('pets/getPetsInfosFilterMitTips', "GET",
-      { "page": 1, "size": 4 }, function (res) {
+      { "page": page, "size": size}, function (res) {
         if (res.success) {
           var pets = res.data.list;
-          var petData = {};
-          console.log(pets);
+          var petData = [];
           for (var i = 0; i < pets.length; i++) {
             var temp = {};
             temp.id = pets[i].id;
@@ -164,6 +168,13 @@ Page({
             temp.view = pets[i].view;
             petData[i] = temp;
           }
+          if (!reload) {
+            var data = that.data.pets;
+            console.log(data);
+            console.log(petData);
+            petData = data.concat(petData);
+            console.log(petData);
+          }
           that.setData({
             pets: petData
           })
@@ -174,14 +185,13 @@ Page({
 
   userLogin: function (userInfo) {
     var that = this;
+    var size = this.data.size;
     requestsend('/wechat/login', "GET",
       userInfo, function (res) {
         if (res.success) {
           app.globalData.token = res.data.token;
           app.globalData.userId = res.data.userId;
-          console.log(app.globalData.token);
-          console.log(app.globalData.userId);
-          that.getRecommendList();
+          that.getRecommendList(1, size, true);
         }
       });
   },

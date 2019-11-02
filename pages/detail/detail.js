@@ -27,6 +27,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    petId: -1,
     pets: Object,
     pet: null,
     comments: [],
@@ -36,7 +37,8 @@ Page({
     isCollect:false,
     count: 0,
     fillInfo: true,
-    adopt: false
+    adopt: false,
+    self: true
   },
 
   /**
@@ -44,7 +46,7 @@ Page({
    */
   onLoad: function(options) {
     this.setData({
-      id: options.bid
+      petId: options.bid
     })
   },
 
@@ -154,7 +156,7 @@ Page({
   },
   onShow: function() {
     var that = this;
-    let bid = this.data.id;
+    let bid = this.data.petId;
     requesttoken('/user/getMyInfo', 'GET',
       {}, function (res) {
         console.log(res);
@@ -215,15 +217,17 @@ Page({
           petId: res.data.id,
           status: 1
         }
-
         if (res.data.userId != app.globalData.userId) {
+          that.setData({
+            self: false,
+          })
           requesttoken('/app/selectAppByUserIdAndStatus', 'GET',
             param, function (res) {
               console.log(res);
               if (res.success) {
                 if (res.data <= 0) {
                   that.setData({
-                    adopt: true
+                    adopt: true,
                   })
                 }
               }

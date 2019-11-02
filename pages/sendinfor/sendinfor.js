@@ -196,13 +196,7 @@ Page({
     };
     console.log(parms)
     
-    if (!parms.photoId) {
-      wx.showToast({
-        title: `请上传宠物图片！`,
-        icon: "none"
-      })
-      return;
-    } 
+    
     if (!parms.nameCn) {
       wx.showToast({
         title: `请填写宠物昵称！`,
@@ -213,6 +207,14 @@ Page({
     if (!parms.age) {
       wx.showToast({
         title: `请填写宠物年龄！`,
+        icon: "none"
+      })
+      return;
+    }
+    var regPos = /^[0-9]*$/; //非负浮点数
+    if (!regPos.test(parms.age)) {
+      wx.showToast({
+        title: `宠物年龄请填写数字！`,
         icon: "none"
       })
       return;
@@ -245,9 +247,23 @@ Page({
       })
       return;
     } 
-  
+    if (!parms.photoId) {
+      wx.showToast({
+        title: `请上传宠物图片！`,
+        icon: "none"
+      })
+      return;
+    } 
+    wx.showToast({
+      title: '正在上传...',
+      icon: 'loading',
+      mask: true,
+      duration: 10000
+    });
+
     requesttoken('/pets/uploadPetInfoNoImg', "GET",
       parms, function (res) {
+        
         console.log(res);
         if (res.success) {
           wx.showToast({
@@ -270,10 +286,14 @@ Page({
   },
   //上传图片开始
   chooseImg: function(e) {
-    var that = this,
-    pics = this.data.pics;
-    console.log(pics);
-    if (pics.length < 1) {
+    var that = this;
+    // pics = this.data.pics;
+    that.setData({
+      pics: [],
+      photoIds: []
+    })
+    var pics = this.data.pics;
+    // if (pics.length < 1) {
       wx.chooseImage({
         count: 3, // 最多可以选择的图片张数，默认9
         sizeType: ['original', 'compressed'], // original 原图，compressed 压缩图，默认二者都有
@@ -298,7 +318,6 @@ Page({
             })
             requestpic('/pets/uploadImg', "POST",
               pics[0], undefined, function (res) {
-                console.log(res.data.id)
                 that.data.photoIds.push(res.data.id);
                 console.log(that.data.photoIds)
                 wx.hideToast();
@@ -310,19 +329,18 @@ Page({
             })
           }
 
-          console.log(pics);
           that.setData({
             pics: pics
           })
         },
       });
-    } else {
-      wx.showToast({
-        title: '最多上传1张图片',
-        icon: 'none',
-        duration: 3000
-      });
-    }
+    // } else {
+    //   wx.showToast({
+    //     title: '最多上传1张图片',
+    //     icon: 'none',
+    //     duration: 3000
+    //   });
+    // }
   },
   /**
    * 生命周期函数--监听页面加载

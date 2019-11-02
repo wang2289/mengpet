@@ -28,7 +28,7 @@
     </view>
     <view class='line'></view>
     <view class="own-info-item chongwu">
-      <van-field value="{{ age }}" bind:change="onChange3" icon="arrow" clearable label="年龄" placeholder="请选择宠物年龄" border="{{ false }}" />
+      <van-field value="{{ age }}" bind:change="onChange3" icon="arrow" clearable label="年龄" placeholder="请输入宠物年龄月份" border="{{ false }}" />
     </view>
     <view class='line'></view>
     <view class="own-info-item chongwu">

@@ -72,7 +72,14 @@
     <image class='btn-icon2' src="/images/export-anticon.png"></image>
   </view>
 </view>
-<view wx:if="{{adopt}}" class='sub-btn'>
+<view wx:if="{{adopt && !slef}}" class='sub-btn'>
   <view class='btns' bind:tap="onTap">申请收养</view>
+</view>
+
+<view wx:elif="{{self}}" class='sub-btn'>
+  <view class='btnsdisable' disable >申请收养</view>
+</view>
+<view wx:else="{{!adopt}}" class='sub-btn'>
+  <view class='btnsdisable' disable >已申请</view>
 </view>
 <van-dialog id="van-dialog" />

@@ -22,7 +22,7 @@
     <view class='sub-title'>带我回家</view>
 
     <!-- <choise-cmp  class='choise' /> -->
-    <view class='choise-container' bind:tap='onPetSearch'>
+    <!-- <view class='choise-container' bind:tap='onPetSearch'>
       <view class='choise-left'>
         <view class='choise-btn'>综合排序
           <image src='/images/right-anticon(2).png'></image>
@@ -38,7 +38,7 @@
           <image src='/images/filter-anticon.png'></image>
         </view>
       </view>
-    </view>
+    </view> -->
 
     <view class="sub-container">
       <view class="animal-container">

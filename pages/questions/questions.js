@@ -88,6 +88,13 @@ Page({
     var param = this.data.answers;
     param = JSON.stringify(param);
     console.log(param);
+    wx.showToast({
+      title: '正在上传...',
+      icon: 'loading',
+      mask: true,
+      duration: 10000
+    });
+    
     requesttoken('/app/addAnswers', "POST",
       {'answers': param}, function (res) {
         console.log(res);
