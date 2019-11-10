@@ -1,4 +1,8 @@
 // pages/webview/webview.js
+import {
+  requestsend,
+  requesttoken
+} from '../../utils/util.js'
 Page({
 
   /**
@@ -12,8 +16,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var id = options.id;
+    
+    var that = this;
+    requesttoken('/util/selectByPrimaryKey', 'GET',
+      {"id": id}, function (res) {
+        console.log(res);
+        if (res.success) {
+          that.setData({
+            url: res.data.link
+          })
 
-
+        }
+      })
   },
 
   /**

@@ -48,10 +48,11 @@ Page({
             var temp = {};
             temp.id = tempData[i].id;
             temp.petId = tempData[i].petId;
+            temp.petStatus = tempData[i].petStatus;
             temp.type = tempData[i].type;
             temp.sex = tempData[i].sex;
             var petCreateDate = tempData[i].petCreateTime.substring(0, 10);
-            temp.image = Config.imgPath + "/" + petCreateDate + "/" + tempData[i].image;
+            temp.image = Config.imgPath + "/" + petCreateDate + "/min_" + tempData[i].image;
             temp.name = tempData[i].petName;
             temp.appId = tempData[i].appId;
             temp.applyName = tempData[i].nickName;

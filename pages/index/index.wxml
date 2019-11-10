@@ -13,7 +13,7 @@
       <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true" next-margin="60rpx">
         <block wx:for="{{imgUrls}}" wx:key="{{id}}">
           <swiper-item>
-            <image bindtap="bindViewTap" src="{{item.url}}" class="slide-image" width="660" height="330" />
+            <image bindtap="bindViewTap" data-id="{{item.pid}}" src="{{item.url}}" class="slide-image" width="660" height="330" />
           </swiper-item>
         </block>
       </swiper>

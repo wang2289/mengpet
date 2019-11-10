@@ -19,7 +19,7 @@ Page({
     modify: false,
     searchPanel:false,
     books:Object,
-    radio1: "0",
+    radio1: "1",
     radio2: false,
     radio3: false,
     radio4: "0",

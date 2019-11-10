@@ -6,8 +6,8 @@
   <view class='line'></view>
   <view class="own-info-item info-center">
     <van-radio-group class='xingbie' value="{{ radio1 }}" bind:change="onChange1">
-      <van-radio name="0">先生</van-radio>
-      <van-radio name="1">女士</van-radio>
+      <van-radio name="1">先生</van-radio>
+      <van-radio name="2">女士</van-radio>
     </van-radio-group>
   </view>
   <view class='line'></view>

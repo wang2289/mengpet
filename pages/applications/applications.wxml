@@ -3,7 +3,7 @@
     <view class="_div data-v-7309bb94 animal-container">
       <view wx:key="index" key="{{index}}" wx:for="{{pets}}" wx:for-index="index" wx:for-item="pet" class="_div data-v-7309bb94">
       
-        <view class="_div data-v-7ce44584 container">
+        <view class="_div data-v-7ce44584 container {{pet.petStatus == 3 ? 'xiajia': ''}}" >
           <image class="_img data-v-7ce44584 petimg" src="{{pet.image}}"></image>
           <view class="_div data-v-7ce44584 description">
             <view class="_div data-v-7ce44584 name">

@@ -28,7 +28,7 @@
     </view>
     <view class='line'></view>
     <view class="own-info-item chongwu">
-      <van-field value="{{ age }}" bind:change="onChange3" icon="arrow" clearable label="年龄" placeholder="请输入宠物年龄月份" border="{{ false }}" />
+      <van-field value="{{ age }}" bind:change="onChange3" icon="arrow" clearable label="年龄" placeholder="请填写宠物年龄" border="{{ false }}" />
     </view>
     <view class='line'></view>
     <view class="own-info-item chongwu">
@@ -93,3 +93,4 @@
 <view class='sub-btn'>
   <view class='btns' bindtap='Finish'>发布</view>
 </view>
+<van-dialog id="van-dialog" />

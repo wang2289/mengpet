@@ -28,11 +28,11 @@
     </view>
     <view class='line'></view>
     <view class="own-info-item chongwu">
-      <van-field value="{{ age }}" bind:change="onChange3" icon="arrow" clearable label="年龄" placeholder="请选择宠物年龄" border="{{ false }}" />
+      <van-field value="{{ age }}" bind:change="onChange3" icon="arrow" clearable label="年龄" placeholder="请填写宠物年龄" border="{{ false }}" />
     </view>
     <view class='line'></view>
     <view class="own-info-item chongwu">
-      <van-field value="{{ area }}" bind:change="onChange4" border="{{ false }}" icon="arrow" clearable label="地区" placeholder="请选择宠物的所在地" />
+      <van-field value="{{ area }}" bind:change="onChange4" border="{{ false }}" icon="arrow" clearable label="地区" placeholder="请填写宠物的所在地" />
     </view>
     <view class='line'></view>
     <view class="own-info-item">

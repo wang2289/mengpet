@@ -14,6 +14,7 @@ import {
 import {
   Token
 } from '../../utils/token.js'
+import Dialog from 'vant-weapp/dialog/dialog'
 Page({
 
   /**
@@ -152,6 +153,13 @@ Page({
   },
   Finish: function() {
     var that = this;
+    if (that.data.permission != 1) {
+      wx.showToast({
+        title: `您的信息需认证后才可以发布宠物信息`,
+        icon: "none"
+      })
+      return;
+    } 
     var picsData = this.data.pics
     var photoIdStr = "";
     for (let l in this.data.photoIds) {
@@ -211,14 +219,14 @@ Page({
       })
       return;
     }
-    var regPos = /^[0-9]*$/; //非负浮点数
-    if (!regPos.test(parms.age)) {
-      wx.showToast({
-        title: `宠物年龄请填写数字！`,
-        icon: "none"
-      })
-      return;
-    } 
+    // var regPos = /^[0-9]*$/; //非负浮点数
+    // if (!regPos.test(parms.age)) {
+    //   wx.showToast({
+    //     title: `宠物年龄请填写数字！`,
+    //     icon: "none"
+    //   })
+    //   return;
+    // } 
     if (!parms.area) {
       wx.showToast({
         title: `请填写宠物地区！`,
@@ -254,27 +262,35 @@ Page({
       })
       return;
     } 
-    wx.showToast({
-      title: '正在上传...',
-      icon: 'loading',
-      mask: true,
-      duration: 10000
-    });
+    
 
-    requesttoken('/pets/uploadPetInfoNoImg', "GET",
-      parms, function (res) {
-        
-        console.log(res);
-        if (res.success) {
-          wx.showToast({
-            title: `保存成功！`,
-            icon: "none",
-            mask: true,
-            duration: 3000
-          })
-          that.onLoad();
-        }
-      })
+    Dialog.confirm({
+      title: '提示',
+      message: '确认修改宠物信息吗'
+    }).then(() => {
+      wx.showToast({
+        title: '正在上传...',
+        icon: 'loading',
+        mask: true,
+        duration: 10000
+      });
+      requesttoken('/pets/uploadPetInfoNoImg', "GET",
+        parms, function (res) {
+          
+          console.log(res);
+          if (res.success) {
+            wx.showToast({
+              title: `保存成功！`,
+              icon: "none",
+              mask: true,
+              duration: 3000
+            })
+            that.onLoad();
+          }
+        })
+      }).catch(() => {
+
+      });
   },
   remove: function(array, val) {
     for (var i = 0; i < array.length; i++) {
@@ -287,6 +303,13 @@ Page({
   //上传图片开始
   chooseImg: function(e) {
     var that = this;
+    if (that.data.permission != 1) {
+      wx.showToast({
+        title: `您的信息需认证后才可以发布宠物信息`,
+        icon: "none"
+      })
+      return;
+    } 
     // pics = this.data.pics;
     that.setData({
       pics: [],
@@ -373,6 +396,27 @@ Page({
       photoIds: []
     })
     this.changeTips(0);
+  },
+
+  onShow: function() {
+    var that = this;
+    requesttoken('/user/getMyInfo', 'GET',
+      {}, function (res) {
+        console.log(res);
+        if (res.success) {
+          that.setData({
+            permission: res.data.permission
+          })
+          if (res.data.permission != 1) {          
+            Dialog.alert({
+              message: '您的信息需认证后才可以发布宠物信息'
+            }).then(() => {
+            
+            })
+          }
+
+        }
+      })
   },
 
   changeTips: function(type) {

@@ -20,20 +20,7 @@ Page({
     searchPanel: false,
     pets: [],
     more: false,
-    imgUrls: [
-      {
-        id: 0,
-        url: '/images/Group 20.png'
-      },
-      {
-        id: 1,
-        url: 'https://images.unsplash.com/photo-1551214012-84f95e060dee?w=640',
-      },
-      {
-        id: 2,
-        url: 'https://images.unsplash.com/photo-1551446591-142875a901a1?w=640'
-      }
-    ],
+    imgUrls: [],
     indicatorDots: false,
     autoplay:true,
     interval: 5000,
@@ -59,10 +46,33 @@ Page({
    */
   onLoad: function (options) {
     this.hasGottenUserInfo()
+    this.getPositions();
   },
   onShow: function (options) {
     
     
+  },
+  getPositions: function() {
+    var that = this;
+    requesttoken('util/getPositions', "GET",
+      { }, function (res) {
+        if (res.success) {
+          var list = res.data;
+          var temp = [];
+          for (let i in list) {
+            var posData = {}
+            posData.id = i;
+            posData.pid = list[i].id;
+            posData.url = list[i].image;
+            temp.push(posData);
+          }
+          console.log(temp);
+          that.setData({
+            imgUrls: temp
+          })
+        }
+
+      })
   },
   onActivateSearch: function (event) {
     this.setData({
@@ -166,6 +176,7 @@ Page({
             temp.city = 'city';
             temp.area = pets[i].area;
             temp.view = pets[i].view;
+            temp.type = pets[i].type;
             petData[i] = temp;
           }
           if (!reload) {
@@ -197,10 +208,10 @@ Page({
   },
 
   //事件处理函数
-  bindViewTap: function() {
-
+  bindViewTap: function(event) {    
+    var id = event.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../webview/webview'
+      url: '../webview/webview?id=' + id
     })
   },
 

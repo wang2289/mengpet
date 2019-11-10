@@ -4,8 +4,8 @@
     <image class="_img data-v-6764498b peopleimage" src="{{userPhoto}}"></image>
     <view class="_div data-v-6764498b peopleinfo">
       <label class="_span data-v-6764498b peoplename">{{userName}}
-        <image wx:if="{{userSex == 1}}" src="/images/woman-anticon.png"  class="_img data-v-6764498b peo-icon"/>
-        <image wx:if="{{userSex == 0}}" src="/images/man-anticon.png"  class="_img data-v-6764498b peo-icon"/>
+        <image wx:if="{{userSex == 0}}" src="/images/woman-anticon.png"  class="_img data-v-6764498b peo-icon"/>
+        <image wx:if="{{userSex == 1}}" src="/images/man-anticon.png"  class="_img data-v-6764498b peo-icon"/>
       </label>
       <!-- <label class="_span data-v-6764498b peopleid">ID: {{user.userId}}</label> -->
     </view>
@@ -19,7 +19,7 @@
     <van-cell-group class="_van-cell-group " border="{{false}}">
       <van-cell title="我的送养" border="{{false}}" is-link link-type="navigateTo" size="large" url="/pages/mySongyang/mySongyang" class="_van-cell data-v-6764498b"></van-cell>
       <van-cell title="我收到的领养申请" border="{{false}}" is-link link-type="navigateTo" size="large" url="/pages/applications/applications" class="_van-cell data-v-6764498b"></van-cell>
-      <van-cell title="我发起的领养申请" border="{{false}}"is-link link-type="navigateTo" size="large" url="/pages/index/index" class="_van-cell data-v-6764498b"></van-cell>
+      <van-cell title="我发起的领养申请" border="{{false}}"is-link link-type="navigateTo" size="large" url="/pages/myReceiveApply/myReceiveApply" class="_van-cell data-v-6764498b"></van-cell>
     </van-cell-group>
     <view class="line"></view>
     <van-cell-group class="_van-cell-group data-v-6764498b"border="{{false}}">
