@@ -58,7 +58,20 @@ Page({
           user.name = info.nickName;
           user.sex = info.sex;
           user.area = info.area;
-          user.age = info.age;
+          var temp = info.age;
+          switch(temp) {
+            case 0: 
+              temp = '60后';
+            case 1:
+              temp = '70后';
+            case 2:
+              temp = '80后';
+            case 3:
+              temp = '90后';
+            case 4:
+              temp = '00后';
+          }
+          user.age = temp;
           user.phoneNumber = info.phoneNumber;
           user.wechat = info.wechat;
 
