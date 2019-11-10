@@ -46,6 +46,9 @@ Page({
   //下拉刷新
   onPullDownRefresh: function() {
     var size = this.data.size;
+    this.setData({
+      page: 1
+    })
     this.getRecommendList(1, size, true);
 
   },

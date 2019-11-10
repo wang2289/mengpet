@@ -266,7 +266,7 @@ Page({
 
     Dialog.confirm({
       title: '提示',
-      message: '确认修改宠物信息吗'
+      message: '确认发布宠物信息吗'
     }).then(() => {
       wx.showToast({
         title: '正在上传...',
