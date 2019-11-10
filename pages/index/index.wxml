@@ -49,6 +49,11 @@
     </view>
   </view>
   <search-cmp more="{{more}}" wx:if="{{searchPanel}}" bind:cancel="onCancel" />
+  <view class="body-view">
+    <loading hidden="{{hidden}}" bindchange="loadingChange">
+          加载中...
+    </loading>
+   </view>
 </view>
 
 <view class='meng' hidden='{{isshow}}'>

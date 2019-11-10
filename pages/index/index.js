@@ -14,6 +14,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    hidden: false,
+    pages: 1,
     page: 1,
     size: 4,
     isshow: true,
@@ -29,11 +31,17 @@ Page({
   },
   onReachBottom: function (event) {
     var page = this.data.page + 1;
+    var pages = this.data.pages;
     var size = this.data.size;
     this.setData({
       page: page
     })
-    this.getRecommendList(page, size, false);
+    if (page <= pages) {
+      this.getRecommendList(page, size, false);
+    } else {
+      
+    }
+    
   },
   //下拉刷新
   onPullDownRefresh: function() {
@@ -142,10 +150,16 @@ Page({
   },
 
   getRecommendList: function(page, size, reload) {
+    this.setData({
+      hidden: true
+    })
     var that = this;
     requesttoken('pets/getPetsInfosFilterMitTips', "GET",
       { "page": page, "size": size}, function (res) {
         if (res.success) {
+          that.setData({
+            pages: res.data.pages
+          })
           var pets = res.data.list;
           var petData = [];
           for (var i = 0; i < pets.length; i++) {
@@ -187,7 +201,8 @@ Page({
             console.log(petData);
           }
           that.setData({
-            pets: petData
+            pets: petData,
+            hidden: true
           })
 
         }

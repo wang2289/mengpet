@@ -99,7 +99,8 @@ Page({
     likeModel.like(like_or_cancel, this.data.book.id, 400)
   },
 
-  onTap: function (event) {
+  submit: function (event) {
+    var formId = event.detail.formId
     if (!this.data.fillInfo) {
       wx.navigateTo({
         url: '/pages/infor/infor'
@@ -123,7 +124,7 @@ Page({
               })
             } else {
               requesttoken('/app/addApplication', 'GET',
-                { "petId": id, "ownerId": ownerId, "type": code }, function (res) {
+                { "petId": id, "ownerId": ownerId, "type": code, "formId": formId }, function (res) {
                   console.log(res);
                   if (res.success) {
                     wx.showToast({
