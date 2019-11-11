@@ -14,7 +14,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    hidden: false,
+    hidden: true,
     pages: 1,
     page: 1,
     size: 4,
@@ -105,7 +105,7 @@ Page({
               this.setData({
                 isshow: true
               })
-              
+
               var userInfo = data.userInfo;
               wx.login({
                 success(res) {
@@ -154,7 +154,7 @@ Page({
 
   getRecommendList: function(page, size, reload) {
     this.setData({
-      hidden: true
+      hidden: false
     })
     var that = this;
     requesttoken('pets/getPetsInfosFilterMitTips', "GET",
@@ -203,12 +203,11 @@ Page({
             petData = data.concat(petData);
             console.log(petData);
           }
-          that.setData({
-            pets: petData,
-            hidden: true
-          })
-
         }
+        that.setData({
+          pets: petData,
+          hidden: true
+        })
       })
   },
 
