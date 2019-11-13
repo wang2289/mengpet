@@ -187,10 +187,11 @@ Page({
             features.push(pickerList[l].value);
           }
         }
+        if(res.data.photoList.length>0){
         var createTime = res.data.photoList[0].createTime;
         var createDate = createTime.substring(0, 10);
         var imagePath = Config.imgPath + "/" + createDate + "/" + res.data.photoList[0].path
-
+        }
 
         var data =
         {
