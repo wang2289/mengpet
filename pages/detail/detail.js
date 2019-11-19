@@ -39,7 +39,8 @@ Page({
     fillInfo: true,
     adopt: false,
     self: true,
-    infoStatus:0
+    infoStatus:0,
+    approveStatus:0
   },
 
   /**
@@ -49,10 +50,10 @@ Page({
     this.setData({
       petId: options.bid
     })
-    if(this.data.petId==-2){
-      this.submit();
-    }
+
+
   },
+
 
   onFakePost: function() {
     this.setData({
@@ -122,12 +123,26 @@ Page({
         { "code": code }, function (res) {
           console.log(res);
           if (res.success) {
-            if (res.data.length > 0) {
+            if (res.data.length <=0) {
               wx.navigateTo({
                 url: '/pages/questions/questions?code=' + code,
               })
             } else {
-              this.approve(id,code,ownerId,formId);
+              requesttoken('/app/addApplication', 'GET',
+                  { "petId": id, "ownerId": ownerId, "type": code, "formId": formId }, function (res) {
+                    console.log(res);
+                    if (res.success) {
+                      wx.showToast({
+                        title: `申请成功！`,
+                        icon: "none",
+                        mask: true,
+                        duration: 3000
+                      })
+                      wx.switchTab({
+                        url: '/pages/index/index',
+                      })
+                    }
+                  });
             }
           }
         });
@@ -137,23 +152,6 @@ Page({
     }); 
   },
 
-  approve:function(id,code,ownerId){
-    requesttoken('/app/addApplication', 'GET',
-        { "petId": id, "ownerId": ownerId, "type": code, "formId": formId }, function (res) {
-          console.log(res);
-          if (res.success) {
-            wx.showToast({
-              title: `申请成功！`,
-              icon: "none",
-              mask: true,
-              duration: 3000
-            })
-            wx.switchTab({
-              url: '/pages/index/index',
-            })
-          }
-        });
-  },
   onCollect: function () {
     this.setData({
       isCollect: !this.data.isCollect
@@ -164,6 +162,7 @@ Page({
 
   },
   onShow: function() {
+
     var that = this;
     let bid = this.data.petId;
     requesttoken('/user/getMyInfo', 'GET',
@@ -252,6 +251,9 @@ Page({
         comments: data.comments
       })
     })
-    
+
+    if(this.data.approveStatus==1){
+      this.submit();
+    }
   }
 })
