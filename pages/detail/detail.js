@@ -38,7 +38,8 @@ Page({
     count: 0,
     fillInfo: true,
     adopt: false,
-    self: true
+    self: true,
+    infoStatus:0
   },
 
   /**
@@ -48,6 +49,9 @@ Page({
     this.setData({
       petId: options.bid
     })
+    if(this.data.petId==-2){
+      this.submit();
+    }
   },
 
   onFakePost: function() {
@@ -100,7 +104,7 @@ Page({
   },
 
   submit: function (event) {
-    var formId = event.detail.formId
+    var formId = event.detail.formId;
     if (!this.data.fillInfo) {
       wx.navigateTo({
         url: '/pages/infor/infor'
@@ -118,26 +122,12 @@ Page({
         { "code": code }, function (res) {
           console.log(res);
           if (res.success) {
-            if (res.data.length <= 0) {
+            if (res.data.length > 0) {
               wx.navigateTo({
                 url: '/pages/questions/questions?code=' + code,
               })
             } else {
-              requesttoken('/app/addApplication', 'GET',
-                { "petId": id, "ownerId": ownerId, "type": code, "formId": formId }, function (res) {
-                  console.log(res);
-                  if (res.success) {
-                    wx.showToast({
-                      title: `申请成功！`,
-                      icon: "none",
-                      mask: true,
-                      duration: 3000
-                    })
-                    wx.switchTab({
-                      url: '/pages/index/index',
-                    })
-                  }
-                });
+              this.approve(id,code,ownerId,formId);
             }
           }
         });
@@ -145,6 +135,24 @@ Page({
     }).catch(() => {
 
     }); 
+  },
+
+  approve:function(id,code,ownerId){
+    requesttoken('/app/addApplication', 'GET',
+        { "petId": id, "ownerId": ownerId, "type": code, "formId": formId }, function (res) {
+          console.log(res);
+          if (res.success) {
+            wx.showToast({
+              title: `申请成功！`,
+              icon: "none",
+              mask: true,
+              duration: 3000
+            })
+            wx.switchTab({
+              url: '/pages/index/index',
+            })
+          }
+        });
   },
   onCollect: function () {
     this.setData({

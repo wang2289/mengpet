@@ -151,8 +151,8 @@ Page({
             mask: true,
             duration: 1000
           })
-          wx.navigateBack({
-            delta: 1
+          wx.navigateTo({
+            url: '/pages/detail/detail?petId=-2'
           })
         }
       })
