@@ -1,6 +1,8 @@
 <!-- <import src="/components/applyEditPanel.vue.wxml" />
 <import src="/components/catSongyangShowPanel.vue.wxml" /> -->
-程序员正在施工中。。。
+<view class = "sg">
+  <text>程序员正在施工中。。。</text>
+</view>
   <!-- <view class="_div data-v-7309bb94 container">
     <view class="_div data-v-7309bb94 title">
       <van-tabs swipeable animated active="{{active}}" bindchange="onChange"  class="_van-tabs data-v-7309bb94">
