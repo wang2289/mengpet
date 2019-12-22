@@ -13,7 +13,7 @@
             </view>
             <view class="_div data-v-7ce44584 moretip">
               <view class="_div data-v-7ce44584 applyName">申请人：{{pet.applyName}}</view>
-              <view class="_div data-v-7ce44584 applyAge">地区：{{pet.applyarea}} 年龄：{{pet.applyage}}</view>
+              <view class="_div data-v-7ce44584 applyAge">{{pet.applyarea}} {{pet.applyage}}</view>
             </view>
             <view class="_div data-v-7ce44584 applyDate">{{pet.applydate}}</view>
             <view class="_div data-v-7ce44584 btn-class">

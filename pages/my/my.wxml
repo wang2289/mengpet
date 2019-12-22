@@ -25,8 +25,10 @@
     <van-cell-group class="_van-cell-group data-v-6764498b"border="{{false}}">
       <van-cell size="large" title="我的资料" border="{{false}}" is-link link-type="navigateTo" url="/pages/infor/infor?type=show" class="_van-cell data-v-6764498b"></van-cell>
       <van-cell size="large" title="帮助与反馈" border="{{false}}" is-link link-type="navigateTo" url="/pages/help/help" class="_van-cell data-v-6764498b"></van-cell>
-      <van-cell size="large" title="推荐爪盟星给好友" is-link link-type="navigateTo" url="/pages/index/index" class="_van-cell data-v-6764498b"></van-cell>
+      <!-- <van-cell size="large" title="推荐爪盟星给好友" is-link bindtap="onShare" class="_van-cell data-v-6764498b"></van-cell> -->
+      <button id="shareBtn" open-type="share" class="_van-cell data-v-6764498b">推荐爪盟星给好友</button>
     </van-cell-group>
+    
   </view>
 </view>
 <!-- </template> -->

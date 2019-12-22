@@ -57,7 +57,20 @@ Page({
             temp.appId = tempData[i].appId;
             temp.applyName = tempData[i].nickName;
             temp.applyarea = tempData[i].area;
-            temp.applyage = tempData[i].age;
+            var tempAge = tempData[i].age;
+            switch (tempAge) {
+              case 0:
+                tempAge = '60后';
+              case 1:
+                tempAge = '70后';
+              case 2:
+                tempAge = '80后';
+              case 3:
+                tempAge = '90后';
+              case 4:
+                tempAge = '00后';
+            }
+            temp.applyage = tempAge;
             temp.applydate = tempData[i].createTime.substring(0, 10);
             pets.push(temp);
           }

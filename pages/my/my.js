@@ -51,6 +51,13 @@ Page({
           
         }
       })
-  }
+  },
 
+  onShareAppMessage: function (res) {
+    return {
+      title: '爪盟星',
+      path: '/pages/index/index',
+      imageUrl: 'http://static.e-mallchina.com/pic/product/brand/detail/hgds.jpg'
+    }
+  }
 })

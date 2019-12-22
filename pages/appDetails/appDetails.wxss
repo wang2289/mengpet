@@ -3,6 +3,41 @@
   width: 100%;
   position: relative;
 }
+.btn{
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.accept {
+  width: 280rpx;
+  height: 88rpx;
+  margin: 0 10rpx;
+  background: rgba(90, 175, 224, 1);
+  border-radius: 16rpx;
+  font-size: 34rpx;
+  font-family: PingFangSC-Medium, PingFangSC;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 88rpx;
+  margin-bottom: 16rpx;
+  text-align: center;
+}
+.reject {
+  width: 280rpx;
+  height: 88rpx;
+  margin: 0 10rpx;
+  background: rgba(230, 67, 64, 1);
+  border-radius: 16rpx;
+  font-size: 34rpx;
+  font-family: PingFangSC-Medium, PingFangSC;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 88rpx;
+  margin-bottom: 16rpx;
+  text-align: center;
+}
 .line {
   width: 690rpx;
   height: 1rpx;

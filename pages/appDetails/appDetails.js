@@ -33,6 +33,15 @@ Page({
 
   },
 
+  accept: function() {
+
+  },
+
+  reject: function() {
+    var that = this;
+    var id = this.data.id;
+  },
+
   /**
    * 生命周期函数--监听页面显示
    */

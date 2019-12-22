@@ -45,6 +45,11 @@
       </view>
       <view class='line'></view>
     </view>
+
+    <view class="btn">
+      <view class="accept" bindtap='accept'>接收</view>
+      <view class="reject" bindtap='reject'>拒绝</view>
+    </view>
   </view>
 
 </view>

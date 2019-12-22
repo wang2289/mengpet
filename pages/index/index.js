@@ -77,7 +77,6 @@ Page({
             posData.url = list[i].image;
             temp.push(posData);
           }
-          console.log(temp);
           that.setData({
             imgUrls: temp
           })
@@ -168,7 +167,9 @@ Page({
           for (var i = 0; i < pets.length; i++) {
             var temp = {};
             temp.id = pets[i].id;
-            temp.image = Config.imgPath + "/" + pets[i].photosId;
+            var resPath = pets[i].photosId;
+            var midPath = resPath.substring(0, 11) + 'middle_' + resPath.substring(11);
+            temp.image = Config.imgPath + "/" + midPath;
             temp.name = pets[i].nameCn;
             temp.sex = pets[i].sex;
             temp.age = pets[i].age;
@@ -217,6 +218,7 @@ Page({
     requestsend('/wechat/login', "GET",
       userInfo, function (res) {
         if (res.success) {
+          console.log(res);
           app.globalData.token = res.data.token;
           app.globalData.userId = res.data.userId;
           that.getRecommendList(1, size, true);
