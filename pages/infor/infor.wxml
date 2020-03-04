@@ -16,13 +16,23 @@
     <van-checkbox class='gong' value="{{ radio2 }}" bind:change="onChange2">公开</van-checkbox>
   </view>
   <view class='line'></view>
-  <view class="own-info-item">
+  <!-- <view class="own-info-item">
     <van-field value="{{ shouji }}" bind:change="onChangeshou" border="{{ false }}" clearable label="手机号:" placeholder="非必填（仅用于审核沟通）" />
+    <van-checkbox class='gong' value="{{ radio3 }}" bind:change="onChange3">公开</van-checkbox>
+  </view> -->
+  <view class="own-info-item">
+    <view class="phone-item">
+      <view class="phone-info-name">
+        <text>手机号:  </text>
+      </view>
+      <van-button style="display:{{!auth?'block':'none'}}" size="small" type="primary" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">点击授权</van-button>
+      <van-button style="display:{{auth?'block':'none'}}" size="small" type="default" disabled>已授权</van-button>
+    </view>
     <van-checkbox class='gong' value="{{ radio3 }}" bind:change="onChange3">公开</van-checkbox>
   </view>
   <view class='line'></view>
   <view class="own-info-item">
-    <view class="info-name">
+    <view class="info-name" style="font-size:14px;line-height:24px;color:#333">
       <text>年龄:  </text>
     </view>
     <van-radio-group class='nian' value="{{ radio4 }}" bind:change="onChange4">

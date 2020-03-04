@@ -30,6 +30,25 @@
   width: 164rpx;
 }
 
+.phone-item {
+  display: flex;
+  flex-direction: row;
+  width: 66%;
+  padding: 15rpx 30rpx;
+}
+
+.phone-info-name {
+  width: 164rpx;
+  font-size: 14px;
+  line-height: 24px;
+  color: #333;
+}
+
+.phone-button {
+  margin-left: 30rpx;
+  width: 200rpx;
+}
+
 .line {
   width: 690rpx;
   height: 1rpx;

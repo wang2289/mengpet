@@ -28,10 +28,23 @@ Page({
     more:false,
     name:'',
     weixing: '',
-    shouji: '',
+    // shouji: '',
+    encryptedData: '',
+    iv: '',
     diqu: '',
+    auth: false
   },
 
+  getPhoneNumber (e) {
+    console.log(e.detail.errmsg)
+    console.log(e.detail.iv)
+    console.log(e.detail.encryptedData)
+    console.log(e.detail)
+    this.setData({
+      encryptedData: e.detail.encryptedData,
+      iv: e.detail.iv
+    });
+  },
 
   onChangename(event) {
     this.setData({
@@ -43,11 +56,11 @@ Page({
       weixing: event.detail
     });
   },
-  onChangeshou(event) {
-    this.setData({
-      shouji: event.detail
-    });
-  },
+  // onChangeshou(event) {
+  //   this.setData({
+  //     shouji: event.detail
+  //   });
+  // },
   onChangedi(event) {
     this.setData({
       diqu: event.detail
@@ -116,6 +129,8 @@ Page({
       phoneNumberP: this.data.radio3 ? 1 : 0,
       areaP: this.data.radio5 ? 1 : 0,
       professionP: this.data.radio6 ? 1 : 0,
+      encryptedData: this.data.encryptedData,
+      iv: this.data.iv
     };
     console.log(parms);
     if (!parms.trueName) {
@@ -200,10 +215,15 @@ Page({
               radio6: res.data.professionP == 1 ? true : false,
               name: res.data.trueName,
               weixing: res.data.wechat,
-              shouji: res.data.phoneNumber,
+              // shouji: res.data.phoneNumber,
               diqu: res.data.area,
               zhiye: res.data.profession
             })
+            if(res.data.phoneNumber != "") {              
+              that.setData({
+                auth: true
+              })
+            }
           }
         })
     }

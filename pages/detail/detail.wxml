@@ -79,9 +79,9 @@
   <button form-type="submit" size="default" class='btns'>申请收养</button>
 </form>
 <form bindsubmit="submit" report-submit='true' wx:elif="{{self}}">
-  <button form-type="submit" size="default" class='btnsdisable' disable >申请收养</button>
+  <button form-type="submit" size="default" class='btnsdisable' disabled="true" >申请收养</button>
 </form>
 <form bindsubmit="submit" report-submit='true' wx:else="{{!adopt}}">
-  <button form-type="submit" size="default" class='btnsdisable' disable >已申请</button>
+  <button form-type="submit" size="default" class='btnsdisable' disabled="true" >已申请</button>
 </form>
 <van-dialog id="van-dialog" />
