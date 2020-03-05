@@ -41,6 +41,15 @@ Page({
     var that = this;
     var encryptedData = e.detail.encryptedData;
     var iv = e.detail.iv;
+    if (encryptedData == undefined && iv == undefined) {
+      wx.showToast({
+        title: `授权失败！`,
+        icon: "none",
+        mask: true,
+        duration: 1000
+      })
+      return;
+    }
     var parms = {
       encryptedData: encryptedData,
       iv: iv
@@ -284,6 +293,13 @@ Page({
                     }
                   })
                 }
+              },
+              fail: function() {
+                wx.showToast({
+                  title: '授权失败',
+                  icon: 'none',
+                  duration: 1000
+                })
               }
             })
           } else {
