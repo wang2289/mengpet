@@ -10,6 +10,8 @@ import {
   requestsend,
   requesttoken
 } from '../../utils/util.js'
+var QQMapWX = require('../../utils/qqmap-wx-jssdk.js');
+var qqmapsdk;
 Page({
 
   /**
@@ -32,7 +34,7 @@ Page({
     encryptedData: '',
     iv: '',
     diqu: '',
-    auth: false
+    auth: false,
   },
 
   getPhoneNumber (e) {
@@ -45,7 +47,6 @@ Page({
     };
     requesttoken('/user/updateUserPhoneNumber', "GET",
       parms, function (res) {
-        console.log(res);
         if (res.success) {
           that.setData({
             encryptedData: encryptedData,
@@ -149,7 +150,6 @@ Page({
       areaP: this.data.radio5 ? 1 : 0,
       professionP: this.data.radio6 ? 1 : 0
     };
-    console.log(parms);
     if (!parms.trueName) {
       wx.showToast({
         title: `请填写姓名！`,
@@ -187,7 +187,6 @@ Page({
     } 
     requesttoken('/user/updateUserInfo', "GET",
       parms, function (res) {
-        console.log(res);
         if (res.success) {
           wx.showToast({
             title: `保存成功！`,
@@ -221,7 +220,6 @@ Page({
       });
       requesttoken('/user/getMyInfo', "GET",
         {}, function (res) {
-          console.log(res);
           if (res.success) {
             that.setData({
               radio1: res.data.sex + '',
@@ -236,17 +234,90 @@ Page({
               diqu: res.data.area,
               zhiye: res.data.profession
             })
-            console.log("ph: " + res.data.phoneNumber)
-            console.log("ph bool: " + (res.data.phoneNumber != ""))
             if (res.data.phoneNumber != "" && res.data.phoneNumber != null) {              
               that.setData({
                 auth: true
               })
             }
+            if (res.data.area == "" || res.data.area == null) {
+              that.getSetting();
+            }            
           }
         })
     }
     
+  },
+
+  getSetting:function() {
+    var that = this;
+    wx.getSetting({
+      success: (res) => {
+        if (res.authSetting['scope.userLocation'] != undefined
+          && res.authSetting['scope.userLocation'] != true) {
+            wx.showModal({
+              title: '请求授权当前位置',
+              content: '需要获取您的地理位置，请确认授权',
+              success: function(res) {
+                if (res.cancel) {
+                  wx.showToast({
+                    title: '拒绝授权',
+                    icon:'none',
+                    duration: 1000
+                  })
+                } else if (res.confirm) {
+                  wx.openSetting({
+                    success: function(res) {
+                      if (res.authSetting['scope.userLocation'] == true) {
+                        wx.showToast({
+                          title: '授权成功',
+                          icon: 'success',
+                          duration: 1000
+                        })
+                        that.getAddress();
+                      } else {
+                        wx.showToast({
+                          title: '授权失败',
+                          icon: 'none',
+                          duration: 1000
+                        })
+                      }
+                    }
+                  })
+                }
+              }
+            })
+          } else {
+            that.getAddress();
+          }
+      }
+    })
+  },
+
+  getAddress: function() {
+    qqmapsdk = new QQMapWX({
+      key: 'S22BZ-ZE3CX-SPU4S-TXHT2-DKDMK-TSBKI'
+    });
+
+    var that = this;
+    wx.getLocation({
+      type: "wgs84",
+      success: function (res) {
+          //根据坐标获取当前位置名称，显示在顶部:腾讯地图逆地址解析,前面已引入SDK
+          qqmapsdk.reverseGeocoder({
+            location: {
+              latitude: res.latitude,
+              longitude: res.longitude
+            },
+            success: function (addressRes) {
+              const result = addressRes.result;
+              that.setData({
+                diqu: result.address,
+              })
+            }            
+          })
+
+      },
+    })
   },
 
   onActivateSearch:function(event){
