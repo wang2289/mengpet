@@ -36,14 +36,33 @@ Page({
   },
 
   getPhoneNumber (e) {
-    console.log(e.detail.errmsg)
-    console.log(e.detail.iv)
-    console.log(e.detail.encryptedData)
-    console.log(e.detail)
-    this.setData({
-      encryptedData: e.detail.encryptedData,
-      iv: e.detail.iv
-    });
+    var that = this;
+    var encryptedData = e.detail.encryptedData;
+    var iv = e.detail.iv;
+    var parms = {
+      encryptedData: encryptedData,
+      iv: iv
+    };
+    requesttoken('/user/updateUserPhoneNumber', "GET",
+      parms, function (res) {
+        console.log(res);
+        if (res.success) {
+          that.setData({
+            encryptedData: encryptedData,
+            iv: iv,
+            auth: true
+          });
+          wx.showToast({
+            title: `授权成功！`,
+            icon: "none",
+            mask: true,
+            duration: 1000
+          })
+
+        }
+      })
+
+    
   },
 
   onChangename(event) {
@@ -128,9 +147,7 @@ Page({
       wechatP: this.data.radio2 ? 1 : 0,
       phoneNumberP: this.data.radio3 ? 1 : 0,
       areaP: this.data.radio5 ? 1 : 0,
-      professionP: this.data.radio6 ? 1 : 0,
-      encryptedData: this.data.encryptedData,
-      iv: this.data.iv
+      professionP: this.data.radio6 ? 1 : 0
     };
     console.log(parms);
     if (!parms.trueName) {
@@ -219,7 +236,9 @@ Page({
               diqu: res.data.area,
               zhiye: res.data.profession
             })
-            if(res.data.phoneNumber != "") {              
+            console.log("ph: " + res.data.phoneNumber)
+            console.log("ph bool: " + (res.data.phoneNumber != ""))
+            if (res.data.phoneNumber != "" && res.data.phoneNumber != null) {              
               that.setData({
                 auth: true
               })

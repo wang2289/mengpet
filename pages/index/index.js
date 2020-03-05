@@ -123,7 +123,6 @@ Page({
           this.setData({
             isshow: false
           })
-          // console.log("getUserInfo false")
         }
       }
     })
@@ -135,6 +134,7 @@ Page({
         isshow: true
       })
     }
+    this.hasGottenUserInfo();
   },
   onPetSearch:function(){
     wx.navigateTo({
@@ -199,10 +199,7 @@ Page({
           }
           if (!reload) {
             var data = that.data.pets;
-            console.log(data);
-            console.log(petData);
             petData = data.concat(petData);
-            console.log(petData);
           }
         }
         that.setData({
@@ -218,7 +215,6 @@ Page({
     requestsend('/wechat/login', "GET",
       userInfo, function (res) {
         if (res.success) {
-          console.log(res);
           app.globalData.token = res.data.token;
           app.globalData.userId = res.data.userId;
           that.getRecommendList(1, size, true);
