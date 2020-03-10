@@ -75,7 +75,14 @@
 <!-- <form bindsubmit="submit" report-submit='true' >
   <button form-type="submit" type="default" size="mini">提交</button>
 </form> -->
-<form bindsubmit="submit" report-submit='true' wx:if="{{adopt && !slef}}" >
+
+  <button wx:if="{{adopt && !slef}}" form-type="submit" size="default" class='btns' bindtap="submit">申请收养</button>
+
+  <button wx:elif="{{self}}" form-type="submit" size="default" class='btnsdisable' disabled="true" bindtap="submit">申请收养</button>
+
+  <button wx:else="{{!adopt}}" form-type="submit" size="default" class='btnsdisable' disabled="true" bindtap="submit">已申请</button>
+
+<!-- <form bindsubmit="submit" report-submit='true' wx:if="{{adopt && !slef}}" >
   <button form-type="submit" size="default" class='btns'>申请收养</button>
 </form>
 <form bindsubmit="submit" report-submit='true' wx:elif="{{self}}">
@@ -83,5 +90,5 @@
 </form>
 <form bindsubmit="submit" report-submit='true' wx:else="{{!adopt}}">
   <button form-type="submit" size="default" class='btnsdisable' disabled="true" >已申请</button>
-</form>
+</form> -->
 <van-dialog id="van-dialog" />

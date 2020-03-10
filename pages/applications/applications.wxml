@@ -1,33 +1,30 @@
 <view class="_div data-v-7309bb94 container">
+  <view class="title">
+      <van-tabs swipeable animated active="{{active}}" bind:change="onChange" 
+      class="_van-tabs tabs" >
+        <van-tab title="待审核" class="_van-tab tabs"></van-tab>
+        <van-tab title="确认送养" class="_van-tab tabs"></van-tab>
+        <van-tab title="已取消" class="_van-tab tabs"></van-tab>
+      </van-tabs>
+  </view>
   <view class="_div data-v-7309bb94 receiveApplyList">
-    <view class="_div data-v-7309bb94 animal-container">
+    <view wx:if="{{index == 0}}" class="_div data-v-7309bb94 animal-container">
       <view wx:key="index" key="{{index}}" wx:for="{{pets}}" wx:for-index="index" wx:for-item="pet" class="_div data-v-7309bb94">
-      
-        <view class="_div data-v-7ce44584 container {{pet.petStatus == 3 ? 'xiajia': ''}}" >
-          <image class="_img data-v-7ce44584 petimg" src="{{pet.image}}"></image>
-          <view class="_div data-v-7ce44584 description">
-            <view class="_div data-v-7ce44584 name">
-              <view class="_div data-v-7ce44584 nametitle">{{pet.name}}</view>
-              <image wx:if="{{pet.sex == 0}}" src="/images/woman-anticon.png"  class="_img data-v-7ce44584"/>
-              <image wx:if="{{pet.sex == 1}}" src="/images/man-anticon.png"  class="_img data-v-7ce44584"/>
-            </view>
-            <view class="_div data-v-7ce44584 moretip">
-              <view class="_div data-v-7ce44584 applyName">申请人：{{pet.applyName}}</view>
-              <view class="_div data-v-7ce44584 applyAge">{{pet.applyarea}} {{pet.applyage}}</view>
-            </view>
-            <view class="_div data-v-7ce44584 applyDate">{{pet.applydate}}</view>
-            <view class="_div data-v-7ce44584 btn-class">
-              <van-button class="_van-button data-v-7ce44584 btns" type="default" size="small" data-id="{{pet.id}}" bindtap="onDetail" >查看</van-button>
-              <!-- <van-button class="_van-button data-v-7ce44584 btns" type="default" size="small" bindtap="onConfirm" >接受</van-button> -->
-              <!-- <van-button class="_van-button data-v-7ce44584 btns" type="default" size="small" bindtap="onRefuse" >拒绝</van-button> -->
-            </view>
-            <!-- <view wx:else class="_div data-v-7ce44584 cancleReason">取消原因： {{pet.cancleReason}}</view> -->
-          </view>
-          <van-dialog id="van-dialog" class="_van-dialog data-v-7ce44584"></van-dialog>
-        </view>
+        <include src="applicationstab.wxml" />
+      </view>
+    </view>
 
+    <view wx:if="{{index == 1}}" class="_div data-v-7309bb94 animal-container">
+      <view wx:key="index" key="{{index}}" wx:for="{{petsConfirm}}" wx:for-index="index" wx:for-item="pet" class="_div data-v-7309bb94">
+        <include src="applicationstab.wxml" />
+      </view>
+    </view>
 
+    <view wx:if="{{index == 2}}" class="_div data-v-7309bb94 animal-container">
+      <view wx:key="index" key="{{index}}" wx:for="{{petsCancel}}" wx:for-index="index" wx:for-item="pet" class="_div data-v-7309bb94">
+        <include src="applicationstab.wxml" />
       </view>
     </view>
   </view>
+  <van-dialog id="van-dialog" class="_van-dialog data-v-7ce44584"></van-dialog>
 </view>

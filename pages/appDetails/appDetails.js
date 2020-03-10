@@ -7,6 +7,7 @@ import {
   requestsend,
   requesttoken
 } from '../../utils/util.js'
+import Dialog from 'vant-weapp/dialog/dialog'
 Page({
 
   /**
@@ -14,7 +15,10 @@ Page({
    */
   data: {
     quesDetails: [],
-    id: 0
+    id: 0,
+    appStatus: 0,
+    petId: -1,
+    petOwnerId: -1
   },
 
   /**
@@ -22,7 +26,8 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      id: options.id
+      id: options.id,
+      appStatus: options.appStatus,
     })
   },
   
@@ -34,12 +39,63 @@ Page({
   },
 
   accept: function() {
+    var that = this;
+    
+    var param = {
+      id: this.data.id,
+      petId: this.data.petId,
+      petOwnerId: this.data.petOwnerId
+    }
+    Dialog.confirm({
+      title: '提示',
+      message: '确认接受该领养吗？确认后将暂时下架宠物，暂时无法接收更多领养申请(可重新操作上架'
+    }).then(() => {
+      requesttoken('/app/accept', 'GET',
+        param , function (res) {
+          console.log(res);
+          if (res.success) {
+            wx.showToast({
+              title: `确认成功！`,
+              icon: "none",
+              mask: true,
+              duration: 3000
+            })
+            wx.navigateBack({
+              delta: 1
+            })
+          }
+        });
+    }).catch(() => {
 
+    });
   },
 
   reject: function() {
     var that = this;
     var id = this.data.id;
+    Dialog.confirm({
+      title: '提示',
+      message: '确认拒绝这份申请吗'
+    }).then(() => {
+      requesttoken('/app/reject', 'GET',
+        { "id": id }, function (res) {
+          console.log(res);
+          if (res.success) {
+            wx.showToast({
+              title: `拒绝成功！`,
+              icon: "none",
+              mask: true,
+              duration: 3000
+            })
+            wx.navigateBack({
+              delta: 1
+            })
+          }
+        });
+    }).catch(() => {
+
+    });
+    
   },
 
   /**
@@ -87,7 +143,9 @@ Page({
 
           that.setData({
             pet: pet,
-            user: user
+            user: user,
+            petId: info.petId,
+            petOwnerId: info.petOwnerId
           })
           var temp = answers[0].questionId;
           for (let i = 0; i < answers.length; i++) {

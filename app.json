@@ -2,7 +2,6 @@
   "pages": [
     "pages/index/index",
     "pages/applications/applications",
-    
     "pages/questions/questions",
     "pages/wenjuan/wenjuan",
     "pages/searchpet/searchpet",
@@ -25,7 +24,7 @@
   ],
   "permission": {
     "scope.userLocation": {
-      "desc": "你的位置信息将用于小程序位置接口的效果展示" 
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
   },
   "window": {
@@ -47,14 +46,12 @@
         "iconPath": "/images/CombinedShape.png",
         "text": "领养"
       },
-      
       {
         "pagePath": "pages/sendinfor/sendinfor",
         "selectedIconPath": "/images/Group13.png",
         "iconPath": "/images/Group13.png",
         "text": "发布"
       },
-      
       {
         "pagePath": "pages/my/my",
         "selectedIconPath": "/images/Group.png",

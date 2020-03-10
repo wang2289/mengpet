@@ -227,33 +227,34 @@ Page({
       this.setData({
         modify: true
       });
-      requesttoken('/user/getMyInfo', "GET",
-        {}, function (res) {
-          if (res.success) {
-            that.setData({
-              radio1: res.data.sex + '',
-              radio2: res.data.wechatP == 1 ? true : false,
-              radio3: res.data.phoneNumberP == 1 ? true : false,
-              radio4: res.data.age + '',
-              radio5: res.data.areaP == 1 ? true : false,
-              radio6: res.data.professionP == 1 ? true : false,
-              name: res.data.trueName,
-              weixing: res.data.wechat,
-              // shouji: res.data.phoneNumber,
-              diqu: res.data.area,
-              zhiye: res.data.profession
-            })
-            if (res.data.phoneNumber != "" && res.data.phoneNumber != null) {              
-              that.setData({
-                auth: true
-              })
-            }
-            if (res.data.area == "" || res.data.area == null) {
-              that.getSetting();
-            }            
-          }
-        })
     }
+    requesttoken('/user/getMyInfo', "GET",
+      {}, function (res) {
+        if (res.success) {
+          that.setData({
+            radio1: res.data.sex + '',
+            radio2: res.data.wechatP == 1 ? true : false,
+            radio3: res.data.phoneNumberP == 1 ? true : false,
+            radio4: res.data.age + '',
+            radio5: res.data.areaP == 1 ? true : false,
+            radio6: res.data.professionP == 1 ? true : false,
+            name: res.data.trueName,
+            weixing: res.data.wechat,
+            // shouji: res.data.phoneNumber,
+            diqu: res.data.area,
+            zhiye: res.data.profession
+          })
+          if (res.data.phoneNumber != "" && res.data.phoneNumber != null) {              
+            that.setData({
+              auth: true
+            })
+          }
+          if (res.data.area == "" || res.data.area == null) {
+            that.getSetting();
+          }            
+        }
+      })
+
     
   },
 

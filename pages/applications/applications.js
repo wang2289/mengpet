@@ -13,10 +13,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    pets: Object,
-    tihsi: Object,
-    showif: false,
-    isActive: 0,
+    index: 0,
+    active: 0,
+    appStatus: 1,
+    pets: [],
+    petsConfirm: [],
+    petsCancel: [],
+    
   },
 
   /**
@@ -33,14 +36,29 @@ Page({
 
   },
 
+  onChange(event) {
+    let index = event.detail.index;
+    var tempStatus = index + 1;
+    this.setData({
+      index: event.detail.index,
+      active: event.detail.index,
+      appStatus: tempStatus
+    });
+  },
+
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.refreshPets(1);
+    this.refreshPets(2);
+    this.refreshPets(3);
+  },
+
+  refreshPets: function(status) {
     var that = this;
     requesttoken('/app/getAppList', 'GET',
-      { "status": 1 }, function (res) {
-        console.log(res);
+      { "status": status }, function (res) {
         if (res.success) {
           var pets = [];
           var tempData = res.data;
@@ -61,31 +79,50 @@ Page({
             switch (tempAge) {
               case 0:
                 tempAge = '60后';
+                break;
               case 1:
                 tempAge = '70后';
+                break;
               case 2:
                 tempAge = '80后';
+                break;
               case 3:
                 tempAge = '90后';
+                break;
               case 4:
                 tempAge = '00后';
+                break;
             }
             temp.applyage = tempAge;
             temp.applydate = tempData[i].createTime.substring(0, 10);
             pets.push(temp);
           }
-          that.setData({
-            pets: pets
-          })
+          switch(status) {
+            case 1: 
+              that.setData({
+                pets: pets
+              });
+              break;
+            case 2:
+              that.setData({
+                petsConfirm: pets
+              }); 
+              break;
+            case 3:
+              that.setData({
+                petsCancel: pets
+              }); 
+              break;
+          }
         }
       })
-    
   },
 
   onDetail: function (event) {
+    var that = this;
     var id = event.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '/pages/appDetails/appDetails?id=' + id,
+      url: '/pages/appDetails/appDetails?id=' + id + '&appStatus=' + that.data.appStatus,
     })
   },
 

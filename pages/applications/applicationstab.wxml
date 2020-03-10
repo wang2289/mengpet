@@ -1,0 +1,23 @@
+  <view class="_div data-v-7ce44584 container {{pet.petStatus == 3 ? 'xiajia': ''}}" >
+    <image class="_img data-v-7ce44584 petimg" src="{{pet.image}}"></image>
+    <view class="_div data-v-7ce44584 description">
+      <view class="_div data-v-7ce44584 name">
+        <view class="_div data-v-7ce44584 nametitle">{{pet.name}}</view>
+        <image wx:if="{{pet.sex == 0}}" src="/images/woman-anticon.png"  class="_img data-v-7ce44584"/>
+        <image wx:if="{{pet.sex == 1}}" src="/images/man-anticon.png"  class="_img data-v-7ce44584"/>
+      </view>
+      <view class="_div data-v-7ce44584 moretip">
+        <view class="_div data-v-7ce44584 applyName">申请人：{{pet.applyName}}</view>
+        <view class="_div data-v-7ce44584 applyAge">{{pet.applyarea}} {{pet.applyage}}</view>
+      </view>
+      <view class="_div data-v-7ce44584 applyDate">{{pet.applydate}}</view>
+      <view class="_div data-v-7ce44584 btn-class">
+        <van-button class="_van-button data-v-7ce44584 btns" type="default" size="small" data-id="{{pet.id}}" bindtap="onDetail" >查看</van-button>
+        <!-- <van-button class="_van-button data-v-7ce44584 btns" type="default" size="small" bindtap="onConfirm" >接受</van-button> -->
+        <!-- <van-button class="_van-button data-v-7ce44584 btns" type="default" size="small" bindtap="onRefuse" >拒绝</van-button> -->
+      </view>
+      <!-- <view wx:else class="_div data-v-7ce44584 cancleReason">取消原因： {{pet.cancleReason}}</view> -->
+    </view>
+  </view>
+
+
