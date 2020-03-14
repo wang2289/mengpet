@@ -43,6 +43,7 @@ Page({
     
     var param = {
       id: this.data.id,
+      userId: this.data.user.userId,
       petId: this.data.petId,
       petOwnerId: this.data.petOwnerId
     }
@@ -72,13 +73,17 @@ Page({
 
   reject: function() {
     var that = this;
-    var id = this.data.id;
+    var param = {
+      id: this.data.id,
+      userId: this.data.user.userId,
+      petId: this.data.petId
+    }
     Dialog.confirm({
       title: '提示',
       message: '确认拒绝这份申请吗'
     }).then(() => {
       requesttoken('/app/reject', 'GET',
-        { "id": id }, function (res) {
+        param, function (res) {
           console.log(res);
           if (res.success) {
             wx.showToast({
@@ -123,6 +128,7 @@ Page({
           user.name = info.nickName;
           user.sex = info.sex;
           user.area = info.area;
+          user.userId = info.userId;
           var temp = info.age;
           switch(temp) {
             case 0: 

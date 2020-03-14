@@ -106,13 +106,15 @@ Page({
               })
 
               var userInfo = data.userInfo;
+              var encryptedData = data.encryptedData;
+              var iv = data.iv;
               wx.login({
                 success(res) {
                   if (res.code) {
                     userInfo.code = res.code
                     console.log(userInfo);
 
-                    that.userLogin(data.userInfo);
+                    that.userLogin(data.userInfo, encryptedData, iv);
                   }
                 }
               })
@@ -209,11 +211,14 @@ Page({
       })
   },
 
-  userLogin: function (userInfo) {
+  userLogin: function (userInfo, encryptedData, iv) {
     var that = this;
     var size = this.data.size;
+    var params = userInfo;
+    params.encryptedData = encryptedData;
+    params.iv = iv;
     requestsend('/wechat/login', "GET",
-      userInfo, function (res) {
+      params, function (res) {
         if (res.success) {
           app.globalData.token = res.data.token;
           app.globalData.userId = res.data.userId;
