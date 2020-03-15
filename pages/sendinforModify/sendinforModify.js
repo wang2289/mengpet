@@ -259,11 +259,16 @@ Page({
               title: `保存成功！`,
               icon: "none",
               mask: true,
-              duration: 1000
+              duration: 3000,
+              complete: function () {
+                setTimeout(function () {
+                  wx.navigateBack({
+                    delta: 1
+                  })
+                }, 1000)
+              }
             })
-            wx.navigateBack({
-              delta:1
-            })
+            
           }
         })
     }).catch(() => {

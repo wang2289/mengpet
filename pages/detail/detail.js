@@ -105,7 +105,8 @@ Page({
   },
 
   submit: function (event) {
-    var formId = event.detail.formId;
+    console.log(event);
+    // var formId = event.detail.formId;
     if (!this.data.fillInfo) {
       wx.navigateTo({
         url: '/pages/infor/infor?type=init'
@@ -116,53 +117,81 @@ Page({
     var code = this.data.pet.type;
     var ownerId = this.data.pet.ownerId;
 
-    Dialog.confirm({
-      title: '提示',
-      message: '确认提申请领养吗'
-    }).then(() => {
-      //获取订阅消息权限
-      // console.log("before subscribe");
-      // wx.requestSubscribeMessage({
-      //   tmplIds: ['nAbleKTJaMIvcwR38JHPKd7azvWfTnDSLv_WL-bh130'],
-      //   success: function (res) {
-          requesttoken('/app/selectByUserIdAndCode', 'GET',
-            { "code": code }, function (res) {
-              console.log(res);
-              if (res.success) {
-                if (res.data.length <= 0) {
-                  wx.navigateTo({
-                    url: '/pages/questions/questions?code=' + code,
+    if (this.data.approveStatus == 1) {
+      requesttoken('/app/addApplication', 'GET',
+        { "petId": id, "ownerId": ownerId, "type": code }, function (res) {
+          console.log(res);
+          if (res.success) {
+            wx.showToast({
+              title: `申请成功！`,
+              icon: "none",
+              mask: true,
+              duration: 3000,
+              complete: function () {
+                setTimeout(function () {
+                  wx.switchTab({
+                    url: '/pages/index/index',
                   })
-                } else {
-                  requesttoken('/app/addApplication', 'GET',
-                    { "petId": id, "ownerId": ownerId, "type": code, "formId": formId }, function (res) {
-                      console.log(res);
-                      if (res.success) {
-                        wx.showToast({
-                          title: `申请成功！`,
-                          icon: "none",
-                          mask: true,
-                          duration: 3000
-                        })
-                        wx.switchTab({
-                          url: '/pages/index/index',
-                        })
-                      }
-                    });
-                }
+                }, 1000)
               }
-            });
-      //   },
-      //   fail: function (res) {
-      //     console.log(res);
-      //   }
-      // });
+            })
+            
+          }
+        });
+    } else {
+      Dialog.confirm({
+        title: '提示',
+        message: '确认提申请领养吗'
+      }).then(() => {
+        //获取订阅消息权限
+        // console.log("before subscribe");
+        // wx.requestSubscribeMessage({
+        //   tmplIds: ['nAbleKTJaMIvcwR38JHPKd7azvWfTnDSLv_WL-bh130'],
+        //   success: function (res) {
+            requesttoken('/app/selectByUserIdAndCode', 'GET',
+              { "code": code }, function (res) {
+                console.log(res);
+                if (res.success) {
+                  if (res.data.length <= 0) {
+                    wx.navigateTo({
+                      url: '/pages/questions/questions?code=' + code,
+                    })
+                  } else {
+                    requesttoken('/app/addApplication', 'GET',
+                      { "petId": id, "ownerId": ownerId, "type": code}, function (res) {
+                        console.log(res);
+                        if (res.success) {
+                          wx.showToast({
+                            title: `申请成功！`,
+                            icon: "none",
+                            mask: true,
+                            duration: 3000,
+                            complete: function() {
+                              setTimeout(function() {
+                                wx.switchTab({
+                                  url: '/pages/index/index',
+                                })
+                              }, 1000)
+                            }
+                          })
+                          
+                        }
+                      });
+                  }
+                }
+              });
+        //   },
+        //   fail: function (res) {
+        //     console.log(res);
+        //   }
+        // });
 
-      
+        
 
-    }).catch(() => {
+      }).catch(() => {
 
-    }); 
+      }); 
+    }
   },
 
   onCollect: function () {
@@ -265,7 +294,9 @@ Page({
       })
     })
 
-    if(this.data.approveStatus==1){      
+    console.log("this.data.approveStatus: " + this.data.approveStatus)
+    if(this.data.approveStatus==1){  
+          
       this.submit();
     }
   }
