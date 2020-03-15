@@ -118,7 +118,7 @@ margin-top: -65rpx;
   flex-wrap: wrap;
 }
 pet-cmp{
-margin: 0 8rpx 0rpx 8rpx;
+margin: 0 0rpx 0rpx 26rpx;
 }
 
 .meng {

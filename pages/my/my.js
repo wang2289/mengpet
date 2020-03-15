@@ -53,6 +53,12 @@ Page({
       })
   },
 
+  viewMyCard: function() {
+    wx.navigateTo({
+      url: '/pages/myCard/myCard',
+    })
+  },
+
   onShareAppMessage: function (res) {
     return {
       title: '爪盟星',
