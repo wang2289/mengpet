@@ -18,6 +18,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    loading: false,
     modify: false,
     searchPanel:false,
     books:Object,
@@ -54,9 +55,11 @@ Page({
       encryptedData: encryptedData,
       iv: iv
     };
+    that.showLoading();loading
     requesttoken('/user/updateUserPhoneNumber', "GET",
       parms, function (res) {
         if (res.success) {
+          that.hideLoading();
           that.setData({
             encryptedData: encryptedData,
             iv: iv,
@@ -146,6 +149,7 @@ Page({
 
   },
   onSave: function () {
+    var that = this;
     var parms = {
       trueName: this.data.name,
       sex: this.data.radio1,
@@ -194,9 +198,11 @@ Page({
       })
       return;
     } 
+    that.showLoading();
     requesttoken('/user/updateUserInfo', "GET",
       parms, function (res) {
         if (res.success) {
+          that.hideLoading();
           wx.showToast({
             title: `保存成功！`,
             icon: "none",
@@ -224,9 +230,11 @@ Page({
         modify: true
       });
     }
+    that.showLoading();
     requesttoken('/user/getMyInfo', "GET",
       {}, function (res) {
         if (res.success) {
+          that.hideLoading();
           that.setData({
             radio1: res.data.sex + '',
             radio2: res.data.wechatP == 1 ? true : false,
@@ -347,5 +355,17 @@ Page({
 
   onShareAppMessage() {
 
+  },
+
+  showLoading: function () {
+    this.setData({
+      loading: true
+    })
+  },
+
+  hideLoading: function () {
+    this.setData({
+      loading: false
+    })
   }
 })

@@ -93,3 +93,8 @@
   <button form-type="submit" size="default" class='btnsdisable' disabled="true" >已申请</button>
 </form> -->
 <van-dialog id="van-dialog" />
+<view class="body-view">
+  <loading hidden="{{!loading}}" bindchange="loadingChange">
+        加载中...
+  </loading>
+</view>

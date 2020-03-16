@@ -18,6 +18,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    loading: false,
     gotoStore: [],
     textRequire: false,
     answerCheckbox: [],
@@ -81,6 +82,7 @@ Page({
     });
   },
   submit: function() {
+    var that = this;
     if (this.data.submitFlag) {
       return;
     }
@@ -88,13 +90,14 @@ Page({
     var param = this.data.answers;
     param = JSON.stringify(param);
     console.log(param);
-    wx.showToast({
-      title: '正在上传...',
-      icon: 'loading',
-      mask: true,
-      duration: 10000
-    });
+    // wx.showToast({
+    //   title: '正在上传...',
+    //   icon: 'loading',
+    //   mask: true,
+    //   duration: 10000
+    // });
     
+    that.showLoading();
     requesttoken('/app/addAnswers', "POST",
       {'answers': param}, function (res) {
         console.log(res);
@@ -105,6 +108,7 @@ Page({
             mask: true,
             duration: 3000,
             complete: function () {
+              that.hideLoading();
               setTimeout(function () {
                 var pages = getCurrentPages();
                 //   var currPage = pages[pages.length - 1];   //当前页面
@@ -615,12 +619,13 @@ Page({
         success: function (res) {
           // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
           var tempFilePaths = res.tempFilePaths;
-          wx.showToast({
-            title: '正在上传...',
-            icon: 'loading',
-            mask: true,
-            duration: 10000
-          });
+          // wx.showToast({
+          //   title: '正在上传...',
+          //   icon: 'loading',
+          //   mask: true,
+          //   duration: 10000
+          // });
+          that.showLoading();
           for (var i = 0; i < tempFilePaths.length; i++) {
             pics.push(tempFilePaths[i]);
           }
@@ -635,7 +640,8 @@ Page({
                 that.setData({
                   imagePath: res.data.file
                 });
-                wx.hideToast();
+                // wx.hideToast();
+                that.hideLoading();
               });
           } else {
             that.setData({
@@ -716,5 +722,17 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  showLoading: function () {
+    this.setData({
+      loading: true
+    })
+  },
+
+  hideLoading: function () {
+    this.setData({
+      loading: false
+    })
   }
 })

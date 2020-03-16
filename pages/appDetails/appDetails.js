@@ -14,6 +14,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    loading: false,
     quesDetails: [],
     id: 0,
     appStatus: 0,
@@ -51,6 +52,7 @@ Page({
       title: '提示',
       message: '确认接受该领养吗？确认后将暂时下架宠物，暂时无法接收更多领养申请(可重新操作上架'
     }).then(() => {
+      that.showLoading();
       requesttoken('/app/accept', 'GET',
         param , function (res) {
           console.log(res);
@@ -61,6 +63,7 @@ Page({
               mask: true,
               duration: 3000,
               complete: function () {
+                that.hideLoading();
                 setTimeout(function () {
                   wx.navigateBack({
                     delta: 1
@@ -87,6 +90,7 @@ Page({
       title: '提示',
       message: '确认拒绝这份申请吗'
     }).then(() => {
+      that.showLoading();
       requesttoken('/app/reject', 'GET',
         param, function (res) {
           console.log(res);
@@ -97,6 +101,7 @@ Page({
               mask: true,
               duration: 3000,
               complete: function () {
+                that.hideLoading();
                 setTimeout(function () {
                   wx.navigateBack({
                     delta: 1
@@ -119,8 +124,10 @@ Page({
   onShow: function () {
     var that = this;
     var id = this.data.id;
+    var status = this.data.appStatus;
+    that.showLoading();
     requesttoken('/app/getDetails', 'GET',
-      { "id": id, "status": 1 }, function (res) {
+      { "id": id, "status": status }, function (res) {
         console.log(res);
         if (res.success) {
           var results = [];
@@ -200,6 +207,7 @@ Page({
           that.setData({
             quesDetails: results
           })
+          that.hideLoading();
           console.log(that.data.quesDetails);
         }
       })
@@ -238,5 +246,17 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  
+  showLoading: function() {
+    this.setData ({
+      loading: true
+    })
+  },
+
+  hideLoading: function () {
+    this.setData({
+      loading: false
+    })
   }
 })

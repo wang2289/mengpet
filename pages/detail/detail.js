@@ -27,6 +27,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    loading: false,
     petId: -1,
     pets: Object,
     pet: null,
@@ -105,7 +106,7 @@ Page({
   },
 
   submit: function (event) {
-    console.log(event);
+    var that = this;
     // var formId = event.detail.formId;
     if (!this.data.fillInfo) {
       wx.navigateTo({
@@ -118,6 +119,7 @@ Page({
     var ownerId = this.data.pet.ownerId;
 
     if (this.data.approveStatus == 1) {
+      that.showLoading();
       requesttoken('/app/addApplication', 'GET',
         { "petId": id, "ownerId": ownerId, "type": code }, function (res) {
           console.log(res);
@@ -128,6 +130,7 @@ Page({
               mask: true,
               duration: 3000,
               complete: function () {
+                that.hideLoading();
                 setTimeout(function () {
                   wx.switchTab({
                     url: '/pages/index/index',
@@ -148,38 +151,41 @@ Page({
         // wx.requestSubscribeMessage({
         //   tmplIds: ['nAbleKTJaMIvcwR38JHPKd7azvWfTnDSLv_WL-bh130'],
         //   success: function (res) {
-            requesttoken('/app/selectByUserIdAndCode', 'GET',
-              { "code": code }, function (res) {
-                console.log(res);
-                if (res.success) {
-                  if (res.data.length <= 0) {
-                    wx.navigateTo({
-                      url: '/pages/questions/questions?code=' + code,
-                    })
-                  } else {
-                    requesttoken('/app/addApplication', 'GET',
-                      { "petId": id, "ownerId": ownerId, "type": code}, function (res) {
-                        console.log(res);
-                        if (res.success) {
-                          wx.showToast({
-                            title: `申请成功！`,
-                            icon: "none",
-                            mask: true,
-                            duration: 3000,
-                            complete: function() {
-                              setTimeout(function() {
-                                wx.switchTab({
-                                  url: '/pages/index/index',
-                                })
-                              }, 1000)
-                            }
-                          })
-                          
-                        }
-                      });
-                  }
+          that.showLoading();
+          requesttoken('/app/selectByUserIdAndCode', 'GET',
+            { "code": code }, function (res) {
+              console.log(res);
+              if (res.success) {
+                if (res.data.length <= 0) {
+                  that.hideLoading();
+                  wx.navigateTo({
+                    url: '/pages/questions/questions?code=' + code,
+                  })
+                } else {
+                  requesttoken('/app/addApplication', 'GET',
+                    { "petId": id, "ownerId": ownerId, "type": code}, function (res) {
+                      console.log(res);
+                      if (res.success) {
+                        wx.showToast({
+                          title: `申请成功！`,
+                          icon: "none",
+                          mask: true,
+                          duration: 3000,
+                          complete: function() {
+                            that.hideLoading();
+                            setTimeout(function() {
+                              wx.switchTab({
+                                url: '/pages/index/index',
+                              })
+                            }, 1000)
+                          }
+                        })
+                        
+                      }
+                    });
                 }
-              });
+              }
+            });
         //   },
         //   fail: function (res) {
         //     console.log(res);
@@ -207,6 +213,7 @@ Page({
 
     var that = this;
     let bid = this.data.petId;
+    that.showLoading();
     requesttoken('/user/getMyInfo', 'GET',
       {}, function (res) {
         console.log(res);
@@ -265,14 +272,13 @@ Page({
         })
 
         var param = {
-          petId: res.data.id,
-          status: 1
+          petId: res.data.id
         }
         if (res.data.userId != app.globalData.userId) {
           that.setData({
             self: false,
           })
-          requesttoken('/app/selectAppByUserIdAndStatus', 'GET',
+          requesttoken('/app/selectAppByUserId', 'GET',
             param, function (res) {
               console.log(res);
               if (res.success) {
@@ -284,6 +290,7 @@ Page({
               }
             })
         }
+        that.hideLoading();
       });
 
 
@@ -299,5 +306,17 @@ Page({
           
       this.submit();
     }
+  },
+
+  showLoading: function () {
+    this.setData({
+      loading: true
+    })
+  },
+
+  hideLoading: function () {
+    this.setData({
+      loading: false
+    })
   }
 })

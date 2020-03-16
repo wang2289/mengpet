@@ -30,4 +30,9 @@
     
   </view>
 </view>
+<view class="body-view">
+  <loading hidden="{{!loading}}" bindchange="loadingChange">
+        加载中...
+  </loading>
+</view>
 <!-- </template> -->

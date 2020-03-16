@@ -94,3 +94,8 @@
   <view class='btns' bindtap='Finish'>发布</view>
 </view>
 <van-dialog id="van-dialog" />
+<view class="body-view">
+  <loading hidden="{{!loading}}" bindchange="loadingChange">
+        上传中...
+  </loading>
+</view>

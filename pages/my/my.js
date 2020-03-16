@@ -16,6 +16,7 @@ import {
 Page({
 
   data: {
+    loading: false,
     user: {
       sex: 0,
       userId: '',
@@ -65,5 +66,17 @@ Page({
       path: '/pages/index/index',
       imageUrl: 'http://static.e-mallchina.com/pic/product/brand/detail/hgds.jpg'
     }
+  },
+
+  showLoading: function () {
+    this.setData({
+      loading: true
+    })
+  },
+
+  hideLoading: function () {
+    this.setData({
+      loading: false
+    })
   }
 })

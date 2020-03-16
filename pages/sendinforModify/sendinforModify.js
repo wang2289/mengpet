@@ -21,6 +21,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    loading: false,
     searchPanel: false,
     books: Object,
     radio0: '0',
@@ -153,6 +154,7 @@ Page({
     });
   },
   Finish: function() {
+    var that = this;
     var picsData = this.data.pics
     var photoIdStr = "";
     for (let l in this.data.photoIds) {
@@ -251,10 +253,12 @@ Page({
       title: '提示',
       message: '确认修改宠物信息吗'
     }).then(() => {
+      that.showLoading();
       requesttoken('/pets/updataPetInfoNoImg', "GET",
         parms, function (res) {
           console.log(res);
           if (res.success) {
+            that.hideLoading();
             wx.showToast({
               title: `保存成功！`,
               icon: "none",
@@ -298,12 +302,12 @@ Page({
         success: function(res) {
           // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
           var tempFilePaths = res.tempFilePaths;
-          wx.showToast({
-            title: '正在上传...',
-            icon: 'loading',
-            mask: true,
-            duration: 10000
-          });
+          // wx.showToast({
+          //   title: '正在上传...',
+          //   icon: 'loading',
+          //   mask: true,
+          //   duration: 10000
+          // });
           for (var i = 0; i < tempFilePaths.length; i++) {
             pics.push(tempFilePaths[i]);
           }
@@ -313,12 +317,14 @@ Page({
               showon: true,
               showpic: tempFilePaths[num]
             })
+            that.showLoading();
             requestpic('/pets/uploadImg', "POST",
               pics[0], undefined, function (res) {
                 console.log(res.data.id)
                 that.data.photoIds.push(res.data.id);
                 console.log(that.data.photoIds)
-                wx.hideToast();
+                // wx.hideToast();
+                that.hideLoading();
               });
           }else{
             that.setData({
@@ -350,6 +356,7 @@ Page({
     let bid = options.bid;
     let status = options.status;
     if (bid > 0) {
+      that.showLoading();
       requesttoken('/pets/getPetDetailInfoByIdAndStatus', 'GET',
         { "petId": bid , "status": status}, function (res) {
           console.log(res);
@@ -446,13 +453,14 @@ Page({
               })
             });
         });
-
+      that.hideLoading();
     }
 
   },
 
   changeTips: function (type) {
     var that = this;
+    that.showLoading();
     if (type == 0) {
       requestsend('/util/getPickerPetUpload', "GET",
         { "type": type, "key": 0 }, function (res) {
@@ -508,7 +516,7 @@ Page({
           })
         });
     }
-
+    that.hideLoading();
   },
 
   onActivateSearch: function(event) {
@@ -525,5 +533,17 @@ Page({
 
   onShareAppMessage() {
 
+  },
+
+  showLoading: function () {
+    this.setData({
+      loading: true
+    })
+  },
+
+  hideLoading: function () {
+    this.setData({
+      loading: false
+    })
   }
 })

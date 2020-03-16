@@ -28,3 +28,8 @@
   </view>
   <van-dialog id="van-dialog" class="_van-dialog data-v-7ce44584"></van-dialog>
 </view>
+<view class="body-view">
+  <loading hidden="{{!loading}}" bindchange="loadingChange">
+        加载中...
+  </loading>
+</view>

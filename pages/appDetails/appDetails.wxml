@@ -47,10 +47,15 @@
     </view>
 
     <view class="btn" wx:if="{{appStatus==1}}">
-      <view class="accept" bindtap='accept'>接收</view>
-      <view class="reject" bindtap='reject'>拒绝</view>
+      <view class="accept" bindtap='accept'>初审通过</view>
+      <view class="reject" bindtap='reject'>不符合</view>
     </view>
   </view>
 
 </view>
 <van-dialog id="van-dialog" />
+<view class="body-view">
+  <loading hidden="{{!loading}}" bindchange="loadingChange">
+        加载中...
+  </loading>
+</view>

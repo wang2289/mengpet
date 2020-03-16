@@ -13,6 +13,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    loading: false,
     index: 0,
     active: 0,
     appStatus: 1,
@@ -52,11 +53,12 @@ Page({
   onShow: function () {
     this.refreshPets(1);
     this.refreshPets(2);
-    this.refreshPets(3);
+    this.refreshPets(3);    
   },
 
   refreshPets: function(status) {
     var that = this;
+    that.showLoading();
     requesttoken('/app/getAppList', 'GET',
       { "status": status }, function (res) {
         if (res.success) {
@@ -114,6 +116,7 @@ Page({
               }); 
               break;
           }
+          that.hideLoading();
         }
       })
   },
@@ -159,5 +162,17 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  showLoading: function () {
+    this.setData({
+      loading: true
+    })
+  },
+
+  hideLoading: function () {
+    this.setData({
+      loading: false
+    })
   }
 })

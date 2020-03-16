@@ -62,3 +62,8 @@
   </view> -->
 </view>
 <van-dialog id="van-dialog" />
+<view class="body-view">
+  <loading hidden="{{!loading}}" bindchange="loadingChange">
+        正在上传
+  </loading>
+</view>

@@ -21,6 +21,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    loading: false,
     searchPanel: false,
     books: Object,
     radio0: '0',
@@ -268,12 +269,13 @@ Page({
       title: '提示',
       message: '确认发布宠物信息吗'
     }).then(() => {
-      wx.showToast({
-        title: '正在上传...',
-        icon: 'loading',
-        mask: true,
-        duration: 10000
-      });
+      // wx.showToast({
+      //   title: '正在上传...',
+      //   icon: 'loading',
+      //   mask: true,
+      //   duration: 10000
+      // });
+      that.showLoading();
       requesttoken('/pets/uploadPetInfoNoImg', "GET",
         parms, function (res) {
           
@@ -285,6 +287,7 @@ Page({
               mask: true,
               duration: 3000
             })
+            that.hideLoading();
             that.onLoad();
           }
         })
@@ -421,6 +424,7 @@ Page({
 
   changeTips: function(type) {
     var that = this;
+    that.showLoading();
     if (type == 0) {
       requestsend('/util/getPickerPetUpload', "GET",
         { "type": type, "key": 0 }, function (res) {
@@ -476,7 +480,7 @@ Page({
           })
         });
     }
-    
+    that.hideLoading();
   },
 
   onActivateSearch: function(event) {
@@ -493,5 +497,17 @@ Page({
 
   onShareAppMessage() {
 
+  },
+
+  showLoading: function () {
+    this.setData({
+      loading: true
+    })
+  },
+
+  hideLoading: function () {
+    this.setData({
+      loading: false
+    })
   }
 })

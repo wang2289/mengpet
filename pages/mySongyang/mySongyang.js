@@ -13,6 +13,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    loading: false,
     index: 0,
     active: 0,
     catsListOn: [],
@@ -39,6 +40,7 @@ Page({
 
   refreshPetInfo: function (page, size, status, index) {
     var that = this;
+    that.showLoading();
     requesttoken('/pets/getPetsByUserIdAndStatus', "GET",
       { "page": page, "size": size, "status": status }, function (res) {
         console.log(res);
@@ -73,11 +75,13 @@ Page({
           }
           
         }
+        that.hideLoading();
       })
   },
 
   refreshPetSong: function (page, size, status) {
     var that = this;
+    that.showLoading();
     requesttoken('/pets/getPetAndAdoptUser', "GET",
       { "page": page, "size": size, "status": status }, function (res) {
         console.log(res);
@@ -102,6 +106,7 @@ Page({
             catsListSong: pets
           });
         }
+        that.hideLoading();
       })
   },
 
@@ -127,6 +132,7 @@ Page({
       title: '提示',
       message: '确认下架这只宠物吗'
     }).then(() => {
+      that.showLoading();
       var petId = event.currentTarget.dataset.petid;
       requesttoken('/pets/removePetByMaster', "POST",
         { "petId": petId }, function (res) {
@@ -135,6 +141,7 @@ Page({
             that.refreshPetInfo(1, 10, 3, 2);
 
           }
+          that.hideLoading();
         })
     }).catch(() => {
       
@@ -148,6 +155,7 @@ Page({
       title: '提示',
       message: '确认上架这只宠物吗'
     }).then(() => {
+      that.showLoading();
       var petId = event.currentTarget.dataset.petid;
       requesttoken('/pets/putAwayPetByMaster', "POST",
         { "petId": petId }, function (res) {
@@ -156,6 +164,7 @@ Page({
             that.refreshPetInfo(1, 10, 3, 2);
 
           }
+          that.hideLoading();
         })
     }).catch(() => {
 
@@ -172,6 +181,7 @@ Page({
       title: '提示',
       message: '确认删除这只宠物吗'
     }).then(() => {
+      that.showLoading();
       var petId = event.currentTarget.dataset.petid;
       requesttoken('/pets/deletePetByMaster', "POST",
         { "petId": petId }, function (res) {
@@ -179,6 +189,7 @@ Page({
             that.refreshPetInfo(1, 10, 3, 2);
 
           }
+          that.hideLoading();
         })
     }).catch(() => {
 
@@ -234,5 +245,17 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  showLoading: function () {
+    this.setData({
+      loading: true
+    })
+  },
+
+  hideLoading: function () {
+    this.setData({
+      loading: false
+    })
   }
 })
