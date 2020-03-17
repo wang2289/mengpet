@@ -7,25 +7,42 @@
         <van-tab title="已取消" class="_van-tab tabs"></van-tab>
       </van-tabs>
   </view>
-  <view class="_div data-v-7309bb94 receiveApplyList">
+  <view class="">
+    <view wx:if="{{index == 0}}">
+      <view wx:key="index" wx:for="{{appAnswers}}" wx:for-item="appAnswers" wx:key="id" class="receiveApplyList">
+        <include src="applicationstabnew.wxml" />
+      </view>
+    </view>
+    <view wx:if="{{index == 1}}">
+      <view wx:key="index" wx:for="{{appAnswersConfirm}}" wx:for-item="appAnswers" wx:key="id" class="receiveApplyList">
+        <include src="applicationstabnew.wxml" />
+      </view>
+    </view>
+    <view wx:if="{{index == 2}}">
+      <view wx:key="index" wx:for="{{appAnswersCancel}}" wx:for-item="appAnswers" wx:key="id" class="receiveApplyList">
+        <include src="applicationstabnew.wxml" />
+      </view>
+    </view>
+  </view>
+  <!-- <view class="receiveApplyList">
     <view wx:if="{{index == 0}}" class="_div data-v-7309bb94 animal-container">
-      <view wx:key="index" key="{{index}}" wx:for="{{pets}}" wx:for-index="index" wx:for-item="pet" class="_div data-v-7309bb94">
-        <include src="applicationstab.wxml" />
+      <view wx:key="index" key="{{index}}" wx:for="{{appAnswers}}" wx:for-index="index" wx:for-item="appAnswers" class="_div data-v-7309bb94">
+        <include src="applicationstabnew.wxml" />
       </view>
     </view>
 
     <view wx:if="{{index == 1}}" class="_div data-v-7309bb94 animal-container">
-      <view wx:key="index" key="{{index}}" wx:for="{{petsConfirm}}" wx:for-index="index" wx:for-item="pet" class="_div data-v-7309bb94">
-        <include src="applicationstab.wxml" />
+      <view wx:key="index" key="{{index}}" wx:for="{{appAnswersConfirm}}" wx:for-index="index" wx:for-item="appAnswers" class="_div data-v-7309bb94">
+        <include src="applicationstabnew.wxml" />
       </view>
     </view>
 
     <view wx:if="{{index == 2}}" class="_div data-v-7309bb94 animal-container">
-      <view wx:key="index" key="{{index}}" wx:for="{{petsCancel}}" wx:for-index="index" wx:for-item="pet" class="_div data-v-7309bb94">
-        <include src="applicationstab.wxml" />
+      <view wx:key="index" key="{{index}}" wx:for="{{appAnswersCancel}}" wx:for-index="index" wx:for-item="appAnswers" class="_div data-v-7309bb94">
+        <include src="applicationstabnew.wxml" />
       </view>
     </view>
-  </view>
+  </view> -->
   <van-dialog id="van-dialog" class="_van-dialog data-v-7ce44584"></van-dialog>
 </view>
 <view class="body-view">

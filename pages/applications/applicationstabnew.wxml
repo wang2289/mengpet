@@ -1,0 +1,26 @@
+<view bind:tap="onDetail" class="app" data-id="{{appAnswers.appId}}">
+  <view class="head">
+    <image class='petimg' src="{{appAnswers.image}}"></image>
+    <view class="answers">
+      <view wx:if="{{appAnswers.petSex==0}}" class="petname girl">{{appAnswers.petNameCn}} <text class="iconfont iconman"></text></view>
+      <view wx:if="{{appAnswers.petSex==1}}" class="petname boy">{{appAnswers.petNameCn}} <text class="iconfont iconwoman"></text></view>
+      <view class="username">申请人：{{appAnswers.userNickName}}</view>
+      <view wx:if="{{appAnswers.userSex==1}}" class="girlfont">
+        <text class="iconfont iconwoman"></text><text space="nbsp">   女士</text>
+      </view>
+      <view wx:if="{{appAnswers.userSex==0}}" class="boyfont">
+        <text class="iconfont iconman"></text><text space="nbsp">   男士</text>
+      </view>
+      <view><text class="iconfont iconaddress"></text><text space="nbsp">   {{appAnswers.userArea}}  |  {{appAnswers.areaAns}}</text></view>
+      <view><text class="iconfont iconemotion"></text><text space="nbsp">   {{appAnswers.loverAns}}  |  {{appAnswers.marryAns}}</text></view>
+    </view>
+  </view>
+  <view class="line"></view>
+  <view class="foot">
+    <view class="footfont">
+      <text class="iconfont icontime"></text><text space="nbsp">  {{appAnswers.jobAns}}       </text>     
+      <text class="iconfont iconexperience"></text><text space="nbsp">  {{appAnswers.expAns}}</text>
+    </view>
+    <view class="apptime">申请日期:{{appAnswers.appCreateTime}}</view>
+  </view>
+</view>

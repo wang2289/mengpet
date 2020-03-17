@@ -131,3 +131,12 @@
   margin-right: 8rpx;
   vertical-align: -3rpx
 }
+
+.line {
+  width: 690rpx;
+  margin: auto;
+  height: 1rpx;margin-top: 1rpx;
+  margin-bottom: 1rpx;
+  background: #E6EAEF;
+  transform: rotateZ(360deg);
+}

@@ -62,57 +62,71 @@ Page({
     requesttoken('/app/getAppList', 'GET',
       { "status": status }, function (res) {
         if (res.success) {
-          var pets = [];
+          console.log(res.data)
+          
+          var appAnswers = [];
           var tempData = res.data;
           for (let i in tempData) {
             var temp = {};
-            temp.id = tempData[i].id;
-            temp.petId = tempData[i].petId;
-            temp.petStatus = tempData[i].petStatus;
-            temp.type = tempData[i].type;
-            temp.sex = tempData[i].sex;
-            var petCreateDate = tempData[i].petCreateTime.substring(0, 10);
-            temp.image = Config.imgPath + "/" + petCreateDate + "/min_" + tempData[i].image;
-            temp.name = tempData[i].petName;
+            temp.areaAns = tempData[i].areaAns;
+            temp.expAns = tempData[i].expAns;
+            temp.jobAns = tempData[i].jobAns;
+            temp.loverAns = tempData[i].loverAns;
+            temp.marryAns = tempData[i].marryAns;
+            
+            temp.petNameCn = tempData[i].petNameCn;
+            temp.petSex = tempData[i].petSex;
+
+            var phCreateDate = tempData[i].phCreateTime.substring(0, 10);
+            temp.image = Config.imgPath + "/" + phCreateDate + "/min_" + tempData[i].path;
+            
             temp.appId = tempData[i].appId;
-            temp.applyName = tempData[i].nickName;
-            temp.applyarea = tempData[i].area;
-            var tempAge = tempData[i].age;
-            switch (tempAge) {
-              case 0:
-                tempAge = '60后';
-                break;
-              case 1:
-                tempAge = '70后';
-                break;
-              case 2:
-                tempAge = '80后';
-                break;
-              case 3:
-                tempAge = '90后';
-                break;
-              case 4:
-                tempAge = '00后';
-                break;
+            temp.appCreateTime = tempData[i].appCreateTime.substring(0, 10);
+
+            temp.userNickName = tempData[i].userNickName;
+            temp.userSex = tempData[i].userSex;
+            var temparea = tempData[i].userArea;
+            if (temparea.length > 10) {
+              temparea = temparea.substring(0,10) + '...'
             }
-            temp.applyage = tempAge;
-            temp.applydate = tempData[i].createTime.substring(0, 10);
-            pets.push(temp);
+            temp.userArea = temparea; 
+            // var tempAge = tempData[i].age;
+            // switch (tempAge) {
+            //   case 0:
+            //     tempAge = '60后';
+            //     break;
+            //   case 1:
+            //     tempAge = '70后';
+            //     break;
+            //   case 2:
+            //     tempAge = '80后';
+            //     break;
+            //   case 3:
+            //     tempAge = '90后';
+            //     break;
+            //   case 4:
+            //     tempAge = '00后';
+            //     break;
+            // }
+            // temp.applyage = tempAge;
+
+            
+            appAnswers.push(temp);
           }
           switch(status) {
             case 1: 
               that.setData({
-                pets: pets
+                appAnswers: appAnswers
               });
               break;
             case 2:
               that.setData({
-                petsConfirm: pets
+                appAnswersConfirm: appAnswers
               }); 
               break;
             case 3:
               that.setData({
-                petsCancel: pets
+                appAnswersCancel: appAnswers
               }); 
               break;
           }
