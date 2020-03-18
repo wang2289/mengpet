@@ -14,13 +14,20 @@ Page({
    */
   data: {
     loading: false,
+    pages: 1,//总页数
+    page: 1,//当前页码
+    pagesConfirm: 1,//总页数
+    pageConfirm: 1,//当前页码
+    pagesCancel: 1,//总页数
+    pageCancel: 1,//当前页码
+    size: 5,//每页显示个数
     index: 0,
     active: 0,
     appStatus: 1,
-    pets: [],
-    petsConfirm: [],
-    petsCancel: [],
-    
+    appAnswers: [],
+    appAnswersConfirm: [],
+    appAnswersCancel: [],
+    reload: false
   },
 
   /**
@@ -51,21 +58,29 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.refreshPets(1);
-    this.refreshPets(2);
-    this.refreshPets(3);    
+    var page = 1;
+    var size = this.data.size;
+    this.refreshApps(page, size, 1, true);
+    this.refreshApps(page, size, 2, true);
+    this.refreshApps(page, size, 3, true);    
   },
 
-  refreshPets: function(status) {
+  refreshApps: function(page, size, status, reload) {
     var that = this;
     that.showLoading();
+    var param = {
+      status: status,
+      page: page, 
+      size: size
+    };
+
     requesttoken('/app/getAppList', 'GET',
-      { "status": status }, function (res) {
+      param, function (res) {
         if (res.success) {
           console.log(res.data)
-          
-          var appAnswers = [];
-          var tempData = res.data;
+          var tempAppAnswers = [];
+          var tempData = res.data.appSimpleList;
+          var pageInfo = res.data.pageInfo;
           for (let i in tempData) {
             var temp = {};
             temp.areaAns = tempData[i].areaAns;
@@ -111,22 +126,41 @@ Page({
             // temp.applyage = tempAge;
 
             
-            appAnswers.push(temp);
+            tempAppAnswers.push(temp);
           }
+             
           switch(status) {
             case 1: 
+              var data = that.data.appAnswers;
+              if (!reload) {
+                tempAppAnswers = data.concat(tempAppAnswers)
+              }
               that.setData({
-                appAnswers: appAnswers
+                appAnswers: tempAppAnswers,
+                pages: pageInfo.pages,
+                page: pageInfo.pageNum
               });
               break;
             case 2:
+              var data = that.data.appAnswersConfirm;
+              if (!reload) {
+                tempAppAnswers = data.concat(tempAppAnswers)
+              }
               that.setData({
-                appAnswersConfirm: appAnswers
+                appAnswersConfirm: tempAppAnswers,
+                pagesConfirm: pageInfo.pages,
+                pageConfirm: pageInfo.pageNum
               }); 
               break;
             case 3:
+              var data = that.data.appAnswersCancel;
+              if (!reload) {
+                tempAppAnswers = data.concat(tempAppAnswers)
+              }
               that.setData({
-                appAnswersCancel: appAnswers
+                appAnswersCancel: tempAppAnswers,
+                pagesCancel: pageInfo.pages,
+                pageCancel: pageInfo.pageNum
               }); 
               break;
           }
@@ -167,7 +201,42 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function (event) {
+    var that = this;
+    var status = that.data.appStatus;
+    var size = that.data.size;
+    switch (status) {
+      case 1:
+        var page = that.data.page + 1;
+        var pages = that.data.pages;
+        that.setData({
+          page: page
+        })
+        if (page <= pages) {
+          that.refreshApps(page, size, 1, false);
+        }
+        break;
+      case 2:
+        var pageConfirm = that.data.pageConfirm + 1;
+        var pagesConfirm = that.data.pagesConfirm;
+        that.setData({
+          pageConfirm: pageConfirm
+        })
+        if (pageConfirm <= pagesConfirm) {
+          that.refreshApps(pageConfirm, size, 2, false);
+        }
+        break;
+      case 3:
+        var pageCancel = that.data.pageCancel + 1;
+        var pagesCancel = that.data.pagesCancel;
+        that.setData({
+          pageCancel: pageCancel
+        })
+        if (pageCancel <= pagesCancel) {
+          that.refreshApps(pageCancel, size, 3, false);
+        }
+        break;
+    }
 
   },
 

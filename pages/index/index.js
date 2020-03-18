@@ -15,9 +15,9 @@ Page({
    */
   data: {
     hidden: true,
-    pages: 1,
-    page: 1,
-    size: 4,
+    pages: 1,//总页数
+    page: 1,//当前页码
+    size: 4,//每页显示个数
     isshow: true,
     searchPanel: false,
     pets: [],

@@ -263,7 +263,7 @@ Page({
               title: `保存成功！`,
               icon: "none",
               mask: true,
-              duration: 3000,
+              duration: 2000,
               complete: function () {
                 setTimeout(function () {
                   wx.navigateBack({

@@ -14,31 +14,30 @@ Page({
    */
   data: {
     loading: false,
+    pagesOn: 1,//总页数
+    pageOn: 1,//当前页码
+    pagesOff: 1,//总页数
+    pageOff: 1,//当前页码
+    pagesOff: 1,//总页数
+    pageOff: 1,//当前页码
+    size: 8,//每页显示个数
     index: 0,
     active: 0,
     catsListOn: [],
     catsListOff: [],
-    catsListSong: []
+    catsListSong: [],
+    reload: false
   },
 
   onChange(event) {
     let index = event.detail.index;
-    // if (index == 0) {
-    //   this.refreshPetInfo(1, 10, 1);
-    // } else 
-    // if (index == 1) {
-    //   this.refreshPetInfo(1, 10, 3);
-    // }
-    // if (index == 2) {
-    //   this.refreshPetInfo(1, 10, 3);
-    // }
     this.setData({
       index : event.detail.index,
       active : event.detail.index
     });
   },
 
-  refreshPetInfo: function (page, size, status, index) {
+  refreshPetInfo: function (page, size, status, index, reload) {
     var that = this;
     that.showLoading();
     requesttoken('/pets/getPetsByUserIdAndStatus', "GET",
@@ -65,12 +64,24 @@ Page({
           }
           console.log(pets);
           if (index == 0) {
+            var data = that.data.catsListOn;
+            if (!reload) {
+              pets = data.concat(pets)
+            }
             that.setData({
-              catsListOn: pets
+              catsListOn: pets,
+              pagesOn: res.data.pages,
+              pageOn: res.data.pageNum,
             });
           } else if (index == 2) {
+            var data = that.data.catsListOff;
+            if (!reload) {
+              pets = data.concat(pets)
+            }
             that.setData({
-              catsListOff: pets
+              catsListOff: pets,
+              pagesOff: res.data.pages,
+              pageOff: res.data.pageNum,
             });
           }
           
@@ -79,7 +90,7 @@ Page({
       })
   },
 
-  refreshPetSong: function (page, size, status) {
+  refreshPetSong: function (page, size, status, reload) {
     var that = this;
     that.showLoading();
     requesttoken('/pets/getPetAndAdoptUser', "GET",
@@ -102,8 +113,14 @@ Page({
             pets.push(temp);
           }
           console.log(pets);
+          var data = that.data.catsListSong;
+          if (!reload) {
+            pets = data.concat(pets)
+          }
           that.setData({
-            catsListSong: pets
+            catsListSong: pets,
+            pagesSong: res.data.pages,
+            pageSong: res.data.pageNum,
           });
         }
         that.hideLoading();
@@ -128,6 +145,7 @@ Page({
 
   remove: function (event) {
     var that = this;
+    var size = that.data.size;
     Dialog.confirm({
       title: '提示',
       message: '确认下架这只宠物吗'
@@ -137,8 +155,8 @@ Page({
       requesttoken('/pets/removePetByMaster', "POST",
         { "petId": petId }, function (res) {
           if (res.success) {
-            that.refreshPetInfo(1, 10, 1, 0);
-            that.refreshPetInfo(1, 10, 3, 2);
+            that.refreshPetInfo(1, size, 1, 0, true);
+            that.refreshPetInfo(1, size, 3, 2, true);
 
           }
           that.hideLoading();
@@ -151,6 +169,7 @@ Page({
 
   putAway: function (event) {
     var that = this;
+    var size = that.data.size;
     Dialog.confirm({
       title: '提示',
       message: '确认上架这只宠物吗'
@@ -160,8 +179,8 @@ Page({
       requesttoken('/pets/putAwayPetByMaster', "POST",
         { "petId": petId }, function (res) {
           if (res.success) {
-            that.refreshPetInfo(1, 10, 1, 0);
-            that.refreshPetInfo(1, 10, 3, 2);
+            that.refreshPetInfo(1, size, 1, 0, true);
+            that.refreshPetInfo(1, size, 3, 2, true);
 
           }
           that.hideLoading();
@@ -177,6 +196,7 @@ Page({
 
   deletePet: function (event) {
     var that = this;
+    var size = that.data.size;
     Dialog.confirm({
       title: '提示',
       message: '确认删除这只宠物吗'
@@ -186,7 +206,7 @@ Page({
       requesttoken('/pets/deletePetByMaster', "POST",
         { "petId": petId }, function (res) {
           if (res.success) {
-            that.refreshPetInfo(1, 10, 3, 2);
+            that.refreshPetInfo(1, size, 3, 2, true);
 
           }
           that.hideLoading();
@@ -207,9 +227,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.refreshPetInfo(1, 10, 1, 0);
-    this.refreshPetInfo(1, 10, 3, 2);
-    this.refreshPetSong(1, 10, 2);
+    var size = this.data.size;
+    this.refreshPetInfo(1, size, 1, 0, true);
+    this.refreshPetInfo(1, size, 3, 2, true);
+    this.refreshPetSong(1, size, 2, true);
   },
 
   /**
@@ -237,7 +258,38 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    var that = this;
+    var index = that.data.index;
+    var size = that.data.size;
+    console.log("index" + index);
+    if (index == 0) {
+      var pageOn = that.data.pageOn + 1;
+      var pagesOn = that.data.pagesOn;
+      that.setData({
+        pageOn: pageOn
+      })
+      if (pageOn <= pagesOn) {
+        that.refreshPetInfo(pageOn, size, 1, 0, false);
+      }
+    } else if (index == 1) {
+      var pageSong = that.data.pageSong + 1;
+      var pagesSong = that.data.pagesSong;
+      that.setData({
+        pageSong: pageSong
+      })
+      if (pageSong <= pagesSong) {
+        that.refreshPetSong(pageSong, size, 2, false);
+      }
+    } else if (index == 2) {
+      var pageOff = that.data.pageOff + 1;
+      var pagesOff = that.data.pagesOff;
+      that.setData({
+        pageOff: pageOff
+      })
+      if (pageOff <= pagesOff) {
+        that.refreshPetInfo(pageOff, size, 3, 2, false);
+      }
+    }
   },
 
   /**
