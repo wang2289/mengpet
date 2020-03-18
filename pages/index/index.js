@@ -99,28 +99,55 @@ Page({
     wx.getSetting({
       success: (data) => {
         if (data.authSetting['scope.userInfo']) {
-          wx.getUserInfo({
-            success: (data) => {
-              this.setData({
-                isshow: true
-              })
+          // wx.getUserInfo({
+          //   success: (data) => {
+          //     this.setData({
+          //       isshow: true
+          //     })
 
-              var userInfo = data.userInfo;
-              var encryptedData = data.encryptedData;
-              var iv = data.iv;
-              wx.login({
-                success(res) {
-                  if (res.code) {
-                    userInfo.code = res.code
-                    console.log(userInfo);
+          //     var userInfo = data.userInfo;
+          //     var encryptedData = data.encryptedData;
+          //     var iv = data.iv;
+          //     wx.login({
+          //       success(res) {
+          //         if (res.code) {
+          //           userInfo.code = res.code
+          //           console.log(userInfo);
 
-                    that.userLogin(data.userInfo, encryptedData, iv);
-                  }
-                }
-              })
+          //           that.userLogin(data.userInfo, encryptedData, iv);
+          //         }
+          //       }
+          //     })
               
+          //   }
+          // })
+          wx.login({
+            success(res) {
+              if (res.code) {
+                var userInfo = {};
+                var encryptedData;
+                var iv; 
+                var code = res.code;
+                wx.getUserInfo({
+                  success: (data) => {
+                    that.setData({
+                      isshow: true
+                    })
+                    
+                    userInfo = data.userInfo;
+                    encryptedData = data.encryptedData;
+                    iv = data.iv;
+                    userInfo.code = code;
+                    console.log(userInfo);
+                    that.userLogin(userInfo, encryptedData, iv);
+                  }
+                })
+                
+              }
             }
           })
+          
+
         } else {
           this.setData({
             isshow: false

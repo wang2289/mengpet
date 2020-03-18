@@ -55,7 +55,7 @@ Page({
       encryptedData: encryptedData,
       iv: iv
     };
-    that.showLoading();loading
+    that.showLoading();
     requesttoken('/user/updateUserPhoneNumber', "GET",
       parms, function (res) {
         if (res.success) {
