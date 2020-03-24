@@ -97,6 +97,7 @@ Page({
             
             temp.appId = tempData[i].appId;
             temp.appCreateTime = tempData[i].appCreateTime.substring(0, 10);
+            temp.score = tempData[i].score;
 
             temp.userNickName = tempData[i].userNickName;
             temp.userSex = tempData[i].userSex;

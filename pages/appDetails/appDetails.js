@@ -146,18 +146,24 @@ Page({
           user.sex = info.sex;
           user.area = info.area;
           user.userId = info.userId;
+          user.image = info.profilePicture;
           var temp = info.age;
           switch(temp) {
             case 0: 
               temp = '60后';
+              break;
             case 1:
               temp = '70后';
+              break;
             case 2:
               temp = '80后';
+              break;
             case 3:
               temp = '90后';
+              break;
             case 4:
               temp = '00后';
+              break;
           }
           user.age = temp;
           user.phoneNumber = info.phoneNumber;

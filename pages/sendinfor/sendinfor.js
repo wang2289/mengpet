@@ -306,7 +306,7 @@ Page({
   //上传图片开始
   chooseImg: function(e) {
     var that = this;
-    if (that.data.permission != 1) {
+    if (that.data.permission < 1) {
       wx.showToast({
         title: `您的信息需认证后才可以发布宠物信息`,
         icon: "none"

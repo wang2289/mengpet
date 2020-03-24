@@ -244,6 +244,7 @@ Page({
     var params = userInfo;
     params.encryptedData = encryptedData;
     params.iv = iv;
+    params.profilePicture = userInfo.avatarUrl;
     requestsend('/wechat/login', "GET",
       params, function (res) {
         if (res.success) {

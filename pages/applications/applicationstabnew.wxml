@@ -14,6 +14,7 @@
       <view><text class="iconfont iconaddress"></text><text space="nbsp">   {{appAnswers.userArea}}  |  {{appAnswers.areaAns}}</text></view>
       <view><text class="iconfont iconemotion"></text><text space="nbsp">   {{appAnswers.loverAns}}  |  {{appAnswers.marryAns}}</text></view>
     </view>
+    <view wx:if="{{appAnswers.score>0}}" class="score">{{appAnswers.score}}</view>
   </view>
   <view class="line"></view>
   <view class="foot">
