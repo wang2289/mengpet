@@ -102,8 +102,8 @@ Page({
             temp.userNickName = tempData[i].userNickName;
             temp.userSex = tempData[i].userSex;
             var temparea = tempData[i].userArea;
-            if (temparea.length > 10) {
-              temparea = temparea.substring(0,10) + '...'
+            if (temparea != null && temparea.length > 6) {
+              temparea = temparea.substring(0,6) + '...'
             }
             temp.userArea = temparea; 
             // var tempAge = tempData[i].age;

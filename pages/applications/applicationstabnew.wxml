@@ -11,8 +11,8 @@
       <view wx:if="{{appAnswers.userSex==0}}" class="boyfont">
         <text class="iconfont iconman"></text><text space="nbsp">   男士</text>
       </view>
-      <view><text class="iconfont iconaddress"></text><text space="nbsp">   {{appAnswers.userArea}}  |  {{appAnswers.areaAns}}</text></view>
-      <view><text class="iconfont iconemotion"></text><text space="nbsp">   {{appAnswers.loverAns}}  |  {{appAnswers.marryAns}}</text></view>
+      <view><text class="iconfont iconaddress"></text><text space="nbsp">  {{appAnswers.userArea}}  |  {{appAnswers.areaAns}}</text></view>
+      <view><text class="iconfont iconemotion"></text><text space="nbsp">  {{appAnswers.loverAns}}  |  {{appAnswers.marryAns}}</text></view>
     </view>
     <view wx:if="{{appAnswers.score>0}}" class="score">{{appAnswers.score}}</view>
   </view>
