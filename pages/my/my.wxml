@@ -18,7 +18,7 @@
     <van-cell-group class="_van-cell-group " border="{{false}}">
       <van-cell title="我的送养" border="{{false}}" is-link link-type="navigateTo" size="large" url="/pages/mySongyang/mySongyang" class="_van-cell data-v-6764498b"></van-cell>
       <van-cell title="我收到的领养申请" border="{{false}}" is-link link-type="navigateTo" size="large" url="/pages/applications/applications" class="_van-cell data-v-6764498b"></van-cell>
-      <van-cell title="我发起的领养申请" border="{{false}}"is-link link-type="navigateTo" size="large" url="/pages/myReceiveApply/myReceiveApply" class="_van-cell data-v-6764498b"></van-cell>
+      <van-cell title="我发起的领养申请" border="{{false}}"is-link link-type="navigateTo" size="large" url="/pages/myApplications/myApplications" class="_van-cell data-v-6764498b"></van-cell>
     </van-cell-group>
     <view class="line"></view>
     <van-cell-group class="_van-cell-group data-v-6764498b"border="{{false}}">

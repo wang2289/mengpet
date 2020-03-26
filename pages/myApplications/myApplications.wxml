@@ -1,0 +1,33 @@
+<view class="container"> 
+  <view class="title">
+    <van-tabs swipeable animated active="{{active}}" bind:change="onChange" 
+      class="_van-tabs tabs" >
+        <van-tab title="待审核" class="_van-tab tabs"></van-tab>
+        <van-tab title="审核通过" class="_van-tab tabs"></van-tab>
+        <van-tab title="已取消" class="_van-tab tabs"></van-tab>
+      </van-tabs>
+  </view>
+  <view class="">
+    <view wx:if="{{index == 0}}">
+      <view wx:key="index" wx:for="{{app}}" wx:for-item="app" wx:key="id" class="receiveApplyList">
+        <include src="myApplicationstab.wxml" />
+      </view>
+    </view>
+    <view wx:if="{{index == 1}}">
+      <view wx:key="index" wx:for="{{appConfirm}}" wx:for-item="app" wx:key="id" class="receiveApplyList">
+        <include src="myApplicationstab.wxml" />
+      </view>
+    </view>
+    <view wx:if="{{index == 2}}">
+      <view wx:key="index" wx:for="{{appCancel}}" wx:for-item="app" wx:key="id" class="receiveApplyList">
+        <include src="myApplicationstab.wxml" />
+      </view>
+    </view>
+  </view>
+  <van-dialog id="van-dialog" class="_van-dialog data-v-7ce44584"></van-dialog>
+</view>
+<view class="body-view">
+  <loading hidden="{{!loading}}" bindchange="loadingChange">
+        加载中...
+  </loading>
+</view>

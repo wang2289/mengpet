@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "我收到的申请",
+  "navigationBarTitleText": "我发起的领养申请",
   "usingComponents": {
     "van-tab": "vant-weapp/tab/index",
     "van-tabs": "vant-weapp/tabs/index"
