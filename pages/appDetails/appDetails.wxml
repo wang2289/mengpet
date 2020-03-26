@@ -18,8 +18,8 @@
         <image class='peopleimage' src="{{user.image}}"></image>
         <view class='peopleinfo'>
           <view class='peoplename'>{{user.name}}
-            <image wx:if="{{user.sex == 1}}" src="/images/woman-anticon.png"  class="_img peo-icon"/>
-            <image wx:if="{{user.sex == 2}}" src="/images/man-anticon.png"  class="_img peo-icon"/>
+            <image wx:if="{{user.sex == 2}}" src="/images/woman-anticon.png"  class="_img peo-icon"/>
+            <image wx:if="{{user.sex == 1}}" src="/images/man-anticon.png"  class="_img peo-icon"/>
           </view>
           <text class='peopleadress'>{{user.area}} {{user.age}}</text>
         </view>

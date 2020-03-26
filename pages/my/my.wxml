@@ -4,7 +4,7 @@
     <image class="_img data-v-6764498b peopleimage" src="{{userPhoto}}"></image>
     <view class="_div data-v-6764498b peopleinfo">
       <label class="_span data-v-6764498b peoplename">{{userName}}
-        <image wx:if="{{userSex == 0}}" src="/images/woman-anticon.png"  class="_img data-v-6764498b peo-icon"/>
+        <image wx:if="{{userSex == 2}}" src="/images/woman-anticon.png"  class="_img data-v-6764498b peo-icon"/>
         <image wx:if="{{userSex == 1}}" src="/images/man-anticon.png"  class="_img data-v-6764498b peo-icon"/>
       </label>
       <!-- <label class="_span data-v-6764498b peopleid">ID: {{user.userId}}</label> -->

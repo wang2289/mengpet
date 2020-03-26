@@ -2,7 +2,7 @@
     <view class="myInfo">
       <view class="peopleinfo">
         <label class="peoplename">{{userName}}
-          <image wx:if="{{sex == 0}}" src="/images/woman-anticon.png"  class="peo-icon"/>
+          <image wx:if="{{sex == 2}}" src="/images/woman-anticon.png"  class="peo-icon"/>
           <image wx:if="{{sex == 1}}" src="/images/man-anticon.png"  class="peo-icon"/>
         </label>
       </view>
