@@ -10,17 +10,17 @@
   <view class="">
     <view wx:if="{{index == 0}}">
       <view wx:key="index" wx:for="{{app}}" wx:for-item="app" wx:key="id" class="receiveApplyList">
-        <include src="myApplicationstab.wxml" />
+        <include src="myapplicationstab.wxml" />
       </view>
     </view>
     <view wx:if="{{index == 1}}">
       <view wx:key="index" wx:for="{{appConfirm}}" wx:for-item="app" wx:key="id" class="receiveApplyList">
-        <include src="myApplicationstab.wxml" />
+        <include src="myapplicationstab.wxml" />
       </view>
     </view>
     <view wx:if="{{index == 2}}">
       <view wx:key="index" wx:for="{{appCancel}}" wx:for-item="app" wx:key="id" class="receiveApplyList">
-        <include src="myApplicationstab.wxml" />
+        <include src="myapplicationstab.wxml" />
       </view>
     </view>
   </view>
