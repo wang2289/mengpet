@@ -1,7 +1,7 @@
 <view class='container'>
   <scroll-view scroll-y="true" style="height:1000rpx">
     <view class='pic'>
-      <view class='pic-box' bindtap='chooseImg'>
+      <view class='pic-box' bindtap='gotoCropper'>
         <image class='pic-img {{showon ? "on":""}}' src="{{showpic}}"></image>
       </view>
       <view class='add'>添加图片

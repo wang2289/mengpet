@@ -40,7 +40,8 @@ Page({
     pics: [], //图片
     showpic: '/images/add_a_photo-material.png',
     more: false,
-    photoIds: []
+    photoIds: [],
+    crop: false
   },
 
   onReachBottom: function(event) {},
@@ -289,6 +290,49 @@ Page({
     }
     return -1;
   },
+  gotoCropper: function () {
+    var that = this;
+    if (that.data.permission < 1) {
+      wx.showToast({
+        title: `您的信息需认证后才可以发布宠物信息`,
+        icon: "none"
+      })
+      return;
+    }
+    wx.navigateTo({
+      url: '/pages/cropper/cropper',
+    })
+  },
+  //上传图片开始
+  uploadImg: function () {
+    var that = this;
+    var crop = that.data.crop;
+    var imgUrl = that.data.showpic;
+    if (crop && imgUrl.length > 0) {
+      that.setData({
+        showon: true,
+        showpic: imgUrl,
+        photoIds: []
+      })
+      wx.showToast({
+        title: '正在上传...',
+        icon: 'loading',
+        mask: true,
+        duration: 10000
+      });
+      requestpic('/pets/uploadImg', "POST",
+        imgUrl, undefined, function (res) {
+          that.data.photoIds.push(res.data.id);
+          console.log(that.data.photoIds)
+          wx.hideToast();
+        });
+    } else {
+      that.setData({
+        showon: false,
+        showpic: '/images/add_a_photo-material.png'
+      })
+    }
+  },
   //上传图片开始
   chooseImg: function(e) {
     var that = this,
@@ -533,6 +577,14 @@ Page({
 
   onShareAppMessage() {
 
+  },
+
+  onShow: function () {
+    var that = this;
+    var crop = that.data.crop;
+    if (crop) {
+      this.uploadImg();
+    }
   },
 
   showLoading: function () {

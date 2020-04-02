@@ -3,8 +3,8 @@
 
 /**app.wxss**/
 page{
-   font-family: PingFangSC-Thin; 
-   font-size:16px;
+  font-family: PingFangSC-Thin; 
+  font-size:16px;
   /* overflow: hidden; */
 }
 

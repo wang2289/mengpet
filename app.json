@@ -19,7 +19,8 @@
     "pages/searchcity/searchcity",
     "pages/detail/detail",
     "pages/logs/logs",
-    "pages/webview/webview"
+    "pages/webview/webview",
+    "pages/cropper/cropper"
   ],
   "permission": {
     "scope.userLocation": {
