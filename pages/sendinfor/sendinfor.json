@@ -6,7 +6,9 @@
     "van-radio-group": "vant-weapp/radio-group",
     "van-field": "vant-weapp/field",
     "van-checkbox": "vant-weapp/checkbox/index",
-    "van-checkbox-group": "vant-weapp/checkbox-group/index"
+    "van-checkbox-group": "vant-weapp/checkbox-group/index",
+    "van-picker": "vant-weapp/picker",
+    "van-popup": "vant-weapp/popup"
   },
   "disableScroll": true,
   "backgroundColor": "#f5f5f5",

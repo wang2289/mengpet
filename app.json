@@ -20,7 +20,8 @@
     "pages/detail/detail",
     "pages/logs/logs",
     "pages/webview/webview",
-    "pages/cropper/cropper"
+    "pages/cropper/cropper",
+    "pages/switchcity/switchcity"
   ],
   "permission": {
     "scope.userLocation": {

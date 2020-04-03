@@ -1,4 +1,4 @@
-<view class="app">
+<view bind:tap="onDetail" class="app">
   <view class="head">
     <image class='petimg' src="{{app.petImage}}"></image>
     <view class="answers">
@@ -7,14 +7,5 @@
       <view class="info"><text space="nbsp">{{app.petAge}}  |  {{app.color}}</text></view>
       <view class="info"><text space="nbsp">{{app.appCreateTime}}</text></view>
     </view>
-    <!-- <view wx:if="{{app.score>0}}" class="score">{{app.score}}</view> -->
   </view>
-  <!-- <view class="line"></view>
-  <view class="foot">
-    <view class="footfont">
-      <text class="iconfont icontime"></text><text space="nbsp">  {{app.jobAns}}       </text>     
-      <text class="iconfont iconexperience"></text><text space="nbsp">  {{app.expAns}}</text>
-    </view>
-    <view class="apptime">申请日期:{{app.appCreateTime}}</view>
-  </view> -->
 </view>

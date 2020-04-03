@@ -19,7 +19,8 @@ Page({
     id: 0,
     appStatus: 0,
     petId: -1,
-    petOwnerId: -1
+    petOwnerId: -1,
+    appConfirmCount: 0
   },
 
   /**
@@ -46,11 +47,21 @@ Page({
       id: this.data.id,
       userId: this.data.user.userId,
       petId: this.data.petId,
-      petOwnerId: this.data.petOwnerId
+      petOwnerId: this.data.petOwnerId,
     }
+    //如果已经确认过两个以上，那么提示最后一次确认的描述
+    var message = '当您通过任意初审时，我们会安排工作人员和您取得联系，同时此宠物将不能再收到其他人领养的新领养申请（已申请的可以继续查看），是否继续？'
+    if (that.data.appConfirmCount >=2) {
+      param.lastConfirm = true;
+      message = '当您通过第三条审核时，您将不能再查看更多问卷报告，是否继续？'
+    }
+
     Dialog.confirm({
       title: '提示',
-      message: '确认接受该领养吗？确认后将暂时下架宠物，暂时无法接收更多领养申请(可重新操作上架'
+      // message: '确认接受该领养吗？确认后将暂时下架宠物，暂时无法接收更多领养申请(可重新操作上架'
+      message: message,
+      confirmButtonText: '初审通过',
+      cancelButtonText: '我再想想'
     }).then(() => {
       that.showLoading();
       requesttoken('/app/accept', 'GET',
@@ -65,8 +76,11 @@ Page({
               complete: function () {
                 that.hideLoading();
                 setTimeout(function () {
-                  wx.navigateBack({
-                    delta: 1
+                  // wx.navigateBack({
+                  //   delta: 1
+                  // })
+                  wx.navigateTo({
+                    url: '/pages/help/help?action=confirm',
                   })
                 }, 1000)
               }
@@ -135,6 +149,8 @@ Page({
           var answerItems = [];
           var answers = res.data.answersList;
           var info = res.data.appUserPetInfo;
+
+          var appConfirmCount = res.data.appConfirmCount;
 
           var phCreateDate = info.phCreateTime.substring(0, 10);
           var pet = {};
@@ -211,7 +227,8 @@ Page({
           }
 
           that.setData({
-            quesDetails: results
+            quesDetails: results,
+            appConfirmCount: appConfirmCount
           })
           that.hideLoading();
           console.log(that.data.quesDetails);

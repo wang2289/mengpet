@@ -13,7 +13,7 @@
   <view class='line'></view>
   <view class="own-info-item">
     <van-field value="{{ weixing }}" bind:change="onChangewei" border="{{ false }}" clearable label="微信号:" placeholder="请填写您的微信号" />
-    <van-checkbox class='gong' value="{{ radio2 }}" bind:change="onChange2">公开</van-checkbox>
+    <!-- <van-checkbox class='gong' value="{{ radio2 }}" bind:change="onChange2">公开</van-checkbox> -->
   </view>
   <view class='line'></view>
   <!-- <view class="own-info-item">
@@ -28,7 +28,7 @@
       <van-button style="display:{{!auth?'block':'none'}}" size="small" type="primary" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">点击授权</van-button>
       <van-button style="display:{{auth?'block':'none'}}" size="small" type="default" disabled>已授权</van-button>
     </view>
-    <van-checkbox class='gong' value="{{ radio3 }}" bind:change="onChange3">公开</van-checkbox>
+    <!-- <van-checkbox class='gong' value="{{ radio3 }}" bind:change="onChange3">公开</van-checkbox> -->
   </view>
   <view class='line'></view>
   <view class="own-info-item">
@@ -43,16 +43,16 @@
       <van-radio name="4">00后</van-radio>
     </van-radio-group>
   </view>
-  <view class='line'></view>
-  <view class="own-info-item">
+  <!-- <view class='line'></view> -->
+  <view class="own-info-item" style="display:none;">
      <van-field value="{{ diqu }}" bind:change="onChangedi" border="{{ false }}" clearable label="地区:" placeholder="如上海市长宁区" />
 
-    <van-checkbox class='gong' value="{{ radio5 }}" bind:change="onChange5">公开</van-checkbox>
+    <!-- <van-checkbox class='gong' value="{{ radio5 }}" bind:change="onChange5">公开</van-checkbox> -->
   </view>
   <view class='line'></view>
   <view class="own-info-item">
     <van-field value="{{ zhiye }}" bind:change="onChangezhi" border="{{ false }}" clearable label="职业:" placeholder="请填写您的职业" />
-    <van-checkbox class='gong' value="{{ radio6 }}" bind:change="onChange6">公开</van-checkbox>
+    <!-- <van-checkbox class='gong' value="{{ radio6 }}" bind:change="onChange6">公开</van-checkbox> -->
   </view>
   <view class='line'></view>
 </view>

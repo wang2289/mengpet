@@ -48,10 +48,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    var id = options.bid
     this.setData({
-      petId: options.bid
+      petId: id
     })
 
+    //更新view
+    requesttoken('/pets/addView', 'GET',
+      {'petId': id}, function (res) {
+        console.log(res);
+      })
 
   },
 

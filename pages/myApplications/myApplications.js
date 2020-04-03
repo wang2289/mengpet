@@ -200,6 +200,15 @@ Page({
     }
   },
 
+  onDetail: function() {
+    var index = this.data.index;
+    if (index == 1) {
+      wx.navigateTo({
+        url: '/pages/help/help?action=myapp',
+      })
+    }
+  },
+
   /**
    * 用户点击右上角分享
    */

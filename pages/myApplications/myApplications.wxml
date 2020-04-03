@@ -3,7 +3,7 @@
     <van-tabs swipeable animated active="{{active}}" bind:change="onChange" 
       class="_van-tabs tabs" >
         <van-tab title="待审核" class="_van-tab tabs"></van-tab>
-        <van-tab title="审核通过" class="_van-tab tabs"></van-tab>
+        <van-tab title="初审通过" class="_van-tab tabs"></van-tab>
         <van-tab title="已取消" class="_van-tab tabs"></van-tab>
       </van-tabs>
   </view>

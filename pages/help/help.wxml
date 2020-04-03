@@ -3,17 +3,17 @@
       <image src="/static/images/Group 3.png" class="_image data-v-b4f81840"></image>
     </view>
     <view class="_div data-v-b4f81840 helpInfo">
-      <view class="_div data-v-b4f81840 headline">帮助与反馈</view>
+      <view class="_div data-v-b4f81840 headline">{{title}}</view>
       <view class="_div data-v-b4f81840 helpTips">
-        <van-cell value-class="helpTipsText" custom-class="helpTipsDiv" value="若您遇到任何问题，请联系下方在线客服，我们竭诚为您服务。" class="_van-cell data-v-b4f81840"></van-cell>
+        <van-cell value-class="helpTipsText" custom-class="helpTipsDiv" value="{{message}}" class="_van-cell data-v-b4f81840"></van-cell>
       </view>
       <view class="_div data-v-b4f81840 helpContract">
         <view class="_div data-v-b4f81840 wxMa">
-          <image src="https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640" class="_img data-v-b4f81840"></image>
+          <image src="/static/images/detail/kefu.png" class="_img data-v-b4f81840"></image>
         </view>
         <view class="_div data-v-b4f81840 moreInfo">
-          <view class="_div data-v-b4f81840 name">菠萝</view>
-          <view class="_div data-v-b4f81840 moreTips">微信号/手机号</view>
+          <view class="_div data-v-b4f81840 name">爪盟星🌻菠萝</view>
+          <view class="_div data-v-b4f81840 moreTips">微信号:professorfe</view>
         </view>
       </view>
     </view>
