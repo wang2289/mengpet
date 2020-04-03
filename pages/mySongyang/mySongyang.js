@@ -230,7 +230,7 @@ Page({
     var size = this.data.size;
     this.refreshPetInfo(1, size, 1, 0, true);
     this.refreshPetInfo(1, size, 3, 2, true);
-    this.refreshPetSong(1, size, 5, true);
+    this.refreshPetSong(1, size, 2, true);
   },
 
   /**
@@ -278,7 +278,7 @@ Page({
         pageSong: pageSong
       })
       if (pageSong <= pagesSong) {
-        that.refreshPetSong(pageSong, size, 5, false);
+        that.refreshPetSong(pageSong, size, 2, false);
       }
     } else if (index == 2) {
       var pageOff = that.data.pageOff + 1;
