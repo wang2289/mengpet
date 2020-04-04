@@ -1,4 +1,5 @@
 // pages/book/book.js
+import areajs from '../../static/js/area.js'
 import {
   random
 } from '../../utils/util.js'
@@ -41,7 +42,16 @@ Page({
     showpic: '/images/add_a_photo-material.png',
     more: false,
     photoIds: [],
-    crop: false
+    crop: false,
+    showAge: false,
+    ageColumns: [
+      {
+        values: ['未满1岁', '1岁', '2岁', '3岁', '4岁', '5岁', '6岁', '7岁', '8岁', '9岁', '10岁', '11岁', '12岁', '13岁', '14岁', '15岁', '16岁']
+      },
+      {
+        values: ['1个月', '2个月', '3个月', '4个月', '5个月', '6个月', '7个月', '8个月', '9个月', '10个月', '11个月', '12个月']
+      }
+    ],
   },
 
   onReachBottom: function(event) {},
@@ -124,8 +134,17 @@ Page({
     });
   },
   onChange3(event) {
+    var value = event.detail.value;
+    var index = event.detail.index;
+    var year = value[0];
+    var month = value[1];
+    if (index[0] == 0) {
+      year = '';
+    }
+    var age = year + month;
     this.setData({
-      age: event.detail
+      age: age,
+      showAge: false
     });
   },
   onChange4(event) {
@@ -291,14 +310,6 @@ Page({
     return -1;
   },
   gotoCropper: function () {
-    var that = this;
-    if (that.data.permission < 1) {
-      wx.showToast({
-        title: `您的信息需认证后才可以发布宠物信息`,
-        icon: "none"
-      })
-      return;
-    }
     wx.navigateTo({
       url: '/pages/cropper/cropper',
     })
@@ -395,6 +406,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    wx.hideShareMenu();
+
     var that = this;
 
     let bid = options.bid;
@@ -561,6 +574,24 @@ Page({
         });
     }
     that.hideLoading();
+  },
+
+  showAgePicker: function () {
+    this.setData({
+      showAge: true
+    })
+  },
+
+  onAgePickerClose: function () {
+    this.setData({
+      showAge: false
+    })
+  },
+
+  gotoSwitchCity: function () {
+    wx.navigateTo({
+      url: '/pages/switchcity/switchcity',
+    })
   },
 
   onActivateSearch: function(event) {

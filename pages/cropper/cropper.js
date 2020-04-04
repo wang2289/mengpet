@@ -77,6 +77,7 @@ Page({
     })
   },
   onLoad(option) {
+    wx.hideShareMenu();
     const { cropperOpt } = this.data
 
     this.setData({ cropperOpt })

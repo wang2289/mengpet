@@ -95,7 +95,7 @@ van-field{
   height: 120rpx;
   box-sizing: border-box;
   padding: 16rpx 20rpx;
-  z-index: 999;
+  /* z-index: 999; */
 }
 
 .btns {
@@ -193,4 +193,17 @@ van-radio-group{
 }
 van-cell-group{
   width: 100%;
+}
+.picker-title {
+  display: flex;
+  flex-direction: row;
+  width: 66%;
+  padding: 15rpx 30rpx;
+}
+
+.picker-title-text {
+  width: 164rpx;
+  font-size: 14px;
+  line-height: 24px;
+  color: #333;
 }

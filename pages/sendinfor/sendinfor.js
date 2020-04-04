@@ -552,7 +552,6 @@ Page({
   },
 
   showAgePicker: function() {
-    console.log("showAgePicker");
     this.setData({
       showAge: true
     })
@@ -565,7 +564,6 @@ Page({
   },
 
   gotoSwitchCity: function() {
-    console.log("gotoSwitchCity");
     var that = this;
     if (that.data.permission < 1) {
       wx.showToast({

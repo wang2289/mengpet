@@ -26,6 +26,7 @@ Page({
   },
 
   onLoad: function() {
+    wx.hideShareMenu();
     var that = this;
     wx.getUserInfo({
       success: function (res) {

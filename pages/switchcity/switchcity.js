@@ -32,6 +32,7 @@ Page({
     auto: true, // 自动手动定位开关
   },
   onLoad: function () {
+    wx.hideShareMenu();
     // 生命周期函数--监听页面加载
     const cityListSortedByInitialLetter = getCityListSortedByInitialLetter();
     const sysInfo = wx.getSystemInfoSync();

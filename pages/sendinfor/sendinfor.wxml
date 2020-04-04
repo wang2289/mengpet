@@ -27,18 +27,12 @@
       </van-radio-group>
     </view>
     <view class='line'></view>
-    <!-- <view class="own-info-item chongwu">
-      <van-field value="{{ age }}" bind:change="onChange3" icon="arrow" clearable label="年龄" placeholder="请填写宠物年龄" border="{{ false }}" />
-    </view> -->
     <view class="own-info-item chongwu">
-      <view class="own-info-item chongwu">
-        <van-field value="{{ age }}" clickable bind:onTap="showAgePicker" bind:click-icon="showAgePicker" icon="arrow" label="年龄" readonly placeholder="请选择宠物年龄" border="{{ false }}" />
-      </view>
-      
+      <van-field value="{{ age }}" clickable bind:tap="showAgePicker" bind:click-icon="showAgePicker" icon="arrow" label="年龄" readonly placeholder="请选择宠物年龄" border="{{ false }}" />
     </view>
     <view class='line'></view>
     <view class="own-info-item chongwu">
-      <van-field value="{{ area }}" clickable bind:click-icon="gotoSwitchCity" icon="arrow" label="地区" readonly placeholder="请选择宠物的所在地" border="{{ false }}" />
+      <van-field value="{{ area }}" clickable bind:tap="gotoSwitchCity" bind:click-icon="gotoSwitchCity" icon="arrow" label="地区" readonly placeholder="请选择宠物的所在地" border="{{ false }}" />
     </view>
     <view class='line'></view>
     <view class="own-info-item">
@@ -94,15 +88,14 @@
         <view class='btns2 {{item.status == 1 ? "active":"" }}' bind:tap="onTap2" data-value='{{item.name}}' data-index='{{index}}'>{{item.name}}</view>
       </block>
     </view>
-
-    <van-popup show="{{showAge}}" position="bottom" bind:close="onAgePickerClose">
-      <van-picker show-toolbar title="宠物年龄" bind:cancel="onAgePickerClose" bind:confirm="onChange3" columns="{{ageColumns}}"/>
-    </van-popup>
   </scroll-view>
 </view>
 <view class='sub-btn'>
   <view class='btns' bindtap='Finish'>发布</view>
 </view>
+<van-popup show="{{showAge}}" position="bottom" bind:close="onAgePickerClose">
+  <van-picker show-toolbar title="宠物年龄" bind:cancel="onAgePickerClose" bind:confirm="onChange3" columns="{{ageColumns}}"/>
+</van-popup>
 <van-dialog id="van-dialog" />
 <view class="body-view">
   <loading hidden="{{!loading}}" bindchange="loadingChange">
