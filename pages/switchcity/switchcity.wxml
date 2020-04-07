@@ -37,7 +37,7 @@
 
       <view class="city-picker">
         <view class="hotcity-common" bindtap="reGetLocation">点击定位城区</view>
-        <view class="current-city" data-city="{{city}}" data-code="{{currentCityCode}}" data-county="{{county}}">{{city}} {{county}}</view>
+        <view class="current-city" bindtap="reGetLocation" data-city="{{city}}" data-code="{{currentCityCode}}" data-county="{{county}}">{{city}} {{county}}</view>
 
         <view class="hotcity-common">热门城市</view>
         

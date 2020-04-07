@@ -428,7 +428,7 @@
   height: 160rpx;
 }
 
-.sub-btn {
+.sub-btn-flow {
   bottom: 0;
   position: fixed;
   display: flex;
@@ -441,6 +441,18 @@
   box-sizing: border-box;
   padding: 16rpx 20rpx;
   z-index: 999;
+}
+
+.sub-btn {
+  flex-direction: column;
+  align-items: center;
+  /* width:690rpx; */
+  background-color: #fff;
+  width: 100%;
+  height: 60px;
+  box-sizing: border-box;
+  padding: 16rpx 20rpx;
+  /* z-index: 999; */
 }
 
 .btns {

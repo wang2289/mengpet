@@ -8,13 +8,6 @@
   width: 100%;
   position: relative;
 }
-.btn{
-  width: 100%;
-  text-align: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
 .accept {
   width: 280rpx;
   height: 88rpx;
@@ -471,22 +464,7 @@
   height: 160rpx;
 }
 
-.sub-btn {
-  bottom: 0;
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* width:690rpx; */
-  background-color: #fff;
-  width: 100%;
-  height: 120rpx;
-  box-sizing: border-box;
-  padding: 16rpx 20rpx;
-  z-index: 999;
-}
-
-.btns {
+.btn-confirm {
   width: 100%;
   height: 88rpx;
   line-height: 88rpx;
@@ -497,6 +475,26 @@
   line-height: 48px;
   background: rgba(90, 175, 224, 1);
   border-radius: 16rpx;
+}
+
+.btn-cancel {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 48px;
+  background: rgba(230, 67, 64, 1);
+  border-radius: 16rpx;
+}
+
+.btn{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .btn-s {
@@ -543,4 +541,16 @@
 .btn-icon2 {
   width: 33rpx;
   height: 33rpx;
+}
+
+.sub-btn {
+  flex-direction: column;
+  align-items: center;
+  /* width:690rpx; */
+  background-color: #fff;
+  width: 100%;
+  height: 60px;
+  box-sizing: border-box;
+  padding: 16rpx 20rpx;
+  /* z-index: 999; */
 }

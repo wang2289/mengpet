@@ -15,6 +15,7 @@ Page({
    */
   data: {
     loading: false,
+    scrollHeight: 1000,
     quesDetails: [],
     id: 0,
     appStatus: 0,
@@ -28,6 +29,7 @@ Page({
    */
   onLoad: function (options) {
     wx.hideShareMenu();
+    this.computeScrollViewHeight();
     this.setData({
       id: options.id,
       appStatus: options.appStatus,
@@ -235,6 +237,18 @@ Page({
           console.log(that.data.quesDetails);
         }
       })
+  },
+
+  //计算 scroll-view 的高度
+  computeScrollViewHeight: function () {
+    let that = this
+    const device = wx.getSystemInfoSync()
+    const width = device.windowWidth
+    const height = device.windowHeight - 60
+    console.log(height);
+    that.setData({
+      scrollHeight: height
+    })
   },
 
   /**

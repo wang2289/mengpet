@@ -60,7 +60,12 @@ Page({
     this.getPositions();
   },
   onShow: function (options) {
-    
+    var refreshIndex = app.globalData.refreshIndex;
+    console.log(refreshIndex);
+    if (refreshIndex) {
+      this.onPullDownRefresh();
+      app.globalData.refreshIndex = false;
+    }
     
   },
   getPositions: function() {

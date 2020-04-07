@@ -23,6 +23,7 @@ Page({
    */
   data: {
     loading: false,
+    scrollHeight: 1000,
     searchPanel: false,
     books: Object,
     radio0: '0',
@@ -183,6 +184,7 @@ Page({
     } 
     var picsData = this.data.pics
     var photoIdStr = "";
+    console.log(this.data.photoIds)
     for (let l in this.data.photoIds) {
       photoIdStr += this.data.photoIds[l];
       if (l < this.data.photoIds.length - 1) {
@@ -289,26 +291,35 @@ Page({
       title: '提示',
       message: '确认发布宠物信息吗'
     }).then(() => {
-      // wx.showToast({
-      //   title: '正在上传...',
-      //   icon: 'loading',
-      //   mask: true,
-      //   duration: 10000
-      // });
       that.showLoading();
       requesttoken('/pets/uploadPetInfoNoImg', "GET",
         parms, function (res) {
           
           console.log(res);
           if (res.success) {
-            wx.showToast({
-              title: `保存成功！`,
-              icon: "none",
-              mask: true,
-              duration: 2000
-            })
+            // wx.showToast({
+            //   title: `保存成功！`,
+            //   icon: "none",
+            //   mask: true,
+            //   duration: 2000
+            // })
             that.hideLoading();
-            that.onLoad();
+            
+            Dialog.confirm({
+              title: '提示',
+              message: '上传成功，是否继续上传？',
+              confirmButtonText: '继续上传',
+              cancelButtonText: '返回首页'
+            }).then(() => {
+              //继续上传刷新页面
+              that.resetData();
+            }).catch(() => {
+              //返回首页刷新首页
+              app.globalData.refreshIndex = true;
+              wx.switchTab({
+                url: '/pages/index/index'
+              })
+            })
           }
         })
       }).catch(() => {
@@ -354,8 +365,9 @@ Page({
       });
       requestpic('/pets/uploadImg', "POST",
         imgUrl, undefined, function (res) {
+          that.data.photoIds = [];
           that.data.photoIds.push(res.data.id);
-          console.log(that.data.photoIds)
+          console.log(that.data.photoIds);
           wx.hideToast();
         });
     } else {
@@ -364,7 +376,11 @@ Page({
         showpic: '/images/add_a_photo-material.png'
       })
     }
+    that.setData({
+      crop: false
+    })
   },
+  //废弃的方法
   chooseImg: function(e) {
     var that = this;
     if (that.data.permission < 1) {
@@ -434,8 +450,11 @@ Page({
    */
   onLoad: function(options) {
     wx.hideShareMenu();
+    this.computeScrollViewHeight();
+    this.resetData();
+  },
 
-
+  resetData: function() {
     this.setData({
       searchPanel: false,
       books: Object,
@@ -576,6 +595,19 @@ Page({
       url: '/pages/switchcity/switchcity',
     })
   },
+
+  //计算 scroll-view 的高度
+  computeScrollViewHeight: function() {
+    let that = this
+    const device = wx.getSystemInfoSync()
+    const width = device.windowWidth
+    const height = device.windowHeight - 60
+    console.log(height);
+    that.setData({
+      scrollHeight: height
+    })
+  },
+
 
   onActivateSearch: function(event) {
     this.setData({

@@ -1,67 +1,40 @@
 <!--pages/detail/detail.wxml-->
 <view class="container">
-  <view class="head">
-    <image src="{{pet.image}}"></image>
-    <view class='head-info'>
-      <view>
-        <text class='newname'>{{pet.name}}</text>
-        <text class='age'>{{pet.age}}</text>
-      </view>
-      <view>
-        <text class='area'><!--{{pet.city}}-->{{pet.area}}</text>
-      </view>
-    </view>
-  </view>
-  <view class="sub-container">
-    <text class="headline">身体状况</text>
-    <view class='heath-tip'>
-      <view wx:if="{{pet.quchong == 0}}" class='heath-onetip'>未驱虫</view>
-      <view wx:if="{{pet.quchong == 1}}" class='heath-onetip'>已驱虫</view>
-      <view wx:if="{{pet.yimiao == 0}}" class='heath-onetip'>未疫苗</view>
-      <view wx:if="{{pet.yimiao == 1}}" class='heath-onetip'>已疫苗</view>
-      <view wx:if="{{pet.yimiao == 2}}" class='heath-onetip'>疫苗中</view>
-      <view wx:if="{{pet.jueyu == 0}}" class='heath-onetip'>未绝育</view>
-      <view wx:if="{{pet.jueyu == 1}}" class='heath-onetip'>已绝育</view>
-    </view>
-    <text class="headline">我的特点</text>
-    <view class='heath-tip'>
-      <view wx:for="{{pet.color}}" class='heath-twotip' wx:key="key" wx:for-index="key" wx:for-item="color">{{color}}</view>
-      <view wx:for="{{pet.feature}}" class='heath-twotip' wx:key="key" wx:for-index="key" wx:for-item="feature">{{feature}}</view>
-    </view>
-    <text class="headline">我的故事</text>
-    <view class='gushi'>
-      {{pet.desc}}
-    </view>
-    <!-- <text class="headline">送养人信息</text>
-    <view class='songyang'>
-      <view class='people'>
-        <image class='peopleimage' src="{{pet.image}}"></image>
-        <view class='peopleinfo'>
-          <view class='peoplename'>白熊
-            <image class='peo-icon' src="/images/woman-anticon.png"></image>
-          </view>
-          <text class='peopleadress'>上海90后 30分钟前来过</text>
+  <scroll-view scroll-y="true" style="height:{{scrollHeight}}px">
+    <view class="head">
+      <image src="{{pet.image}}"></image>
+      <view class='head-info'>
+        <view>
+          <text class='newname'>{{pet.name}}</text>
+          <text class='age'>{{pet.age}}</text>
+        </view>
+        <view>
+          <text class='area'><!--{{pet.city}}-->{{pet.area}}</text>
         </view>
       </view>
-      <view class='peoplesoon'>
-        <view>
-          <image class='peo-icon' src="/images/smartphone-material.png"></image>17628392716</view>
-        <view>
-          <image class='peo-icon' src="/images/weixin.png"></image>sjudhw</view>
-        <view>TA的更多送养
-          <image class='peo-icon' src="/images/right-anticon.png"></image>
-        </view>
+    </view>
+    <view class="sub-container">
+      <text class="headline">身体状况</text>
+      <view class='heath-tip'>
+        <view wx:if="{{pet.quchong == 0}}" class='heath-onetip'>未驱虫</view>
+        <view wx:if="{{pet.quchong == 1}}" class='heath-onetip'>已驱虫</view>
+        <view wx:if="{{pet.yimiao == 0}}" class='heath-onetip'>未疫苗</view>
+        <view wx:if="{{pet.yimiao == 1}}" class='heath-onetip'>已疫苗</view>
+        <view wx:if="{{pet.yimiao == 2}}" class='heath-onetip'>疫苗中</view>
+        <view wx:if="{{pet.jueyu == 0}}" class='heath-onetip'>未绝育</view>
+        <view wx:if="{{pet.jueyu == 1}}" class='heath-onetip'>已绝育</view>
       </view>
-      <view class='jubao'>
-        <image class='peo-icon' src="/images/exclamation-circle-o-anticon.png"></image>举报</view>
-    </view> -->
-    <!-- <text class="headline">猜你喜欢</text>
-    <view class="animal-container">
-      <block wx:for="{{pets}}" wx:key="{{id}}">
-        <petlist-cmp pet="{{item}}" class="petlist" />
-      </block>
-    </view> -->
-  </view>
+      <text class="headline">我的特点</text>
+      <view class='heath-tip'>
+        <view wx:for="{{pet.color}}" class='heath-twotip' wx:key="key" wx:for-index="key" wx:for-item="color">{{color}}</view>
+        <view wx:for="{{pet.feature}}" class='heath-twotip' wx:key="key" wx:for-index="key" wx:for-item="feature">{{feature}}</view>
+      </view>
+      <text class="headline">我的故事</text>
+      <view class='gushi'>
+        {{pet.desc}}
+      </view>
+    </view>
+  </scroll-view>
 </view>
 <view class='sub-btns'>
   <!-- <view class='btn-s' bindtap='onCollect'>
@@ -72,26 +45,16 @@
     <image class='btn-icon2' src="/images/export-anticon.png"></image>
   </view>
 </view>
-<!-- <form bindsubmit="submit" report-submit='true' >
-  <button form-type="submit" type="default" size="mini">提交</button>
-</form> -->
-<form bindsubmit="submit" report-submit='true' >
-  <button wx:if="{{adopt && !slef}}" form-type="submit" size="default" class='btns' >申请收养</button>
+<view class='sub-btn'>
+  <form bindsubmit="submit" report-submit='true' >
+    <button wx:if="{{adopt && !slef}}" form-type="submit" size="default" class='btns' >申请收养</button>
 
-  <button wx:elif="{{self}}" form-type="submit" size="default" class='btnsdisable' disabled="true" >申请收养</button>
+    <button wx:elif="{{self}}" form-type="submit" size="default" class='btnsdisable' disabled="true" >申请收养</button>
 
-  <button wx:else="{{!adopt}}" form-type="submit" size="default" class='btnsdisable' disabled="true" >已申请</button>
-</form>
+    <button wx:else="{{!adopt}}" form-type="submit" size="default" class='btnsdisable' disabled="true" >已申请</button>
+  </form>
+</view>
 
-<!-- <form bindsubmit="submit" report-submit='true' wx:if="{{adopt && !slef}}" >
-  <button form-type="submit" size="default" class='btns'>申请收养</button>
-</form>
-<form bindsubmit="submit" report-submit='true' wx:elif="{{self}}">
-  <button form-type="submit" size="default" class='btnsdisable' disabled="true" >申请收养</button>
-</form>
-<form bindsubmit="submit" report-submit='true' wx:else="{{!adopt}}">
-  <button form-type="submit" size="default" class='btnsdisable' disabled="true" >已申请</button>
-</form> -->
 <van-dialog id="van-dialog" />
 <view class="body-view">
   <loading hidden="{{!loading}}" bindchange="loadingChange">

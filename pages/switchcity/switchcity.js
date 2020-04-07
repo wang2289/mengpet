@@ -80,6 +80,11 @@ Page({
     this.setData({ county })
     appInstance.globalData.defaultCounty = county
     
+    this.gotoBack();
+    
+  },
+
+  gotoBack: function() {
     var pages = getCurrentPages();
     var prevPage = pages[pages.length - 2];
     prevPage.setData({
@@ -88,7 +93,6 @@ Page({
     wx.navigateBack({
       delta: 1
     })
-    
   },
 
   //点击热门城市回到顶部
@@ -152,7 +156,8 @@ Page({
     appInstance.globalData.defaultCounty = county
     console.log(appInstance.globalData.defaultCity);
     //返回首页
-    wx.switchTab({ url: getIndexUrl() })
+    // wx.switchTab({ url: getIndexUrl() })
+    this.gotoBack();
   },
   // 失焦时清空输入框
   bindBlur: function (e) {

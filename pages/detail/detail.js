@@ -28,6 +28,7 @@ Page({
    */
   data: {
     loading: false,
+    scrollHeight: 1000,
     petId: -1,
     pets: Object,
     pet: null,
@@ -48,6 +49,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    this.computeScrollViewHeight();
     var id = options.bid
     this.setData({
       petId: id
@@ -60,7 +62,6 @@ Page({
       })
 
   },
-
 
   onFakePost: function() {
     this.setData({
@@ -312,6 +313,18 @@ Page({
           
       this.submit();
     }
+  },
+
+  //计算 scroll-view 的高度
+  computeScrollViewHeight: function () {
+    let that = this
+    const device = wx.getSystemInfoSync()
+    const width = device.windowWidth
+    const height = device.windowHeight - 60
+    console.log(height);
+    that.setData({
+      scrollHeight: height
+    })
   },
 
   showLoading: function () {

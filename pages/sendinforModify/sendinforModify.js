@@ -333,8 +333,9 @@ Page({
       });
       requestpic('/pets/uploadImg', "POST",
         imgUrl, undefined, function (res) {
+          that.data.photoIds = [];
           that.data.photoIds.push(res.data.id);
-          console.log(that.data.photoIds)
+          console.log(that.data.photoIds);
           wx.hideToast();
         });
     } else {
@@ -343,8 +344,11 @@ Page({
         showpic: '/images/add_a_photo-material.png'
       })
     }
+    that.setData({
+      crop: false
+    })
   },
-  //上传图片开始
+  //废弃的方法
   chooseImg: function(e) {
     var that = this,
     pics = this.data.pics;

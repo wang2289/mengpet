@@ -1,57 +1,54 @@
 <view class="container">
-
-  <view class="head">
-    <image src="{{pet.image}}"></image>
-    <view class='head-info'>
-      <view>
-        <text class='newname'>申请宠物：{{pet.name}}</text>
-      </view>
-      </view>
-  </view>
-
-  
-
-  <view class="sub-container">
-
-    <view class='songyang'>
-      <view class='people'>
-        <image class='peopleimage' src="{{user.image}}"></image>
-        <view class='peopleinfo'>
-          <view class='peoplename'>{{user.name}}
-            <image wx:if="{{user.sex == 2}}" src="/images/woman-anticon.png"  class="_img peo-icon"/>
-            <image wx:if="{{user.sex == 1}}" src="/images/man-anticon.png"  class="_img peo-icon"/>
+  <scroll-view scroll-y="true" style="height:{{scrollHeight}}px">
+    <view class="head">
+      <image src="{{pet.image}}"></image>
+      <view class='head-info'>
+        <view>
+          <text class='newname'>申请宠物：{{pet.name}}</text>
+        </view>
+        </view>
+    </view>
+    <view class="sub-container">
+      <view class='songyang'>
+        <view class='people'>
+          <image class='peopleimage' src="{{user.image}}"></image>
+          <view class='peopleinfo'>
+            <view class='peoplename'>{{user.name}}
+              <image wx:if="{{user.sex == 2}}" src="/images/woman-anticon.png"  class="_img peo-icon"/>
+              <image wx:if="{{user.sex == 1}}" src="/images/man-anticon.png"  class="_img peo-icon"/>
+            </view>
+            <text class='peopleadress'>{{user.area}} {{user.age}}</text>
           </view>
-          <text class='peopleadress'>{{user.area}} {{user.age}}</text>
+        </view>
+        <view class='peoplesoon'>
+          <view>
+            <image class='peo-icon' src="/images/smartphone-material.png"></image><!--{{user.phoneNumber}}-->*************</view>
+          <view>
+            <image class='peo-icon' src="/images/weixin.png"></image><!--{{user.wechat}}-->******</view>
+          <!-- <view>TA的更多送养
+            <image class='peo-icon' src="/images/right-anticon.png"></image>
+          </view> -->
         </view>
       </view>
-      <view class='peoplesoon'>
-        <view>
-          <image class='peo-icon' src="/images/smartphone-material.png"></image><!--{{user.phoneNumber}}-->*************</view>
-        <view>
-          <image class='peo-icon' src="/images/weixin.png"></image><!--{{user.wechat}}-->******</view>
-        <!-- <view>TA的更多送养
-          <image class='peo-icon' src="/images/right-anticon.png"></image>
-        </view> -->
+      
+      <view wx:for="{{quesDetails}}" wx:key="key" wx:for-index="index" wx:for-item="item">
+        <text>第{{index + 1}}题</text>
+        <view class="info-name">
+          <text>{{item.desc}}</text>
+        </view>
+        <view wx:for="{{item.answerItems}}" wx:key="key" wx:for-index="index" wx:for-item="item" class="info-name">
+          <text>{{item}}</text>
+        </view>
+        <view class='line'></view>
       </view>
     </view>
-    
-    <view wx:for="{{quesDetails}}" wx:key="key" wx:for-index="index" wx:for-item="item">
-      <text>第{{index + 1}}题</text>
-      <view class="info-name">
-        <text>{{item.desc}}</text>
-      </view>
-      <view wx:for="{{item.answerItems}}" wx:key="key" wx:for-index="index" wx:for-item="item" class="info-name">
-        <text>{{item}}</text>
-      </view>
-      <view class='line'></view>
-    </view>
-
-    <view class="btn" wx:if="{{appStatus==1}}">
-      <view class="accept" bindtap='accept'>初审通过</view>
-      <view class="reject" bindtap='reject'>不符合</view>
-    </view>
+  </scroll-view>
+</view>
+<view class="sub-btn">
+  <view class="btn" wx:if="{{appStatus==1}}">
+    <view class="btn-confirm" bindtap='accept'>初审通过</view>
+    <view class="btn-cancel" bindtap='reject'>不符合</view>
   </view>
-
 </view>
 <van-dialog id="van-dialog" />
 <view class="body-view">
